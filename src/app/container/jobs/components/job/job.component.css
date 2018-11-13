@@ -84,7 +84,7 @@
 }
 .apply{
     margin-top: 3%;
-    margin-bottom: 3%;
+    margin-bottom: 4%;
     display: flex;
     justify-content: center;
 }
@@ -103,7 +103,13 @@ agm-map{
      align-items: center;
     }
 
-
+.close{
+    font-size:2rem;
+    color:#B400AE;
+}
+.close i{
+    cursor: pointer;
+}
     @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 768px) {

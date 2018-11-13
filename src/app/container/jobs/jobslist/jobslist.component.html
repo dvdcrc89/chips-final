@@ -49,7 +49,9 @@
  
 </div>
 </div>
-<button *ngIf="details" (click)="details=null">X</button>
 <div class="big-card" *ngIf="details">
-    <job [job]="details"></job>
+    <job 
+    [job]="details"
+    (close)="handleClose()"        
+    ></job>
 </div>

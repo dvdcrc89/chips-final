@@ -1,4 +1,8 @@
+<div class="close">
+        <i (click)="handleClose()" class="far fa-times-circle"></i>
+</div>
 <div class="container">
+    
     <div class="job_wrapper">
             <div class="picture">
                 <img [src]="job.Pic"/>
@@ -10,12 +14,14 @@
                         <span class="address">{{job.Address}}</span>
                     </div>
                 <div class="job_info">
-                    <div class="record"><span class="label">Position</span> <span class="value">{{job.Position}}</span></div>
-                    <!-- <div class="record"><span class="label">Pay</span><span class="value"> {{job.Pay}}</span></div> -->
-                    <div class="record"><span class="label">Pay</span><span class="value">{{job.PayPerHour}}£/hour</span></div>
-                    <div class="record"><span class="label">Date</span> <span class="value">{{job.Date | date: 'dd/MM/yyyy'}}</span></div>
-                    <div class="record"><span class="label">Time</span> <span class="value">{{job.ShiftStartAt}}-{{job.ShiftEndAt}}</span></div>
-                    <!-- <div class="record"><span class="label">Hours</span> <span class="value">{{job.Hours}} h/w</span></div> -->
+                    <div *ngIf="job.IsTemp" class="record"><span class="label">Type</span> <span class="value">Cover shift</span></div>
+                    <div *ngIf="!job.IsTemp" class="record"><span class="label">Type</span> <span class="value">Permanent job</span></div>
+                    <div *ngIf="job.IsTemp" class="record"><span class="label">Position</span> <span class="value">{{job.Position}}</span></div>
+                    <div *ngIf="job.IsTemp" class="record"><span class="label">Pay</span><span class="value">{{job.PayPerHour}}£/hour</span></div>
+                    <div *ngIf="!job.IsTemp" class="record"><span class="label">Pay</span><span class="value">{{job.Pay}}</span></div>
+                    <div *ngIf="job.IsTemp" class="record"><span class="label">Date</span> <span class="value">{{job.Date | date: 'dd/MM/yyyy'}}</span></div>
+                    <div *ngIf="job.IsTemp" class="record"><span class="label">Time</span> <span class="value">{{job.ShiftStartAt}}-{{job.ShiftEndAt}}</span></div>
+                    <div *ngIf="!job.IsTemp" class="record"><span class="label">Hours</span> <span class="value">{{job.Hours}} h/w</span></div>
                
                     
                 </div>

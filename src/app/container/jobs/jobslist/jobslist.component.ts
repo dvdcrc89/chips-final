@@ -105,4 +105,7 @@ export class JobsListComponent implements OnInit {
   showDetails(job){
     this.details = job
   }
+  handleClose(){
+    this.details = null;
+  }
 }
