@@ -1,0 +1,50 @@
+
+ <div class="toggle_map">  
+        <mat-slide-toggle labelPosition="before" color="accent"  [(ngModel)]="showMap" name="showMap" id="toggle">
+                <span *ngIf="showMap">Hide Map</span>
+                <span *ngIf="!showMap">Show Map</span>
+        </mat-slide-toggle>
+ </div>
+<div [ngClass]="{'jobs_map_grid':showMap}">
+    <div class="wrapper" 
+    [ngClass]="{
+        'job_cards_grid3 show': !showMap,
+        'job_cards_grid2 hide': showMap
+
+      }">
+      <span *ngIf="loading">Loading...</span>
+        <job_card 
+            *ngFor="let job of activejobs; let i=index" 
+            [job]="job"
+            [jobsApplied]="hero.JobApplIds"
+            (apply)="handleApply($event)"
+            (share)="handleShare($event)"
+            (details)="showDetails($event)"
+            (mouseover)="selected(i)"
+            (mouseout)="deselected(i)">   
+        </job_card>
+    </div>
+  
+    <div class="map show"  *ngIf="showMap">
+        <jobs_map 
+            [activejobs]="activejobs"
+            [opacity]="opacity"
+            (highlight)=selected($event)>
+        </jobs_map>
+    </div>
+
+</div>
+<button (click)="prevPage()" [disabled]='!page > 0'>previous</button>
+
+        <span>{{page+1}} / {{totalPage}}</span>
+        <button (click)="nextPage()"
+        [disabled]="page === totalPage -1">next</button>
+<div class="action_bar">
+
+        <img class="showmap" (click)="toggleMap()" src="../../../../../assets/map.svg">
+        <img class="showmap"  src="../../../../../assets/filter.svg">
+        <img class="showmap"  src="../../../../../assets/calendar.svg">
+
+ 
+</div>
+

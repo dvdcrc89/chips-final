@@ -1,0 +1,29 @@
+
+  <div class="job_card">
+    <div class ="card_content">
+      <div class="title">
+        <span>{{job.Business}}</span>
+        <span class=" date" *ngIf="job.IsTemp">{{job.Date| date: 'dd/MM/yyyy'}}</span>
+
+      </div>
+      <div class="card_footer">
+        <div class="job_info">
+          <span class="violet">{{job.Position}}</span><br>
+          <span class="blue" *ngIf="!job.IsTemp">{{job.Hours}} h/w  &#9679; </span>
+          <span class="blue" *ngIf="job.IsTemp">{{job.ShiftStartAt}}-{{job.ShiftEndAt}} &#9679; </span>   
+          <span class="blue" *ngIf="!job.IsTemp">{{job.Pay}}</span>
+          <span class="blue" *ngIf="job.IsTemp">{{job.PayPerHour}}£/hour</span>
+
+        </div>
+        <div class="action_bar">
+          <!-- <img (click)="onApply()" 
+            *ngIf="!jobsApplied.includes(job.id)" 
+            src="../../../../../assets/bolt.svg">
+            <img 
+            *ngIf="jobsApplied.includes(job.id)" 
+            src="../../../../../assets/checked.svg"> -->
+          <img (click)="onShare()" src="../../../../../assets/share.svg">
+        </div>
+      </div>
+    </div>
+  </div>

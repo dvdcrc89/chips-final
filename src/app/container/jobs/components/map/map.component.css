@@ -1,0 +1,25 @@
+agm-map {
+    height: 1000px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
+
+    
+  }
+  
+  @media screen and (max-width: 1024px){
+    agm-map {
+    position: absolute;
+    top:0px;
+    height:1000px;
+    width:100%;
+    display: block;
+    border-radius: 8px;
+    }
+}
+  @media screen and (min-width: 1024px){
+    agm-map{
+        display: block;
+        height: 500px;
+    }
+}

@@ -1,0 +1,26 @@
+
+<section>
+ 
+    <div class="aligner">
+         
+        <h1 class="title">Validate your account</h1>
+        <form class="example-form" #confirmForm="ngForm" (ngSubmit)="onConfirm(confirmForm.value)">
+            <mat-form-field class="example-full-width" >
+                <input matInput ngModel  id="usrName" type="usrName" name="usrName" placeholder="Username">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" >
+                <input matInput ngModel  id="validationCode" type="validationCode" name="validationCode" placeholder="Validation Code">
+            </mat-form-field>
+
+            <button mat-raised-button	type="submit" [disabled]="confirmForm.invalid">Submit</button>
+            </form>
+            <div class="alert" *ngIf="didFail">
+                Invalid request
+            </div>
+        </div>
+       
+    <div class="loader" *ngIf="isLoading">
+            Loading...
+    </div>
+</section>

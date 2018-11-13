@@ -1,0 +1,78 @@
+<section>
+   <div class="aligner">
+      <!-- <h1 class="title">Add Job</h1> -->
+      <form class="example-form" (ngSubmit)="onSubmit()" #usrForm="ngForm" >
+      <div class="grid">
+         <div class="info">
+            <mat-slide-toggle color="primary"  [(ngModel)]="isTemp" name="isTemp" id="toggle">
+            <span *ngIf="isTemp">Add a Cover shift</span>
+            <span *ngIf="!isTemp">Add a Permanent job</span>
+            </mat-slide-toggle>
+            <img class="placeimg" [src]="imageUrl"/>
+            <mat-form-field class="full-width">
+               <input ngx-google-places-autocomplete 
+               matInput
+               [options]="options" 
+               #placesRef="ngx-places" 
+               (onAddressChange)="handleAddressChange($event)"
+               (input)="placeSelected = false"
+               placeholder="Place"
+               />
+            </mat-form-field>
+            <div class="flex">
+               <mat-form-field class="">
+                  <input matInput ngModel id="position" name="position" type="text" placeholder="Position" required>
+               </mat-form-field>
+               <mat-form-field>
+                  <mat-select placeholder="Job category" ngModel id="jobType" name="jobType" required>
+                     <mat-option  value="FOH">
+                        Front of house
+                     </mat-option>
+                     <mat-option  value="BOH">
+                        Back of house
+                     </mat-option>
+                     <mat-option  value="OTR">
+                        Other
+                     </mat-option>
+                  </mat-select>
+               </mat-form-field>
+            </div>
+            <div class="flex" >
+               <mat-form-field *ngIf="isTemp">
+                  <input ngModel id="date" name="date" matInput [min]="today" [matDatepicker]="picker" placeholder="Date" required readonly>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+               </mat-form-field>
+               <mat-form-field *ngIf="!isTemp" >
+                  <input ngModel id="hoursPerWeek" name="hoursPerWeek" matInput type="number" placeholder="Hours per week" required>
+               </mat-form-field>
+               <mat-form-field class="" *ngIf="!isTemp" >
+                  <input ngModel id="pay" name="pay" matInput type="string" placeholder="Pay (es 9£/h)" required>
+               </mat-form-field>
+               <mat-form-field class="" *ngIf="isTemp" >
+                  <input ngModel id="payPerHour" name="payPerHour" matInput type="number" placeholder="Hourly pay" required>
+               </mat-form-field>
+            </div>
+            <div class="flex" *ngIf="isTemp">
+               <mat-form-field>
+                  <input ngModel id="shiftStartAt" name="shiftStartAt" matInput type="time" placeholder="Shift start at" required>
+               </mat-form-field>
+               <mat-form-field>
+                  <input ngModel id="shiftEndAt" name="shiftEndAt" matInput type="time" placeholder="Shift finish at" required>
+               </mat-form-field>
+            </div>
+         </div>
+         <div class="descr">
+            <mat-form-field class="full-width">
+               <textarea ngModel id="description" name="description" matInput type="text"placeholder="Job Description"></textarea>
+            </mat-form-field>
+         </div>
+      </div>
+      <div class="button">
+         <button mat-raised-button type="submit" 
+            [disabled]="!placeSelected || usrForm.invalid">
+         Add Job</button>
+      </div>
+      </form>
+   </div>
+</section>

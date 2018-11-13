@@ -1,0 +1,14 @@
+<agm-map  
+[latitude]="50.837397" 
+[longitude]="-0.1762297" 
+[fitBounds]="true" 
+[zoom]="13" >
+    <agm-marker  
+    *ngFor="let job of activejobs; let i = index" 
+    [latitude]="job.Lat" 
+    [longitude]="job.Lng"
+    [opacity]="opacity[i]"
+    [title]="job.Business"   
+    >
+    </agm-marker>
+</agm-map>

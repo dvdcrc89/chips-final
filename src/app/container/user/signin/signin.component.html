@@ -1,0 +1,28 @@
+<section>
+  <div class="aligner">
+      <h1 class="title">Sign in with Chips</h1>
+
+    <form class="example-form" (ngSubmit)="onSubmit()" #usrForm="ngForm">
+
+        <mat-form-field  class="example-full-width">
+          <input matInput ngModel id="username" name="username" type="text" placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" >
+            <input matInput ngModel  id="password" type="password" minlength="8" name="password" placeholder="Password">
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="usrForm.invalid">Log In</button>
+        <h3 class="signUp">not a member yet? <a routerLinkActive="active" routerLink="/signup">Sign Up</a></h3>
+      </form>
+          <!-- <mat-progress-spinner
+          [color]= 'color_spinner'
+          [mode]= 'mode_spinner'
+          >
+      </mat-progress-spinner> -->
+      <div class="alert" *ngIf="didFail">
+            The email and password that you entered did not match our records. Please double-check and try again
+    </div>
+    </div>
+
+ </section>
