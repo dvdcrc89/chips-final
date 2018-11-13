@@ -83,7 +83,6 @@ export class JobsListComponent implements OnInit {
  }
 
   selected(id){
-    console.log(id);
     this.opacity = this.opacity.map((opa,index)=>{
       if(index!=id) return 0.3;
     })
