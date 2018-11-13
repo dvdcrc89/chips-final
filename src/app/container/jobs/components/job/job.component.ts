@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {Job} from '../../../../../app/models/job.interface';
-import { close } from 'inspector';
 @Component({
   selector: 'job',
   templateUrl: './job.component.html',
