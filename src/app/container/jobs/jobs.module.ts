@@ -24,13 +24,16 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { environment } from '../../../environments/environment';
+import { JobComponent } from './components/job/job.component';
 
 @NgModule({
   declarations: [
     JobcardComponent,
     JobsListComponent,
     MapComponent,
-    AddJobComponent
+    AddJobComponent,
+    JobComponent
+    
   
   ],
   imports: [

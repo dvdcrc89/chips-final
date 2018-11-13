@@ -50,7 +50,7 @@ export class AddJobComponent implements OnInit {
       position:this.form.value.position,
       category: this.form.value.jobType,
       isTemp: this.form.value.isTemp,
-      descr:this.form.value.description,
+      descr:this.form.value.description.trim(),
     }
     if(this.form.value.isTemp){
           job = {

@@ -40,4 +40,6 @@ export class JobcardComponent implements OnInit {
     this.details.emit(this.job);
   }
 
+
+
 }

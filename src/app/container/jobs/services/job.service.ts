@@ -12,7 +12,7 @@ import { environment } from '../../../../environments/environment';
 export class JobService {
   constructor(private http: HttpClient,private authService: AuthService) {}
   
-  url:string = environment.backendUrl;
+  url:string = "https://srfmw4515g.execute-api.eu-west-2.amazonaws.com/dev";
   endPoints:any;
 
   getJobs(): Observable<Job[]> {

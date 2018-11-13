@@ -1,4 +1,4 @@
-
+<div *ngIf="!details">
  <div class="toggle_map">  
         <mat-slide-toggle labelPosition="before" color="accent"  [(ngModel)]="showMap" name="showMap" id="toggle">
                 <span *ngIf="showMap">Hide Map</span>
@@ -34,6 +34,7 @@
     </div>
 
 </div>
+
 <button (click)="prevPage()" [disabled]='!page > 0'>previous</button>
 
         <span>{{page+1}} / {{totalPage}}</span>
@@ -47,4 +48,8 @@
 
  
 </div>
-
+</div>
+<button *ngIf="details" (click)="details=null">X</button>
+<div class="big-card" *ngIf="details">
+    <job [job]="details"></job>
+</div>

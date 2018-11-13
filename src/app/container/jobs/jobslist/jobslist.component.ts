@@ -21,7 +21,7 @@ export class JobsListComponent implements OnInit {
   opacity: number[];
   hero:any;
   loading:boolean=true;
-  
+  details: Job = null;
   
   constructor(private jobService:JobService,private authService: AuthService) { }
 
@@ -103,6 +103,6 @@ export class JobsListComponent implements OnInit {
     console.log("Share",job);
   }
   showDetails(job){
-    console.log("Details",job);
+    this.details = job
   }
 }

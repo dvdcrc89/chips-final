@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="job_wrapper">
+            <div class="picture">
+                <img [src]="job.Pic"/>
+            </div>
+
+            <div>
+                <div class="business_info">
+                        <span class="title">{{job.Business}}</span><br>
+                        <span class="address">{{job.Address}}</span>
+                    </div>
+                <div class="job_info">
+                    <div class="record"><span class="label">Position</span> <span class="value">{{job.Position}}</span></div>
+                    <!-- <div class="record"><span class="label">Pay</span><span class="value"> {{job.Pay}}</span></div> -->
+                    <div class="record"><span class="label">Pay</span><span class="value">{{job.PayPerHour}}£/hour</span></div>
+                    <div class="record"><span class="label">Date</span> <span class="value">{{job.Date | date: 'dd/MM/yyyy'}}</span></div>
+                    <div class="record"><span class="label">Time</span> <span class="value">{{job.ShiftStartAt}}-{{job.ShiftEndAt}}</span></div>
+                    <!-- <div class="record"><span class="label">Hours</span> <span class="value">{{job.Hours}} h/w</span></div> -->
+               
+                    
+                </div>
+              
+            </div>
+        
+        <div class="job_description">
+                {{job.Description}}
+                <div class="apply">
+                        <button mat-raised-button type="submit">Apply now</button>
+                    </div>  
+       </div>
+       <div class="map">
+            <agm-map  
+            [latitude]="job.Lat" 
+            [longitude]="job.Lng" 
+            [fitBounds]="true" 
+            [zoom]="15" >
+                <agm-marker  
+                [latitude]="job.Lat" 
+                [longitude]="job.Lng"
+                [title]="job.Business"   
+                >
+                </agm-marker>
+            </agm-map>
+            
+    </div>      
+           
+    </div>
+    </div>
+
+    
+    

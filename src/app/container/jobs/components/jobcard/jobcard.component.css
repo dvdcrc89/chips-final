@@ -6,7 +6,8 @@
     font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
     margin-bottom:10px; 
-    box-shadow: 0 6px 3px 0 rgba(74,74,74,.06)
+    box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
+    cursor: pointer
 
    
 }
