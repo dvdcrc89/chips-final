@@ -13,8 +13,9 @@
 
 }
 .picture{
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
+    
 }
 .picture img{
     width:423px;
@@ -28,7 +29,6 @@
 .job_wrapper{
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
 }
 .job_info{
     width: 300px;
@@ -85,6 +85,10 @@
 .apply{
     margin-top: 3%;
     margin-bottom: 4%;
+    display: flex;
+    justify-content: center;
+}
+.map{
     display: flex;
     justify-content: center;
 }
