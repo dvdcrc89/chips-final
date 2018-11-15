@@ -80,6 +80,7 @@ export class JobsListComponent implements OnInit {
 
  toggleMap(){
    this.showMap=!this.showMap;
+   if(this.showMap) this.details = null;
  }
 
   selected(id){
@@ -102,7 +103,8 @@ export class JobsListComponent implements OnInit {
     console.log("Share",job);
   }
   showDetails(job){
-    this.details = job
+    this.details = job;
+    this.showMap = false;
   }
   handleClose(){
     this.details = null;

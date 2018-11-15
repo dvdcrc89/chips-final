@@ -9,6 +9,7 @@
     [longitude]="job.Lng"
     [opacity]="opacity[i]"
     [title]="job.Business"
+    (markerClick)="log($event)"
     >
     </agm-marker>
 </agm-map>

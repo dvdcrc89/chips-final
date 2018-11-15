@@ -1,0 +1,109 @@
+
+nav{
+  height: 80px;
+  width: 100%;
+  background: white;
+  -webkit-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+ 
+.nav-slice-dx{
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+ 
+.nav-slice-sx{
+  height: 100%;
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.nav-slice-dx > *{
+  margin-left: 20px;
+}
+ 
+.logo{    
+  max-width: 30px;
+  border-radius: 50%;
+  border: #B400AE 2px solid;
+  margin-left: 40px!important;
+}
+.logo-svg{    
+  max-width: 40px;
+  margin-right: 20px;
+}
+ 
+.fa{
+  font-size: 1em;
+}
+ 
+.flex-nav{
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+  align-items: center;
+}
+ 
+a{
+  font-family: 'Open Sans', sans-serif;
+ 
+}
+ 
+.nav-link{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  border-bottom: 1.5px transparent solid
+ 
+}
+ 
+.nav-link:hover{
+  border-bottom: 1.5px #B400AE solid
+}
+ 
+.mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content{
+  right: -23px!important;
+  top: 13px!important;
+}
+ 
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  /* top: 14px!important; */
+}
+ 
+input[type=text]{
+    background-color: rgb(255, 255, 255) !important;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px !important;
+    height: 40px !important;
+    width: 200px;
+    -webkit-transition: width 0.5s; /* For Safari 3.1 to 6.0 */
+    -webkit-transition: box-shadow 200ms ease-in 0s !important;
+    transition: width 500ms;
+    border-style: solid !important;
+    border-color: rgb(235, 235, 235) !important;
+    border-radius: 4px !important;
+    padding-left: 35px;
+}
+* {
+  outline: none;
+}
+input[type=text]:focus{
+  /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
+  width: 500px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(26, 26, 29, 0.08) 0px 4px 12px !important;
+}
+ 
+.fa-search{
+  position: absolute;
+  top: 16px;
+  left: 12px;
+}
+ 

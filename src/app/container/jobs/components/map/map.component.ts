@@ -20,6 +20,9 @@ export class MapComponent implements OnInit {
     select(id){
         this.highlight.emit(id);
     }
+    log(e){
+        console.log(e);
+    }
     
     ngOnInit(){}
 

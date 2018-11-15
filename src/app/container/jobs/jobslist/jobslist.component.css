@@ -85,6 +85,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 10px;
+        height: 590px;
 
     }
     .job_cards_grid3{
@@ -95,6 +96,7 @@
     
     }
     .jobs_map_grid{
+        margin-left: 30px;
         display: grid;
         grid-template-columns:1fr 1fr;
 

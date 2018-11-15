@@ -7,7 +7,7 @@ section{
 
 }
 .aligner{
-    width: 80%;
+    width: 510px;
     background-color: white;
     border-radius: 8px;
     -webkit-box-shadow: -1px 2px 14px 2px rgba(189,189,189,0.36);
@@ -35,7 +35,7 @@ section{
     width: 100%;
   }
   textarea{
-      height: 400px;
+      height: 160px;
   
   }
   .flex{
@@ -44,7 +44,7 @@ section{
   }
 
   .grid{
-    display: grid;
+    display: block;
     grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
     align-items: self-end;

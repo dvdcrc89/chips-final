@@ -1,20 +1,16 @@
-<div *ngIf="!details">
+<div>
  <div class="toggle_map">  
-        <mat-slide-toggle labelPosition="before" color="accent"  [(ngModel)]="showMap" name="showMap" id="toggle">
-                <span *ngIf="showMap">Hide Map</span>
-                <span *ngIf="!showMap">Show Map</span>
-        </mat-slide-toggle>
+    <button mat-raised-button (click)="toggleMap()">
+         <span *ngIf="showMap">Hide Map</span>
+         <span *ngIf="!showMap">Show Map</span>
+        </button>
  </div>
-<div [ngClass]="{'jobs_map_grid':showMap}">
-    <div class="wrapper" 
-    [ngClass]="{
-        'job_cards_grid3 show': !showMap,
-        'job_cards_grid2 hide': showMap
-
-      }">
+<div class="jobs_map_grid">
+    <div class="wrapper job_cards_grid2" [ngClass]="{'hide':details|| showMap}" >
       <span *ngIf="loading">Loading...</span>
         <job_card 
             *ngFor="let job of activejobs; let i=index" 
+            
             [job]="job"
             [jobsApplied]="hero.JobApplIds"
             (apply)="handleApply($event)"
@@ -24,7 +20,12 @@
             (mouseout)="deselected(i)">   
         </job_card>
     </div>
-  
+    <div class="big-card" *ngIf="details">
+        <job 
+        [job]="details"
+        (close)="handleClose()"        
+        ></job>
+    </div>
     <div class="map show"  *ngIf="showMap">
         <jobs_map 
             [activejobs]="activejobs"
@@ -48,10 +49,4 @@
 
  
 </div>
-</div>
-<div class="big-card" *ngIf="details">
-    <job 
-    [job]="details"
-    (close)="handleClose()"        
-    ></job>
 </div>

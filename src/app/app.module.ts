@@ -21,6 +21,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './store/effects/app.effects';
 import {JobService} from './container/jobs/services/job.service'
 import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './container/navbar/navbar.component';
 
 
 
@@ -29,7 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     SignupComponent,
     SigninComponent,
-    ValidationComponent
+    ValidationComponent,
+    NavBarComponent
+    
     ],
   imports: [
     BrowserModule,
