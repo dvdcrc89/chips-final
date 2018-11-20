@@ -3,7 +3,11 @@ import {Job} from '../../../../app/models/job.interface';
 import {user} from './../../tempo/user'
 import {jobsarray} from './../../tempo/jobs'
 import { AuthService } from '../../user/auth.service';
-import {JobService} from '../services/job.service'
+import {JobService} from '../services/job.service';
+import {Store} from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromStore from '../store';
+
 @Component({
   selector: 'jobs_list',
   templateUrl: './jobslist.component.html',
@@ -23,7 +27,11 @@ export class JobsListComponent implements OnInit {
   loading:boolean=true;
   details: Job = null;
   
-  constructor(private jobService:JobService,private authService: AuthService) { }
+  constructor(
+    private jobService:JobService, 
+    private authService: AuthService,
+    private store: Store<fromStore.JobsMarketState>
+    ) { }
   
   ngOnInit() {
     const doChunk = (list, size) => list.reduce((r, v) =>
@@ -41,7 +49,9 @@ export class JobsListComponent implements OnInit {
   
     console.log(jobsarray);
     
-  
+    this.store.select(fromStore.getAllJobs).subscribe((state)=>console.log(state));
+
+
     this.jobService.getJobs().subscribe(
     jobs =>{
               this.jobs=jobs.sort((a,b)=>b.Created_at-a.Created_at);
