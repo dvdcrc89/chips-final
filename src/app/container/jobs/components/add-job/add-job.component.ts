@@ -73,10 +73,12 @@ export class AddJobComponent implements OnInit {
           );
   }
   handleAddressChange(e){ 
-    console.log(e);
     if(e.photos){
       this.imageUrl = this.findBestImage(e.photos).getUrl();
     }
+    
+    console.log(this.imageUrl);
+
     this.lat = e.geometry.location.lat();
     this.lng = e.geometry.location.lng();
     this.placeName=e.name;

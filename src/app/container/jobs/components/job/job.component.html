@@ -1,13 +1,13 @@
-<div class="close">
-        <i (click)="handleClose()" class="far fa-times-circle"></i>
-</div>
-<div class="container">
-    
-    <div class="job_wrapper">
-            <div class="picture">
-                <img [src]="job.Pic"/>
-            </div>
 
+<div class="container">
+  
+    <div class="job_wrapper">
+            <!-- <div class="picture">
+                <img [src]="job.Pic"/>
+            </div> -->
+            <div class="close">
+                <i (click)="handleClose()" class="far fa-times-circle"></i>
+            </div>  
             <div>
                 <div class="business_info">
                         <span class="title">{{job.Business}}</span><br>
