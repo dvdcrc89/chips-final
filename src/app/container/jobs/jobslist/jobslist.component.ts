@@ -7,6 +7,7 @@ import {JobService} from '../services/job.service';
 import {Store} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '../store';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'jobs_list',
@@ -17,6 +18,7 @@ import * as fromStore from '../store';
 export class JobsListComponent implements OnInit {
   activejobs:any[];
   jobs: Job[];
+  jobs$: Observable<Job[]>;
   jobsDivided: Job[][];
   page: number = 0;
   totalPage:number;
@@ -48,10 +50,10 @@ export class JobsListComponent implements OnInit {
   //     }});
   
     console.log(jobsarray);
-    
-    this.store.select(fromStore.getAllJobs).subscribe((state)=>console.log(state));
-
-
+    //store
+    this.jobs$ = this.store.select(fromStore.getAllJobs);
+    this.store.dispatch(new fromStore.LoadJobs);  
+    console.log("this jobs",this.jobs$);
     this.jobService.getJobs().subscribe(
     jobs =>{
               this.jobs=jobs.sort((a,b)=>b.Created_at-a.Created_at);
