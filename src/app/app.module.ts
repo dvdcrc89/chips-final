@@ -15,7 +15,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { StoreModule,MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './container/jobs/store/effects/app.effects';
 import {JobService} from './container/jobs/services/job.service'
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './container/navbar/navbar.component';
