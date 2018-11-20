@@ -18,6 +18,7 @@ import { Location } from '@angular/common';
 export class AppComponent {
   title = 'app';
   isAuthenticated = false;
+  username:string;
   authenticatedPage=['/jobs','/addjob'];
   constructor(private location: Location,
               private authService: AuthService,
@@ -25,6 +26,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    console.log(this.authService.getAuthenticatedUser())
     this.authService.authStatusChanged.subscribe(
       (authenticated) => {
         this.isAuthenticated = authenticated;
@@ -40,6 +42,7 @@ export class AppComponent {
       }
     );
     this.authService.initAuth();
+    this.username= this.authService.getAuthenticatedUser().getUsername();
   }
  
   onLogout() {
