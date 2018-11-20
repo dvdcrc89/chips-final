@@ -7,7 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
   
 })
 export class NavBarComponent implements OnInit {
+  @Input()
+  username:string;
+  
     ngOnInit() {
+    
     }
     
 }

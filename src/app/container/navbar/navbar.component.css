@@ -106,4 +106,19 @@ input[type=text]:focus{
   top: 16px;
   left: 12px;
 }
+
+@media screen and (max-width: 1025px){
+  input[type=text]{
+    width: 10%;
+  }
+  input[type=text]:focus{
+    /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
+    width: 100%;
+  }
+  
+  .nav-link{
+  display: none;
+  }
+}
+
  
