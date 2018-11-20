@@ -26,10 +26,13 @@ export function reducer(
             }
         }
         case fromJobs.LOAD_JOBS_SUCCESS: {
+            console.log("LOAD_JOBS_SUCCESS",action.payload);
+            const data = action.payload;
             return {
                 ...state,
                 loading:false,
-                loaded:true
+                loaded:true,
+                data
             }
         }
         case fromJobs.LOAD_JOBS_FAIL: {
