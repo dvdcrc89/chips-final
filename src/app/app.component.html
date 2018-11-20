@@ -1,5 +1,4 @@
-<!-- <<a *ngIf="isAuthenticated" (click)="onLogout()" style="cursor: pointer;">Logout</a> -->
-<nav-bar *ngIf="isAuthenticated"></nav-bar>
+<nav-bar *ngIf="isAuthenticated" [username]="username"></nav-bar>
 
  <!-- <jobs_list> --> 
  <!-- <nav class="navbar navbar-default">
@@ -18,3 +17,4 @@
 
       
 <router-outlet></router-outlet>
+<a *ngIf="isAuthenticated" (click)="onLogout()" style="cursor: pointer;">Logout</a>
