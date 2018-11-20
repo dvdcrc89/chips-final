@@ -11,7 +11,7 @@ import {JobService} from '../services/job.service'
   
 })
 export class JobsListComponent implements OnInit {
-  activejobs:Job[];
+  activejobs:any[];
   jobs: Job[];
   jobsDivided: Job[][];
   page: number = 0;
@@ -24,8 +24,12 @@ export class JobsListComponent implements OnInit {
   details: Job = null;
   
   constructor(private jobService:JobService,private authService: AuthService) { }
-
+  
   ngOnInit() {
+    const doChunk = (list, size) => list.reduce((r, v) =>
+    (!r.length || r[r.length - 1].length === size ?
+       r.push([v]) : r[r.length - 1].push(v)) && r
+      , []); 
     this.hero = user;
     
   //  this.authService.getAuthenticatedUser().getSession((err,session)=>{
@@ -36,10 +40,7 @@ export class JobsListComponent implements OnInit {
   //     }});
   
     console.log(jobsarray);
-    const doChunk = (list, size) => list.reduce((r, v) =>
-    (!r.length || r[r.length - 1].length === size ?
-       r.push([v]) : r[r.length - 1].push(v)) && r
-      , []);  
+    
   
     this.jobService.getJobs().subscribe(
     jobs =>{
@@ -109,4 +110,17 @@ export class JobsListComponent implements OnInit {
   handleClose(){
     this.details = null;
   }
+  // filter(){
+  //   this.jobs=this.jobs.filter((job)=>job.IsTemp!==false);
+  //   this.jobs=this.jobs.sort((a,b)=>b.Created_at-a.Created_at);
+  //   console.log(this.jobs);
+  //   this.jobsDivided = this.doChunk(this.jobs,12);
+  //   this.activejobs= this.jobsDivided[0];
+  //   console.log(this.activejobs);
+
+  //   this.totalPage=this.jobsDivided.length;
+  //   this.deselected(null);
+  //   this.loading=false;
+    
+  // }
 }
