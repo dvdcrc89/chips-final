@@ -24,7 +24,8 @@ import {
   MatSelectModule
 } from '@angular/material';
 import {StoreModule} from '@ngrx/store'
-import {reducers} from './store'
+import {EffectsModule} from '@ngrx/effects';
+import {reducers,effects} from './store'
 import { environment } from '../../../environments/environment';
 import { JobComponent } from './components/job/job.component';
 
@@ -55,7 +56,8 @@ import { JobComponent } from './components/job/job.component';
     MatSlideToggleModule,
     MatRadioModule,
     MatSelectModule,
-    StoreModule.forFeature('jobs',reducers)
+    StoreModule.forFeature('jobs',reducers),
+    EffectsModule.forFeature(effects)
 
     
   ],
