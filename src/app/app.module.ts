@@ -18,6 +18,9 @@ import { EffectsModule } from '@ngrx/effects';
 import {JobService} from './container/jobs/services/job.service'
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './container/navbar/navbar.component';
+import {reducers, CustomSerializer} from './store'
+import {StoreRouterConnectingModule, RouterStateSerializer} from '@ngrx/router-store';
+
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
@@ -50,12 +53,15 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot({}, { metaReducers }),
+    StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule
     
   ],
-  providers: [AuthService,JobService,HttpClientModule],
+  providers: [AuthService,JobService,HttpClientModule,
+    {provide: RouterStateSerializer,useClass:CustomSerializer}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
