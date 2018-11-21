@@ -19,7 +19,7 @@ export class AppComponent {
   title = 'app';
   isAuthenticated = false;
   username:string;
-  authenticatedPage=['/jobs','/addjob'];
+  authenticatedPage=['/jobs','/addjob','jobs/1'];
   constructor(private location: Location,
               private authService: AuthService,
               private router: Router) {
@@ -32,13 +32,13 @@ export class AppComponent {
         this.isAuthenticated = authenticated;
         console.log(this.router.url)
 
-        if (authenticated && !this.authenticatedPage.includes(this.location.path())) {
+        // if (authenticated && !this.authenticatedPage.includes(this.location.path())) {
        
-          this.router.navigate(['/jobs']);
-        } 
-        else if(!authenticated && this.authenticatedPage.includes(this.location.path())) {
-          this.router.navigate(['/']);
-        }
+        //   this.router.navigate(['/jobs']);
+        // } 
+        // else if(!authenticated && this.authenticatedPage.includes(this.location.path())) {
+        //   this.router.navigate(['/']);
+        // }
       }
     );
     this.authService.initAuth();
