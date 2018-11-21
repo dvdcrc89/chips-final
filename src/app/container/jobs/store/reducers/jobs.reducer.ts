@@ -92,7 +92,6 @@ const createPagination = (jobs: Job[], itemPerPage) => {
                 [index + 1]: jobPage,
             }
         }, {
-            // ...state.entities,
         })
 
     return {
