@@ -2,13 +2,13 @@ import { Job } from "../../../../models/job.interface";
 import * as fromJobs from '../action/jobs.action'
 
 export interface JobState{
-    data: Job[],
+    entities: {[id:string]:Job},
     loaded: boolean,
     loading: boolean
 }
 
 export const initialState: JobState ={
-    data:[],
+    entities:{},
     loaded: false,
     loading:false
 };
@@ -26,13 +26,23 @@ export function reducer(
             }
         }
         case fromJobs.LOAD_JOBS_SUCCESS: {
-            console.log("LOAD_JOBS_SUCCESS",action.payload);
-            const data = action.payload;
+            let jobs = action.payload;
+            const entities = jobs.reduce(
+                (entities: {[id:string]:Job},job)=>{
+                    return {
+                        ...entities,
+                        [job.Job_id]:job,
+                    }
+                },
+                {
+                ...state.entities,
+                });  
+                console.log(entities) ; 
             return {
                 ...state,
                 loading:false,
                 loaded:true,
-                data
+                entities,
             }
         }
         case fromJobs.LOAD_JOBS_FAIL: {
@@ -49,4 +59,4 @@ export function reducer(
 
 export const getJobsLoading = (state:JobState)=> state.loading;
 export const getJobsLoaded = (state:JobState)=> state.loaded;
-export const getJobs = (state:JobState)=> state.data;
+export const getJobsEntities = (state:JobState)=> state.entities;
