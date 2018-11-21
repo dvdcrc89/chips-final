@@ -21,6 +21,7 @@ export const getAllJobs = createSelector(
         return Object.keys(entities).map(id=>entities[id])
     }
     );
+export const getJobsPages = createSelector(getJobState,fromJobs.getJobsPages);
 
 export const getJobsLoaded = createSelector(getJobState,fromJobs.getJobsLoaded);
 export const getJobsLoading = createSelector(getJobState,fromJobs.getJobsLoading);

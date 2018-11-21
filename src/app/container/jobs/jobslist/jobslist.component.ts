@@ -19,6 +19,7 @@ export class JobsListComponent implements OnInit {
   activejobs:any[];
   jobs: Job[];
   jobs$: Observable<any>;
+  jobsPages$:Observable<any>;
   isLoading$: Observable<any>;
 
   jobsDivided: Job[][];
@@ -54,9 +55,10 @@ export class JobsListComponent implements OnInit {
     console.log(jobsarray);
     //store
     this.jobs$ = this.store.select(fromStore.getAllJobs);
+    this.jobsPages$ = this.store.select(fromStore.getJobsPages);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.store.dispatch(new fromStore.LoadJobs);  
-    console.log("this jobs",this.jobs$);
+    console.log("this jobs",this.jobsPages$);
     this.jobService.getJobs().subscribe(
     jobs =>{
               this.jobs=jobs.sort((a,b)=>b.Created_at-a.Created_at);
