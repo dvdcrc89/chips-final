@@ -18,7 +18,9 @@ import { async } from '@angular/core/testing';
 export class JobsListComponent implements OnInit {
   activejobs:any[];
   jobs: Job[];
-  jobs$: Observable<Job[]>;
+  jobs$: Observable<any>;
+  isLoading$: Observable<any>;
+
   jobsDivided: Job[][];
   page: number = 0;
   totalPage:number;
@@ -52,6 +54,7 @@ export class JobsListComponent implements OnInit {
     console.log(jobsarray);
     //store
     this.jobs$ = this.store.select(fromStore.getAllJobs);
+    this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.store.dispatch(new fromStore.LoadJobs);  
     console.log("this jobs",this.jobs$);
     this.jobService.getJobs().subscribe(
