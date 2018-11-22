@@ -28,6 +28,7 @@
     "@ngrx/store": "^6.1.2",
     "@ngrx/store-devtools": "^6.1.2",
     "amazon-cognito-identity-js": "^3.0.3",
+    "animate.css": "^3.7.0",
     "core-js": "^2.5.4",
     "ngx-google-places-autocomplete": "^2.0.1",
     "rxjs": "^6.0.0",

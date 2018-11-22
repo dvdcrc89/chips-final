@@ -9,9 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavBarComponent implements OnInit {
   @Input()
   username:string;
+  isMenuOpen:boolean;
+ 
+ 
   
     ngOnInit() {
-    
+      this.isMenuOpen = false;
     }
-    
+    openMenu(){
+      console.log("s'schiacc")
+      this.isMenuOpen = !this.isMenuOpen;
+    }
 }
