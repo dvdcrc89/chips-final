@@ -276,7 +276,8 @@ input[type=text]:focus{
  
     .hide{
     display: block;
-    position: fixed;
+    font-size: 2rem;
+    position: absolute;
     right: 20px;
     }
 }

@@ -12,7 +12,7 @@
     <a class="nav-link">Help</a>
     <img class="logo" src="../../../../assets/profile.jpg">
   </div>
-  <i class="fa fa-bars hide" (click)="openMenu()"></i>
+  <i class="fa hide" [ngClass]="[isMenuOpen ? 'fa-minus':'fa-bars']" (click)="openMenu()"></i>
 
 </nav>
 
