@@ -13,8 +13,18 @@
     <img class="logo" src="../../../../assets/profile.jpg">
   </div>
   <i class="fa fa-bars hide" (click)="openMenu()"></i>
+
 </nav>
-<div  class="mob-menu" [ngClass]="[isMenuOpen ? 'mobile-menu animated 1  slideInRight ' : 'mobile-menu animated 1  slideOutLeft ']"><a class="nav-link">Profile</a></div>
-<div   class="mob-menu" [ngClass]="[isMenuOpen ? 'mobile-menu-1 animated 1  slideInLeft delay-1' : 'mobile-menu-1 animated 1  slideOutRight delay-1']"><a class="nav-link">Jobs market</a></div>
-<div   class="mob-menu" [ngClass]="[isMenuOpen ? 'mobile-menu-2 animated 1  slideInRight delay-2' : 'mobile-menu-2 animated 1  slideOutLeft delay-2']"><a class="nav-link">Chat</a></div>
-<div   class="mob-menu" [ngClass]="[isMenuOpen ? 'mobile-menu-3 animated 1  slideInLeft delay-3' : 'mobile-menu-3 animated 1  slideOutRight delay-3']"><a class="nav-link">Help</a></div>
+
+<div  class="mob-menu mobile-menu animated 1" 
+  [ngClass]="[isMenuOpen ? 'slideInRight' : 'slideOutLeft']"><a class="nav-link">Profile</a>
+</div>
+<div class="mob-menu mobile-menu-1 animated 1 delay-1" 
+  [ngClass]="[isMenuOpen ? 'slideInLeft' : 'slideOutRight']"><a class="nav-link">Jobs market</a>
+</div>
+<div class="mob-menu mobile-menu-2 animated 1 delay-2" 
+  [ngClass]="[isMenuOpen ? 'slideInRight' : 'slideOutLeft']"><a class="nav-link">Chat</a>
+</div>
+<div class="mob-menu mobile-menu-3 animated 1 delay-3"  
+  [ngClass]="[isMenuOpen ? 'slideInLeft' : 'slideOutRight']"><a class="nav-link">Help</a>
+</div>

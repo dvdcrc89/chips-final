@@ -1,20 +1,6 @@
+
+
+
 <nav-bar *ngIf="isAuthenticated" [username]="username"></nav-bar>
-
- <!-- <jobs_list> --> 
- <!-- <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-default">
-            <ul class="nav navbar-nav">
-            
-              <li *ngIf="isAuthenticated" routerLinkActive="active"><a (click)="onLogout()" style="cursor: pointer;">Logout</a></li>
-              <li *ngIf="!isAuthenticated" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Sign In</a></li>
-              <li *ngIf="!isAuthenticated" routerLinkActive="active"><a routerLink="/signup">Sign Up</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav> -->
-    <!-- Container for sidebar(s) + page content -->
-
-      
 <router-outlet></router-outlet>
 <a *ngIf="isAuthenticated" (click)="onLogout()" style="cursor: pointer;">Logout</a>

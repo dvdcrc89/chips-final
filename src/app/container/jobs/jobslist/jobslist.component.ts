@@ -7,7 +7,6 @@ import {JobService} from '../services/job.service';
 import {Store} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '../store';
-import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'jobs_list',
