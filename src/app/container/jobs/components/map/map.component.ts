@@ -24,7 +24,9 @@ export class MapComponent implements OnInit {
         console.log(e);
     }
     
-    ngOnInit(){}
+    ngOnInit(){
+        console.log("activeonmap",this.activejobs)
+    }
 
 }
 

@@ -51,8 +51,8 @@ export class JobsListComponent implements OnInit {
     this.activeJobs$ = this.store.select(fromStore.getJobsPage);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.store.dispatch(new fromStore.LoadJobs);  
-    console.log(this.activeJobs$);
-    console.log("this jobs",this.jobsPages$);
+    this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
+  
     
 
 
@@ -91,8 +91,8 @@ export class JobsListComponent implements OnInit {
 
   }
   deselected(id){
-    this.opacity=this.activejobs.map((job)=> 1);
-}
+    this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1]
+  }
 
   handleApply(job){
   
