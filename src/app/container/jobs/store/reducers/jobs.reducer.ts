@@ -1,6 +1,4 @@
-import {
-    Job
-} from "../../../../models/job.interface";
+import { Job } from "../../../../models/job.interface";
 import * as fromJobs from '../action/jobs.action'
 
 export interface JobState {

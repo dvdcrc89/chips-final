@@ -22,3 +22,11 @@ export const getJobsPage = createSelector(getJobsPages,
             ? router.state.params.page:1;
         return router.state && jobsPages[page]
     });
+
+
+    export const getActivePage = createSelector(getJobsPages,
+        fromRoot.getRouterState,
+        (jobsPages,router):number=>{
+            return router.state.params.page > 1 && router.state.params.page <=jobsPages.totalPages
+                ? router.state.params.page:1;
+        });

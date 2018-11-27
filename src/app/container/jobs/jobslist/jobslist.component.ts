@@ -19,6 +19,7 @@ export class JobsListComponent implements OnInit {
   jobsPages$:Observable<Job[]>;
   isLoading$: Observable<boolean>;
   activeJobs$: Observable<Job[]>;
+  activePage$: Observable<number>;
   jobsDivided: Job[][];
   page: number = 0;
   totalPage:number;
@@ -50,6 +51,7 @@ export class JobsListComponent implements OnInit {
     this.jobsPages$ = this.store.select(fromStore.getJobsPages);
     this.activeJobs$ = this.store.select(fromStore.getJobsPage);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
+    this.activePage$ = this.store.select(fromStore.getActivePage);
     this.store.dispatch(new fromStore.LoadJobs);  
     this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
   
