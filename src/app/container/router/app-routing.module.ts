@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'validate', component: ValidationComponent },
   { path: 'jobs',canActivate: [AuthGuard], component: JobsListComponent },
-  { path: 'jobs/:id', component: JobsListComponent },
+  { path: 'jobs/:page', component: JobsListComponent },
 
   { path: 'addjob',canActivate: [AuthGuard], component: AddJobComponent },
 

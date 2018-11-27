@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Job} from '../../../../app/models/job.interface';
 import {user} from './../../tempo/user'
 import {jobsarray} from './../../tempo/jobs'
-import { AuthService } from '../../user/auth.service';
-import {JobService} from '../services/job.service';
 import {Store} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '../store';
@@ -17,10 +15,10 @@ import * as fromStore from '../store';
 export class JobsListComponent implements OnInit {
   activejobs:any[];
   jobs: Job[];
-  jobs$: Observable<any>;
-  jobsPages$:Observable<any>;
-  isLoading$: Observable<any>;
-
+  jobs$: Observable<Job[]>;
+  jobsPages$:Observable<Job[]>;
+  isLoading$: Observable<boolean>;
+  activeJobs$: Observable<Job[]>;
   jobsDivided: Job[][];
   page: number = 0;
   totalPage:number;
@@ -32,16 +30,11 @@ export class JobsListComponent implements OnInit {
   details: Job = null;
   
   constructor(
-    private jobService:JobService, 
-    private authService: AuthService,
     private store: Store<fromStore.JobsMarketState>
     ) { }
   
   ngOnInit() {
-    const doChunk = (list, size) => list.reduce((r, v) =>
-    (!r.length || r[r.length - 1].length === size ?
-       r.push([v]) : r[r.length - 1].push(v)) && r
-      , []); 
+   
     this.hero = user;
     
   //  this.authService.getAuthenticatedUser().getSession((err,session)=>{
@@ -55,22 +48,12 @@ export class JobsListComponent implements OnInit {
     //store
     this.jobs$ = this.store.select(fromStore.getAllJobs);
     this.jobsPages$ = this.store.select(fromStore.getJobsPages);
+    this.activeJobs$ = this.store.select(fromStore.getJobsPage);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.store.dispatch(new fromStore.LoadJobs);  
+    console.log(this.activeJobs$);
     console.log("this jobs",this.jobsPages$);
-    this.jobService.getJobs().subscribe(
-    jobs =>{
-              this.jobs=jobs.sort((a,b)=>b.Created_at-a.Created_at);
-              console.log(this.jobs);
-              this.jobsDivided = doChunk(this.jobs,12);
-              this.activejobs= this.jobsDivided[0];
-              console.log(this.activejobs);
-
-              this.totalPage=this.jobsDivided.length;
-              this.deselected(null);
-              this.loading=false;
-    }
-    );
+    
 
 
   }
@@ -112,9 +95,7 @@ export class JobsListComponent implements OnInit {
 }
 
   handleApply(job){
-      this.jobService.applyJob(job).subscribe(
-        res=>console.log(res)
-      )
+  
   }
   handleShare(job){
     console.log("Share",job);
@@ -126,17 +107,5 @@ export class JobsListComponent implements OnInit {
   handleClose(){
     this.details = null;
   }
-  // filter(){
-  //   this.jobs=this.jobs.filter((job)=>job.IsTemp!==false);
-  //   this.jobs=this.jobs.sort((a,b)=>b.Created_at-a.Created_at);
-  //   console.log(this.jobs);
-  //   this.jobsDivided = this.doChunk(this.jobs,12);
-  //   this.activejobs= this.jobsDivided[0];
-  //   console.log(this.activejobs);
-
-  //   this.totalPage=this.jobsDivided.length;
-  //   this.deselected(null);
-  //   this.loading=false;
-    
-  // }
+ 
 }

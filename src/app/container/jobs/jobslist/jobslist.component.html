@@ -8,9 +8,9 @@
  <!-- <button mat-raised-button (click)="filter()">filter</button> -->
 <div class="jobs_map_grid">
     <div class="wrapper job_cards_grid2" [ngClass]="{'hide':details|| showMap}" >
-      <span *ngIf="loading">Loading...</span>
+      <span *ngIf="isLoading$ |async">Loading...</span>
         <job_card 
-            *ngFor="let job of activejobs; let i=index" 
+            *ngFor="let job of (activeJobs$ | async); let i=index" 
             
             [job]="job"
             [jobsApplied]="hero.JobApplIds"
@@ -29,7 +29,7 @@
     </div>
     <div class="map show"  *ngIf="showMap">
         <jobs_map 
-            [activejobs]="activejobs"
+            [activejobs]="(activeJobs$ | async)"
             [opacity]="opacity"
             (highlight)=selected($event)>
         </jobs_map>
