@@ -4,6 +4,10 @@
     margin-right: 20px; 
 }
 
+section{
+    height: 100vh;
+}
+
 .jobs-actionbar{
     display: flex;
     align-items: center;
@@ -11,10 +15,8 @@
     height: 60px;
     background: rgb(255, 255, 255);
     width: 100%;
-    border: 1px solid rgba(38, 41, 58, 0.1);
     border-radius: 8px;
     box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
-    cursor: pointer;
 }
 
 
@@ -29,7 +31,7 @@
 }
 
 job{
-    width: 100%;
+    width: 96%;
     margin-top: 20px;
 }
 
@@ -109,6 +111,7 @@ job{
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 10px;
+        margin: 0 auto;
 
     }
     .jobs_map_grid{
@@ -120,6 +123,7 @@ job{
     }
     .jobs_map_grid > div {
         /* max-width: 600px; */
+        max-height: 200px;
     }
 
   

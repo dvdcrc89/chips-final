@@ -20,7 +20,7 @@ agm-map {
   @media screen and (min-width: 1024px){
     agm-map{
         display: block;
-        height: 94%;
+        height: 500px;
         width: 100%;
         margin-top: 5px;
         

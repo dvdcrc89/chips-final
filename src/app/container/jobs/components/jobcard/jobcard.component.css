@@ -1,7 +1,6 @@
 .job_card{
     background: rgb(255, 255, 255);
     width: 100%;
-    border: 1px solid rgba(38, 41, 58, 0.1);
     border-radius:8px;
     font-family: 'Open Sans', sans-serif;
     margin: 0 auto;
