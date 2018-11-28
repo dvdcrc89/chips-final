@@ -12,7 +12,7 @@
                 <div class="business_info">
                         <span class="title">{{job.Business}}</span><br>
                         <span class="address">{{job.Address}}</span>
-                    </div>
+                </div>
                 <div class="job_info">
                     <div *ngIf="job.IsTemp" class="record"><span class="label">Type</span> <span class="value">Cover shift</span></div>
                     <div *ngIf="!job.IsTemp" class="record"><span class="label">Type</span> <span class="value">Permanent job</span></div>
@@ -28,12 +28,14 @@
               
             </div>
         
-        <div class="job_description">
-                {{job.Description}}
-                <div class="apply">
-                        <button mat-raised-button type="submit">Apply now</button>
-                    </div>  
+        <div class="job_description" *ngIf="job.Description">
+            <h2 class="description-title">Description</h2>
+             <p class="description">{{job.Description}}</p>
+
        </div>
+       <div class="apply">
+            <button mat-raised-button type="submit">Apply now</button>
+        </div>  
        <div class="map">
             <agm-map  
             [latitude]="job.Lat" 
