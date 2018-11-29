@@ -153,6 +153,8 @@ a{
   display: flex;
   height: 100%;
   align-items: center;
+  text-decoration: none;
+  color:#4A4A4A;
   border-bottom: 1.5px transparent solid
  
 }
