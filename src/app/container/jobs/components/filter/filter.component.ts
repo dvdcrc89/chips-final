@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class FilterComponent implements OnInit {
   @Input()
   filter:Filter
-  today:Date = new Date();
+  today:Date = null;
   @Output()
   apply: EventEmitter<Filter> = new EventEmitter();
   @ViewChild('filterForm') filterForm: NgForm;

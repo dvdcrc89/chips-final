@@ -150,5 +150,8 @@ const applyFilter=(jobs:Job[],filter:Filter)=>{
     .filter((job)=>job.IsTemp===isTemp)
     .filter((job)=>filter.category.includes(job.Category))
 
-    return filter.date ? jobsFiltered.filter((job)=>(new Date(job.Date)>=filter.date)) : jobsFiltered;
+    return filter.date ? 
+    jobsFiltered.filter((job)=>(new Date(job.Date)>=filter.date))
+    .sort((a,b)=>(+new Date(a.Date)-(+new Date(b.Date)))) : 
+    jobsFiltered.sort((a,b)=>b.Created_at - a.Created_at);
 }
