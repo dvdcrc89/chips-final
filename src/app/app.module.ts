@@ -13,16 +13,25 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import { StoreModule,MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './store/effects/app.effects';
 import {JobService} from './container/jobs/services/job.service'
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './container/navbar/navbar.component';
+import {reducers, CustomSerializer} from './store'
+import {StoreRouterConnectingModule, RouterStateSerializer} from '@ngrx/router-store';
 
+// not used in production
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { storeFreeze } from 'ngrx-store-freeze';
+
+const environment = {
+  development: true,
+  production: false,
+};
+export const metaReducers: MetaReducer<any>[] = !environment.production
+  ? [storeFreeze]
+  : [];
 
 
 @NgModule({
@@ -45,11 +54,14 @@ import { NavBarComponent } from './container/navbar/navbar.component';
     MatButtonModule,
     MatProgressSpinnerModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([]),
+    environment.development ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule
     
   ],
-  providers: [AuthService,JobService,HttpClientModule],
+  providers: [AuthService,JobService,HttpClientModule,
+    {provide: RouterStateSerializer,useClass:CustomSerializer}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

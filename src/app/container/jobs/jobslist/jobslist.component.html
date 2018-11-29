@@ -1,17 +1,12 @@
-<div>
- <div class="toggle_map">  
-    <button mat-raised-button (click)="toggleMap()">
-         <span *ngIf="showMap">Hide Map</span>
-         <span *ngIf="!showMap">Show Map</span>
-        </button>
- </div>
+<section>
+
+
  <!-- <button mat-raised-button (click)="filter()">filter</button> -->
 <div class="jobs_map_grid">
     <div class="wrapper job_cards_grid2" [ngClass]="{'hide':details|| showMap}" >
-      <span *ngIf="loading">Loading...</span>
+      <span *ngIf="isLoading$ |async">Loading...</span>
         <job_card 
-            *ngFor="let job of activejobs; let i=index" 
-            
+            *ngFor="let job of (activeJobs$ | async); let i=index"        
             [job]="job"
             [jobsApplied]="hero.JobApplIds"
             (apply)="handleApply($event)"
@@ -21,27 +16,36 @@
             (mouseout)="deselected(i)">   
         </job_card>
     </div>
-    <div class="big-card" *ngIf="details">
-        <job 
-        [job]="details"
-        (close)="handleClose()"        
-        ></job>
-    </div>
-    <div class="map show"  *ngIf="showMap">
-        <jobs_map 
-            [activejobs]="activejobs"
+ 
+
+    <div>
+        <div class="jobs-actionbar">
+            <button class="toggle-map-btn" mat-raised-button (click)="toggleMap()">
+                <span *ngIf="showMap">Hide Map</span>
+                <span *ngIf="!showMap">Show Map</span>
+            </button>
+
+        </div>
+        <div class="big-card" *ngIf="details">
+                <job 
+                [job]="details"
+                (close)="handleClose()"        
+                ></job>
+        </div>
+        <jobs_map class="map show" *ngIf="showMap" 
+            [activejobs]="(activeJobs$ | async)"
             [opacity]="opacity"
             (highlight)=selected($event)>
         </jobs_map>
     </div>
 
 </div>
-
-<button (click)="prevPage()" [disabled]='!page > 0'>previous</button>
+{{activePage$ | async}}
+<!-- <button (click)="prevPage()" [disabled]='!page > 0'>previous</button>
 
         <span>{{page+1}} / {{totalPage}}</span>
         <button (click)="nextPage()"
-        [disabled]="page === totalPage -1">next</button>
+        [disabled]="page === totalPage -1">next</button> -->
 <div class="action_bar">
 
         <img class="showmap" (click)="toggleMap()" src="../../../../../assets/map.svg">
@@ -50,4 +54,4 @@
 
  
 </div>
-</div>
+</section>

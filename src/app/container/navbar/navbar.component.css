@@ -1,4 +1,95 @@
+.slideInLeft{
+  animation-duration: 200ms;
+}
+.slideInRight{
+  animation-duration: 200ms;
+}
+.slideOutRight{
+  animation-duration: 200ms;
+}
+.slideOutLeft{
+  animation-duration: 200ms;
+}
+ 
+.hide-mobile{
+  display: none;
+}
+.mob-menu{
 
+}
+ 
+.hide{
+  display: none;
+}
+ 
+.delay-1{
+  animation-delay: 150ms;
+}
+.delay-2{
+  animation-delay: 300ms;
+}
+.delay-3{
+  animation-delay: 450ms;
+}
+
+ 
+ .input-icon{
+  position:relative;
+ }
+.mobile-menu{
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background: white;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+}
+.mobile-menu-1{
+  position: fixed;
+  margin-top: 52px;
+  width: 100%;
+  height: 50px;
+  background: white;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+}
+.mobile-menu-2{
+  position: fixed;
+  margin-top: 104px;
+  width: 100%;
+  height: 50px;
+  background: white;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+}
+.mobile-menu-3{
+  position: fixed;
+  margin-top: 156px;
+  width: 100%;
+  height: 50px;
+  background: white;
+  margin-bottom: 2px;
+  -webkit-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  -moz-box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+  box-shadow: 0px 9px 32px -15px rgba(0,0,0,0.42);
+}
+ 
+ 
+.mob-menu > a {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+ 
+ 
 nav{
   height: 80px;
   width: 100%;
@@ -38,7 +129,7 @@ nav{
   margin-left: 40px!important;
 }
 .logo-svg{    
-  max-width: 40px;
+  max-width: 50px;
   margin-right: 20px;
 }
  
@@ -62,8 +153,20 @@ a{
   display: flex;
   height: 100%;
   align-items: center;
+  text-decoration: none;
+  color:#4A4A4A;
   border-bottom: 1.5px transparent solid
  
+}
+.nav-link-mobile{
+  height: 100%;
+  align-items: center;
+  border-bottom: 1.5px transparent solid
+ 
+}
+ 
+.nav-link-mobile:hover{
+  border-bottom: 1.5px #B400AE solid
 }
  
 .nav-link:hover{
@@ -82,7 +185,7 @@ a{
 input[type=text]{
     background-color: rgb(255, 255, 255) !important;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px !important;
-    height: 40px !important;
+    height: 48px !important;
     width: 200px;
     -webkit-transition: width 0.5s; /* For Safari 3.1 to 6.0 */
     -webkit-transition: box-shadow 200ms ease-in 0s !important;
@@ -103,22 +206,80 @@ input[type=text]:focus{
  
 .fa-search{
   position: absolute;
-  top: 16px;
+  top: 20px;
   left: 12px;
 }
-
-@media screen and (max-width: 1025px){
-  input[type=text]{
-    width: 10%;
-  }
-  input[type=text]:focus{
-    /* box-shadow: 0 5px 15px rgba(0,0,0,0.3); */
-    width: 100%;
-  }
-  
-  .nav-link{
-  display: none;
-  }
-}
-
  
+ 
+@media screen and (max-width: 1025px){
+    button{
+        margin-bottom:100px;
+    }
+.action_bar{
+   
+    display: flex;
+    padding: 2px;
+    padding-bottom: 2px;
+    justify-content: space-around;
+    position: fixed;
+    bottom:0px;
+    height: 40px;
+    width: 100%;
+    border-top: 1px solid rgba(38, 41, 58, 0.1);
+    background: white;
+   
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+ 
+ 
+}
+ 
+.map{
+    border-radius: 10px;
+ 
+}
+@media screen and (min-width: 1025px){
+ 
+  .mob-menu{
+    display: none;
+    }
+   
+ 
+}
+ 
+@media screen and (max-width: 1000px){
+    nav{
+      margin-bottom: 3px;
+    }
+ 
+    .flex-nav{
+    width: 100%;
+    }
+    .nav-slice-dx{
+      display: none;
+    }
+    .nav-slice-sx{
+      width: 100%;
+      margin-left: 5%;
+    }
+ 
+    input[type=text]{
+      width: 70px;
+    }
+    input[type=text]:focus{
+      width: 230px;
+    }
+ 
+ 
+    .hide{
+    display: block;
+    font-size: 2rem;
+    position: absolute;
+    right: 20px;
+    }
+}

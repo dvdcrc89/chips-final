@@ -1,15 +1,30 @@
 <nav>
-    <div class="nav-slice-sx">
-        <!-- <img class="logo-svg" src="../../../../assets/chips.svg"> -->
-    <div class="input-icon" style="position:relative;">
-      <input type="text"/>
-      <i class="fas fa-search"></i>
-    </div>
-    </div>
-    <div class="nav-slice-dx">
-      <a class="nav-link">Jobs market</a>
-      <a class="nav-link" matBadge="15" matBadgeColor="warn" >Messages</a>
-      <img class="logo" src="../../../../assets/profile.jpg">
-      <span>{{username |uppercase}}</span>
-    </div>
-  </nav>
+  <div class="nav-slice-sx">
+      <img class="logo-svg" src="../../../../assets/logo_text.svg">
+  <div class="input-icon">
+    <input type="text"/>
+    <i class="fas fa-search"></i>
+  </div>
+  </div>
+  <div class="nav-slice-dx">
+    <a class="nav-link" href="/jobs">Jobs market</a>
+    <a class="nav-link">Messages</a>
+    <a class="nav-link">Help</a>
+    <img class="logo" src="../../../../assets/profile.jpg">
+  </div>
+  <i class="fa hide" [ngClass]="[isMenuOpen ? 'fa-minus':'fa-bars']" (click)="openMenu()"></i>
+
+</nav>
+
+<div  class="mob-menu mobile-menu animated 1" 
+  [ngClass]="[isMenuOpen ? 'slideInRight' : 'slideOutLeft']"><a class="nav-link">Profile</a>
+</div>
+<div class="mob-menu mobile-menu-1 animated 1 delay-1" 
+  [ngClass]="[isMenuOpen ? 'slideInLeft' : 'slideOutRight']"><a class="nav-link">Jobs market</a>
+</div>
+<div class="mob-menu mobile-menu-2 animated 1 delay-2" 
+  [ngClass]="[isMenuOpen ? 'slideInRight' : 'slideOutLeft']"><a class="nav-link">Chat</a>
+</div>
+<div class="mob-menu mobile-menu-3 animated 1 delay-3"  
+  [ngClass]="[isMenuOpen ? 'slideInLeft' : 'slideOutRight']"><a class="nav-link">Help</a>
+</div>

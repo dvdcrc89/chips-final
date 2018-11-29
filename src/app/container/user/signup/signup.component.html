@@ -1,6 +1,6 @@
 <section>
     <div class="aligner">
-        <h1 class="title">Create your Chips Account</h1>
+        <img class="logo" src="../assets/logo_text.svg"/>
       <form class="example-form" (ngSubmit)="onSubmit()" #usrForm="ngForm">
           <mat-form-field class="example-full-width"  >
             <input matInput ngModel id="username" name="username" type="text" placeholder="Username">
@@ -23,6 +23,8 @@
           <button mat-raised-button	[disabled]="(usrForm.value.password !== usrForm.value.confirmPassword) || usrForm.invalid">Sign Up</button>
           <h3 class="signUp">Got an account? <a routerLinkActive="active" routerLink="/">Sign In</a></h3>
         </form>
+        
+
         <div class="alert" *ngIf="didFail">
             Ops.. Something went wrong
         </div>

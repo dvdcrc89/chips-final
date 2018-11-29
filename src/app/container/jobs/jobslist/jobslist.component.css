@@ -1,4 +1,23 @@
+.toggle-map-btn{
+    /* right: 20px;
+    position: relative; */
+    margin-right: 20px; 
+}
 
+section{
+    height: 100vh;
+}
+
+.jobs-actionbar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
+}
 
 
 
@@ -9,10 +28,11 @@
 .showmap{
     width: 30px;
     padding:3px;
-    border: 3px solid white; 
-    /* box-shadow: 0 6px 3px 0 rgba(74,74,74,0.6); */
-    border-radius: 50% ;
-    border: 3px solid #B400AE; 
+}
+
+job{
+    width: 96%;
+    margin-top: 20px;
 }
 
 
@@ -24,6 +44,7 @@
  color:#4A4A4A;
 }
 .big-card{
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -32,13 +53,13 @@
         margin-bottom:100px;
     }
 .action_bar{
-    
+       
     display: flex;
     padding: 2px;
     padding-bottom: 2px;
     justify-content: space-around;
     position: fixed;
-    bottom:0px;
+    bottom:40px;
     height: 40px;
     width: 100%;
     border-top: 1px solid rgba(38, 41, 58, 0.1);
@@ -61,6 +82,9 @@
     right:70px;
     z-index:999;
 } */
+.jobs_map_grid{
+    margin-bottom:60px;
+}
 }
 
 .map{
@@ -78,32 +102,30 @@
     }
     agm-map{
         display: block;
+      
     }
     
    
     .job_cards_grid2{
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 10px;
-        height: 590px;
+        margin: 0 auto;
 
-    }
-    .job_cards_grid3{
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 10px;
-    
-    
     }
     .jobs_map_grid{
         margin-left: 15px;
         margin-right: 15px;
         display: grid;
-        grid-template-columns:1fr 1fr;
-
-        grid-gap: 10px; 
-
+        grid-template-columns:3fr 2fr;
+        grid-gap: 20px;
     }
+    .jobs_map_grid > div {
+        /* max-width: 600px; */
+        max-height: 200px;
+    }
+
   
     
 }

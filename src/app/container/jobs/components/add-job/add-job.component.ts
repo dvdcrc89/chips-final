@@ -2,6 +2,10 @@ import { Component, OnInit,ViewChild,Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {JobService} from '../../services/job.service'
 import { Router } from '@angular/router';
+import {Store} from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromStore from '../../store';
+import { Job } from '../../../../models/job.interface';
 
 @Component({
   selector: 'app-add-job',
@@ -28,17 +32,19 @@ export class AddJobComponent implements OnInit {
   today = new Date();
   isTemp:boolean =false;
   jobType:string;
-
-    
+  isLoading$:Observable<boolean>;
+  isLoaded$:Observable<boolean>;
   
 
   @ViewChild('usrForm') form: NgForm;
 
-  constructor(private router: Router,private jobService:JobService) { }
+  constructor(private router: Router,private store: Store<fromStore.JobsMarketState>
+    ) { }
 
   ngOnInit() {
 
   }
+
   onSubmit(){
    console.log(this.form.value);
    let job:any = {
@@ -68,9 +74,16 @@ export class AddJobComponent implements OnInit {
                 }
           }
           console.log(job);
-          this.jobService.addJob(job).subscribe(
-            (res)=>this.router.navigate(['/jobs'])
-          );
+          this.isLoading$=this.store.select(fromStore.getJobsLoading);
+          this.isLoaded$=this.store.select(fromStore.getJobsLoaded);
+          this.store.dispatch(new fromStore.AddJob(job));  
+          this.isLoaded$.subscribe((
+            res=> {
+              if(res) this.router.navigate(['/jobs'])
+            }
+          ))
+
+
   }
   handleAddressChange(e){ 
     if(e.photos){

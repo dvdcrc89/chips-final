@@ -2,8 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Job} from '../../../../app/models/job.interface';
 import {user} from './../../tempo/user'
 import {jobsarray} from './../../tempo/jobs'
-import { AuthService } from '../../user/auth.service';
-import {JobService} from '../services/job.service'
+import {Store} from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromStore from '../store';
+
 @Component({
   selector: 'jobs_list',
   templateUrl: './jobslist.component.html',
@@ -13,6 +15,11 @@ import {JobService} from '../services/job.service'
 export class JobsListComponent implements OnInit {
   activejobs:any[];
   jobs: Job[];
+  jobs$: Observable<Job[]>;
+  jobsPages$:Observable<Job[]>;
+  isLoading$: Observable<boolean>;
+  activeJobs$: Observable<Job[]>;
+  activePage$: Observable<number>;
   jobsDivided: Job[][];
   page: number = 0;
   totalPage:number;
@@ -23,13 +30,12 @@ export class JobsListComponent implements OnInit {
   loading:boolean=true;
   details: Job = null;
   
-  constructor(private jobService:JobService,private authService: AuthService) { }
+  constructor(
+    private store: Store<fromStore.JobsMarketState>
+    ) { }
   
   ngOnInit() {
-    const doChunk = (list, size) => list.reduce((r, v) =>
-    (!r.length || r[r.length - 1].length === size ?
-       r.push([v]) : r[r.length - 1].push(v)) && r
-      , []); 
+   
     this.hero = user;
     
   //  this.authService.getAuthenticatedUser().getSession((err,session)=>{
@@ -40,21 +46,16 @@ export class JobsListComponent implements OnInit {
   //     }});
   
     console.log(jobsarray);
-    
+    //store
+    this.jobs$ = this.store.select(fromStore.getAllJobs);
+    this.jobsPages$ = this.store.select(fromStore.getJobsPages);
+    this.activeJobs$ = this.store.select(fromStore.getJobsPage);
+    this.isLoading$ = this.store.select(fromStore.getJobsLoading);
+    this.activePage$ = this.store.select(fromStore.getActivePage);
+    this.store.dispatch(new fromStore.LoadJobs);  
+    this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
   
-    this.jobService.getJobs().subscribe(
-    jobs =>{
-              this.jobs=jobs.sort((a,b)=>b.Created_at-a.Created_at);
-              console.log(this.jobs);
-              this.jobsDivided = doChunk(this.jobs,12);
-              this.activejobs= this.jobsDivided[0];
-              console.log(this.activejobs);
-
-              this.totalPage=this.jobsDivided.length;
-              this.deselected(null);
-              this.loading=false;
-    }
-    );
+    
 
 
   }
@@ -92,13 +93,11 @@ export class JobsListComponent implements OnInit {
 
   }
   deselected(id){
-    this.opacity=this.activejobs.map((job)=> 1);
-}
+    this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1]
+  }
 
   handleApply(job){
-      this.jobService.applyJob(job).subscribe(
-        res=>console.log(res)
-      )
+  
   }
   handleShare(job){
     console.log("Share",job);
@@ -110,17 +109,5 @@ export class JobsListComponent implements OnInit {
   handleClose(){
     this.details = null;
   }
-  // filter(){
-  //   this.jobs=this.jobs.filter((job)=>job.IsTemp!==false);
-  //   this.jobs=this.jobs.sort((a,b)=>b.Created_at-a.Created_at);
-  //   console.log(this.jobs);
-  //   this.jobsDivided = this.doChunk(this.jobs,12);
-  //   this.activejobs= this.jobsDivided[0];
-  //   console.log(this.activejobs);
-
-  //   this.totalPage=this.jobsDivided.length;
-  //   this.deselected(null);
-  //   this.loading=false;
-    
-  // }
+ 
 }

@@ -14,6 +14,8 @@ section{
     width: 45%;
     background-color: white;
     border-radius: 8px;
+    padding-top:29px;
+
     -webkit-box-shadow: -1px 2px 14px 2px rgba(189,189,189,0.36);
     -moz-box-shadow: -1px 2px 14px 2px rgba(189,189,189,0.36);
     box-shadow: -1px 2px 14px 2px rgba(189,189,189,0.36);
@@ -42,22 +44,10 @@ section{
   }
 
 
-  .title{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2em;
-    font-weight: lighter;
-    color:white;
-    background-color:purple;
-    text-align: center;
-    margin-top: 0px;
-    width: 100%;
-    height: 70px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
+  .logo{
+    width: 100px;
+    height: 100px;
+  }
   .signUp{
     font-family: 'Open Sans', sans-serif;
     font-size: 0.8em;
