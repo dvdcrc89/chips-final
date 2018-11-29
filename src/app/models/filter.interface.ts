@@ -1,6 +1,6 @@
 export interface Filter {
   category:string[],
-  type:string,
+  type?:string,
   date?:Date
 
 }
