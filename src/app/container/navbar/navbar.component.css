@@ -129,7 +129,7 @@ nav{
   margin-left: 40px!important;
 }
 .logo-svg{    
-  max-width: 40px;
+  max-width: 50px;
   margin-right: 20px;
 }
  
@@ -270,7 +270,7 @@ input[type=text]:focus{
       width: 70px;
     }
     input[type=text]:focus{
-      width: 300px;
+      width: 230px;
     }
  
  
