@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="title">
+        <span>Filter</span>
+      </div>
+      <mat-button-toggle-group name="category" [(ngModel)]="category" >
+          <mat-button-toggle  value="FOH">Front of House</mat-button-toggle>
+          <mat-button-toggle  value="BOH">Back of House</mat-button-toggle>
+          <mat-button-toggle  value="OTR">Other</mat-button-toggle>
+        </mat-button-toggle-group>
+      <mat-button-toggle-group name="type" [(ngModel)]="type" >
+          <mat-button-toggle  value="PJ">Permanent Jobs</mat-button-toggle>
+          <mat-button-toggle  value="CS">Cover Shifts</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div class="flex">
+        <mat-form-field *ngIf="type==='CS'">
+            <input [(ngModel)]="date" id="date" name="date" matInput [min]="today" [matDatepicker]="picker" placeholder="Date" readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+         </mat-form-field>
+         </div>
+       
+  </div>
+</div>

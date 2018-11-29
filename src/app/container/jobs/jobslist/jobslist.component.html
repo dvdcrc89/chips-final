@@ -3,7 +3,7 @@
 
  <!-- <button mat-raised-button (click)="filter()">filter</button> -->
 <div class="jobs_map_grid">
-    <div class="wrapper job_cards_grid2" [ngClass]="{'hide':details|| showMap}" >
+    <div class="wrapper job_cards_grid2" [ngClass]="{'hide': showFilter || details|| showMap}" >
       <span *ngIf="isLoading$ |async">Loading...</span>
         <job_card 
             *ngFor="let job of (activeJobs$ | async); let i=index"        
@@ -20,6 +20,10 @@
 
     <div>
         <div class="jobs-actionbar">
+            <button class="toggle-map-btn" mat-raised-button (click)="toggleFilter()">
+                    <span *ngIf="showFilter">Hide Filter</span>
+                    <span *ngIf="!showFilter">Show Filter</span>
+            </button>
             <button class="toggle-map-btn" mat-raised-button (click)="toggleMap()">
                 <span *ngIf="showMap">Hide Map</span>
                 <span *ngIf="!showMap">Show Map</span>
@@ -31,6 +35,9 @@
                 [job]="details"
                 (close)="handleClose()"        
                 ></job>
+        </div>
+        <div class="big-card" *ngIf="showFilter">
+              <app-filter></app-filter>
         </div>
         <jobs_map class="map show" *ngIf="showMap" 
             [activejobs]="(activeJobs$ | async)"

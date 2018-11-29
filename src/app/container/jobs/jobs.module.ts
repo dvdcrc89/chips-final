@@ -21,13 +21,15 @@ import {
   MAT_DATE_LOCALE,
   MatSlideToggleModule,
   MatRadioModule,
-  MatSelectModule
+  MatSelectModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import {StoreModule} from '@ngrx/store'
 import {EffectsModule} from '@ngrx/effects';
 import {reducers,effects} from './store'
 import { environment } from '../../../environments/environment';
 import { JobComponent } from './components/job/job.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { JobComponent } from './components/job/job.component';
     JobsListComponent,
     MapComponent,
     AddJobComponent,
-    JobComponent
+    JobComponent,
+    FilterComponent
     
   
   ],
@@ -56,6 +59,7 @@ import { JobComponent } from './components/job/job.component';
     MatSlideToggleModule,
     MatRadioModule,
     MatSelectModule,
+    MatButtonToggleModule,
     StoreModule.forFeature('jobs',reducers),
     EffectsModule.forFeature(effects)
 

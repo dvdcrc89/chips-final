@@ -29,7 +29,8 @@ export class JobsListComponent implements OnInit {
   hero:any;
   loading:boolean=true;
   details: Job = null;
-  
+  showFilter:boolean;
+
   constructor(
     private store: Store<fromStore.JobsMarketState>
     ) { }
@@ -82,7 +83,10 @@ export class JobsListComponent implements OnInit {
 
  toggleMap(){
    this.showMap=!this.showMap;
-   if(this.showMap) this.details = null;
+   if(this.showMap) {
+     this.details = null;
+     this.showFilter=false;
+   }
  }
 
   selected(id){
@@ -105,9 +109,17 @@ export class JobsListComponent implements OnInit {
   showDetails(job){
     this.details = job;
     this.showMap = false;
+    this.showFilter =false;
   }
   handleClose(){
     this.details = null;
+  }
+  toggleFilter(){
+    this.showFilter=!this.showFilter;
+    if(this.showFilter){
+      this.details=null;
+      this.showMap=false;
+    }
   }
  
 }
