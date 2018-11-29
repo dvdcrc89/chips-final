@@ -59,7 +59,8 @@ export class JobsListComponent implements OnInit {
     this.activeJobs$ = this.store.select(fromStore.getJobsPage);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.activePage$ = this.store.select(fromStore.getActivePage);
-    this.store.dispatch(new fromStore.LoadJobs);  
+    this.store.dispatch(new fromStore.LoadJobs);
+  
     this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
   
     

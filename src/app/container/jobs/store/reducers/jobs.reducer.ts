@@ -8,7 +8,8 @@ export interface JobState {
             [id: string]: Job
         },
     jobs:Job[],    
-    jobsPages:any,        
+    jobsPages:any,
+    filter:Filter,        
     loaded: boolean,
     loading: boolean
 }
@@ -16,7 +17,12 @@ export interface JobState {
 export const initialState: JobState = {
     entities: {},
     jobsPages:{},
-    jobs:[],        
+    jobs:[],   
+    filter:{
+        category: ["FOH","BOH","OTR"],
+        type: 'CS',
+        date: new Date()
+    },   
     loaded: false,
     loading: false
 };
@@ -37,7 +43,7 @@ export function reducer(
         case fromJobs.LOAD_JOBS_SUCCESS:
             {
                 let jobs = action.payload;
-                const jobsPages = createPagination(jobs, 12)
+                const jobsPages = createPagination(applyFilter(jobs,state.filter), 12)
                 console.log("jobs Divided", jobsPages);
                 const entities = jobs.reduce(
                     (entities: {
@@ -50,7 +56,7 @@ export function reducer(
                     }, {
                         ...state.entities,
                     });
-                console.log(entities);
+                   
                 return {
                     ...state,
                     loading: false,
@@ -140,8 +146,9 @@ const createPagination = (jobs: Job[], itemPerPage) => {
 
 const applyFilter=(jobs:Job[],filter:Filter)=>{
     let isTemp = filter.type==="CS" ? true : false;
-    return jobs
+    let jobsFiltered = jobs
     .filter((job)=>job.IsTemp===isTemp)
     .filter((job)=>filter.category.includes(job.Category))
 
+    return filter.date ? jobsFiltered.filter((job)=>(new Date(job.Date)>=filter.date)) : jobsFiltered;
 }
