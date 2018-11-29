@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Filter } from '../../../../models/filter.interface';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-filter',
@@ -6,14 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  category:string[] = ["FOH","BOH","OTR"];
-  type:string = 'CS';
+  @Input()
+  filter:Filter
   today:Date = new Date();
-  date: Date=this.today;
+  @Output()
+  apply: EventEmitter<Filter> = new EventEmitter();
+  @ViewChild('filterForm') filterForm: NgForm;
+
   constructor() { }
 
   ngOnInit() {
-
+    this.filterForm.valueChanges.subscribe(
+      filter=>this.apply.emit(filter)
+    )
   }
-
+ applyFilter(e){
+   console.log(e);
+ }
 }

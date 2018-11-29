@@ -37,7 +37,7 @@
                 ></job>
         </div>
         <div class="big-card" *ngIf="showFilter">
-              <app-filter></app-filter>
+              <app-filter [filter]="filter" (apply)="applyFilter($event)"></app-filter>
         </div>
         <jobs_map class="map show" *ngIf="showMap" 
             [activejobs]="(activeJobs$ | async)"
