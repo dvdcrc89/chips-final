@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '../store';
 import { Filter } from '../../../models/filter.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jobs_list',
@@ -31,14 +32,16 @@ export class JobsListComponent implements OnInit {
   loading:boolean=true;
   details: Job = null;
   showFilter:boolean;
-  filter:Filter ={
-    category: ["FOH","BOH","OTR"],
-    type: 'CS',
-    date: new Date()
-  }
+  filter$:Observable<Filter | {}>
+  // filter:Filter ={
+  //   category: ["FOH","BOH","OTR"],
+  //   type: 'CS',
+  //   date: new Date()
+  // }
   
   constructor(
-    private store: Store<fromStore.JobsMarketState>
+    private store: Store<fromStore.JobsMarketState>,
+    private router :Router
     ) { }
   
   ngOnInit() {
@@ -59,6 +62,7 @@ export class JobsListComponent implements OnInit {
     this.activeJobs$ = this.store.select(fromStore.getJobsPage);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.activePage$ = this.store.select(fromStore.getActivePage);
+    this.filter$ = this.store.select(fromStore.getFilter);
     this.store.dispatch(new fromStore.LoadJobs);
   
     this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
@@ -69,13 +73,11 @@ export class JobsListComponent implements OnInit {
   }
   
   nextPage(){
-    if(this.page <this.jobsDivided.length-1){
-    this.page+=1
-    this.activejobs= this.jobsDivided[this.page];
     
+    this.router.navigate(['/jobs/2'])
     scroll(0,0);
     }
-  }
+
   
   prevPage(){
     if(this.page>0){

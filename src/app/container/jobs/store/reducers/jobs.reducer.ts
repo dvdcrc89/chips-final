@@ -19,9 +19,8 @@ export const initialState: JobState = {
     jobsPages:{},
     jobs:[],   
     filter:{
-        category: ["FOH","BOH","OTR"],
-        type: 'CS',
-        date: new Date()
+        category:["FOH","BOH","OTR"],
+
     },   
     loaded: false,
     loading: false
@@ -102,11 +101,14 @@ export function reducer(
             {
                 let jobsFiltered = applyFilter(state.jobs,action.payload);
                 let jobsPages = createPagination(jobsFiltered,12);
+                console.log(action.payload);
+                const filter = action.payload;
                 return {
                     ...state,
                     jobsPages,
                     loading: false,
-                    loaded: true
+                    loaded: true,
+                    filter
                 }
             }
     }
@@ -118,6 +120,7 @@ export const getJobsLoading = (state: JobState) => state.loading;
 export const getJobsLoaded = (state: JobState) => state.loaded;
 export const getJobsEntities = (state: JobState) => state.entities;
 export const getJobsPages = (state: JobState) => state.jobsPages;
+export const getFilter = (state: JobState) => state.filter;
 
 
 
@@ -146,10 +149,10 @@ const createPagination = (jobs: Job[], itemPerPage) => {
 
 const applyFilter=(jobs:Job[],filter:Filter)=>{
     let isTemp = filter.type==="CS" ? true : false;
-    let jobsFiltered = jobs
-    .filter((job)=>job.IsTemp===isTemp)
-    .filter((job)=>filter.category.includes(job.Category))
-
+    let jobsFiltered = jobs.filter((job)=>filter.category.includes(job.Category))
+    if(filter.type){
+        jobsFiltered= jobsFiltered.filter((job)=>job.IsTemp===isTemp)
+    }
     return filter.date ? 
     jobsFiltered.filter((job)=>(new Date(job.Date)>=filter.date))
     .sort((a,b)=>(+new Date(a.Date)-(+new Date(b.Date)))) : 
