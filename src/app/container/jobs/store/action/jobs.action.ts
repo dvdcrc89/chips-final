@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store'
 import { Job } from '../../../../models/job.interface';
+import { Filter } from '../../../../models/filter.interface';
 
 //load jobs
 
@@ -9,6 +10,8 @@ export const LOAD_JOBS_SUCCESS = '[Jobs] Load Jobs Success';
 export const ADD_JOB = '[Job] Add Job';
 export const ADD_JOB_FAIL = '[Job] Add Job Fail';
 export const ADD_JOB_SUCCESS = '[Job] Add Job Success';
+export const FILTER_JOBS = '[Jobs] Filter Jobs';
+
 
 
 
@@ -40,6 +43,20 @@ export class AddJobFail implements Action {
 export class AddJobSuccess implements Action {
     readonly type = ADD_JOB_SUCCESS;
 }
+
+export class FilterJobs implements Action {
+    readonly type = FILTER_JOBS;
+    constructor(public payload: Filter){}
+
+}
+
 //action types
 
-export type JobsAction = LoadJobs | LoadJobsFail | LoadJobsSuccess | AddJob | AddJobFail | AddJobSuccess;
+export type JobsAction = 
+ LoadJobs 
+| LoadJobsFail 
+| LoadJobsSuccess 
+| AddJob 
+| AddJobFail 
+| AddJobSuccess
+| FilterJobs;

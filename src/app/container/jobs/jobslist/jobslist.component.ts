@@ -5,6 +5,7 @@ import {jobsarray} from './../../tempo/jobs'
 import {Store} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '../store';
+import { Filter } from '../../../models/filter.interface';
 
 @Component({
   selector: 'jobs_list',
@@ -30,7 +31,12 @@ export class JobsListComponent implements OnInit {
   loading:boolean=true;
   details: Job = null;
   showFilter:boolean;
-
+  filter:Filter ={
+    category: ["FOH","BOH","OTR"],
+    type: 'CS',
+    date: new Date()
+  }
+  
   constructor(
     private store: Store<fromStore.JobsMarketState>
     ) { }
@@ -120,6 +126,12 @@ export class JobsListComponent implements OnInit {
       this.details=null;
       this.showMap=false;
     }
+  }
+
+  applyFilter(filter:Filter){
+    this.store.dispatch(new fromStore.FilterJobs(filter));  
+
+
   }
  
 }

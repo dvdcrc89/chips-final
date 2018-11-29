@@ -1,10 +1,13 @@
 import { Job } from "../../../../models/job.interface";
 import * as fromJobs from '../action/jobs.action'
+import { filter } from "rxjs/operators";
+import { Filter } from "../../../../models/filter.interface";
 
 export interface JobState {
     entities: {
             [id: string]: Job
         },
+    jobs:Job[],    
     jobsPages:any,        
     loaded: boolean,
     loading: boolean
@@ -12,7 +15,8 @@ export interface JobState {
 
 export const initialState: JobState = {
     entities: {},
-    jobsPages:{},        
+    jobsPages:{},
+    jobs:[],        
     loaded: false,
     loading: false
 };
@@ -51,6 +55,7 @@ export function reducer(
                     ...state,
                     loading: false,
                     loaded: true,
+                    jobs,
                     entities,
                     jobsPages
                 }
@@ -83,6 +88,17 @@ export function reducer(
             {
                 return {
                     ...state,
+                    loading: false,
+                    loaded: true
+                }
+            }
+       case fromJobs.FILTER_JOBS:
+            {
+                let jobsFiltered = applyFilter(state.jobs,action.payload);
+                let jobsPages = createPagination(jobsFiltered,12);
+                return {
+                    ...state,
+                    jobsPages,
                     loading: false,
                     loaded: true
                 }
@@ -120,4 +136,12 @@ const createPagination = (jobs: Job[], itemPerPage) => {
         ...jobsPages,
         "totalPages": Object.keys(jobsPages).length
     }    
+}
+
+const applyFilter=(jobs:Job[],filter:Filter)=>{
+    let isTemp = filter.type==="CS" ? true : false;
+    return jobs
+    .filter((job)=>job.IsTemp===isTemp)
+    .filter((job)=>filter.category.includes(job.Category))
+
 }
