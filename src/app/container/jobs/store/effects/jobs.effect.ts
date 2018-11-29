@@ -22,4 +22,15 @@ export class JobsEffects{
                 catchError(error => of(new jobsAction.LoadJobsFail(error)))          
          )}
      ))
+
+     @Effect()
+    addJob$ = this.actions$.ofType(jobsAction.ADD_JOB)
+     .pipe(
+         switchMap((action: jobsAction.AddJob)=>{
+             console.log("efect",action.payload)
+            return this.jobService.addJob(action.payload).pipe(
+                map(res => new jobsAction.AddJobSuccess()),
+                catchError(error => of(new jobsAction.AddJobFail(error)))          
+         )}
+     ))
 }

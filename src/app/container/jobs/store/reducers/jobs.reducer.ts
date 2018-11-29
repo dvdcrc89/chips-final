@@ -63,6 +63,30 @@ export function reducer(
                     loaded: false
                 }
             }
+        case fromJobs.ADD_JOB:
+            {
+                return {
+                    ...state,
+                    loading: true,
+                    loaded: false
+                }
+            }
+        case fromJobs.ADD_JOB_FAIL:
+            {
+                return {
+                    ...state,
+                    loading: false,
+                    loaded: false
+                }
+            }
+        case fromJobs.ADD_JOB_SUCCESS:
+            {
+                return {
+                    ...state,
+                    loading: false,
+                    loaded: true
+                }
+            }
     }
 
     return state;
