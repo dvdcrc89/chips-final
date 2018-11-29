@@ -6,16 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  category:string;
-  type:string;
-  date: Date;
+  category:string[] = ["FOH","BOH","OTR"];
+  type:string = 'CS';
   today:Date = new Date();
+  date: Date=this.today;
   constructor() { }
 
   ngOnInit() {
-  
-  this.type="PJ";
-  this.category="FOH";
+
   }
 
 }

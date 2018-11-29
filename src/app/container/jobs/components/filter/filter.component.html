@@ -3,7 +3,7 @@
     <div class="title">
         <span>Filter</span>
       </div>
-      <mat-button-toggle-group name="category" [(ngModel)]="category" >
+      <mat-button-toggle-group multiple name="category" [(ngModel)]="category" >
           <mat-button-toggle  value="FOH">Front of House</mat-button-toggle>
           <mat-button-toggle  value="BOH">Back of House</mat-button-toggle>
           <mat-button-toggle  value="OTR">Other</mat-button-toggle>
