@@ -26,12 +26,12 @@ export class JobsListComponent implements OnInit {
   page: number = 0;
   totalPage:number;
   isTemp: boolean = true;
-  showMap:boolean =false;
+  showMap:boolean = false;
   opacity: number[];
   hero:any;
-  loading:boolean=true;
+  loading:boolean= true;
   details: Job = null;
-  showFilter:boolean;
+  showFilter:boolean = true;
   filter$:Observable<Filter | {}>
   // filter:Filter ={
   //   category: ["FOH","BOH","OTR"],
@@ -73,19 +73,15 @@ export class JobsListComponent implements OnInit {
   }
   
   nextPage(){
-    
-    this.router.navigate(['/jobs/2'])
+    this.page+=1;
+    this.router.navigate(['/jobs/'+this.page])
     scroll(0,0);
     }
 
   
   prevPage(){
-    if(this.page>0){
-      this.page-=1;
-      this.activejobs= this.jobsDivided[this.page];
-      
-    }
-    else  this.activejobs= this.jobsDivided[0];
+    this.page-=1;
+    this.router.navigate(['/jobs/'+this.page])
     
     scroll(0,0);
   }
@@ -132,7 +128,9 @@ export class JobsListComponent implements OnInit {
   }
 
   applyFilter(filter:Filter){
+    console.log(filter);
     this.store.dispatch(new fromStore.FilterJobs(filter));  
+    this.toggleFilter();
 
 
   }
