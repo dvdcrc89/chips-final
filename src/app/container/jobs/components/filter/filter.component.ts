@@ -15,14 +15,16 @@ export class FilterComponent implements OnInit {
   apply: EventEmitter<Filter> = new EventEmitter();
   @ViewChild('filterForm') filterForm: NgForm;
 
+  type:string;
   constructor() { }
 
   ngOnInit() {
-    this.filterForm.valueChanges.subscribe(
-      filter=>this.apply.emit(filter)
-    )
   }
  applyFilter(e){
-   console.log(e);
+    let filter =this.filterForm.value;
+    if (this.filterForm.value.type!=='CS'){
+      filter.date=null;
+    }
+   this.apply.emit(filter);
  }
 }

@@ -3,7 +3,7 @@
     <div class="title">
         <span>Filter</span>
       </div>
-      <form name="filterForm" (changes)="applyFilter($event)" #filterForm="ngForm">
+      <form name="filterForm" (ngSubmit)="applyFilter($event)" #filterForm="ngForm">
       <mat-button-toggle-group 
       multiple 
       name="category" 
@@ -22,7 +22,7 @@
       </mat-button-toggle-group>
         <div class="flex">
         <mat-form-field 
-        *ngIf="filter.type==='CS'">
+        >
               <input 
               [(ngModel)]="filter.date" 
               id="date" name="date" 
@@ -36,6 +36,10 @@
               <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
          </mat-form-field>
          </div>
+          <div class="flex">
+                    <button mat-raised-button type="submit">Search</button>
+          </div> 
+
 </form>
          
   </div>
