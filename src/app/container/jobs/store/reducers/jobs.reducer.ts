@@ -20,7 +20,7 @@ export const initialState: JobState = {
     jobs:[],   
     filter:{
         category:["FOH","BOH","OTR"],
-
+        type:"CS"
     },   
     loaded: false,
     loading: false
