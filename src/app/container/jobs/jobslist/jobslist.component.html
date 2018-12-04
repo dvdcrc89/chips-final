@@ -68,6 +68,7 @@
 <div class="pagination">
     <app-pagination
     *ngIf="!(isLoading$ |async)"
+     [ngClass]="{'hide':showFilter}"
      [activePage]="activePage$ | async" 
      [totalPages]="totalPages$ | async"
      [howManyJobs]="howManyJobs$ | async"

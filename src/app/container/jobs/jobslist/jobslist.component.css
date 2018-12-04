@@ -4,9 +4,7 @@
     margin-right: 20px; 
 }
 
-section{
-    height: 100vh;
-}
+
 
 .jobs-actionbar{
     display: flex;
@@ -19,7 +17,9 @@ section{
     box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
 }
 
-
+section{
+    height: 100vh;
+}
 
 .wrapper{
     margin: 0 8px 0px 8px;
@@ -57,6 +57,9 @@ app-filter{
     justify-content: center;
 }
 @media screen and (max-width: 1025px){
+    section{
+        height: 100% !important;
+    }
     button{
         margin-bottom:100px;
     }
@@ -100,7 +103,7 @@ app-filter{
 
 }
 @media screen and (min-width: 1025px){
- 
+   
 
     .action_bar{
         /* display: none; */
