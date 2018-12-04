@@ -71,7 +71,8 @@ export class JobsListComponent implements OnInit {
     this.store.dispatch(new fromStore.LoadJobs);
   
     this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
-    
+    window.scrollTo(0,0);
+
 
 
   }
@@ -81,7 +82,7 @@ export class JobsListComponent implements OnInit {
 changePage(page){
  
     this.router.navigate(['/jobs/'+page])
-    
+    window.scrollTo(0,0);
   }
 
  toggleMap(){
@@ -123,6 +124,8 @@ changePage(page){
       this.details=null;
       this.showMap=false;
     }
+    window.scrollTo(0,0);
+
   }
 
   applyFilter(filter:Filter){
