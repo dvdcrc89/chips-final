@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="title">
+        <span>Filter</span>
+      </div>
+      <form name="filterForm" (ngSubmit)="applyFilter($event)" #filterForm="ngForm">
+      <mat-button-toggle-group 
+      multiple 
+      name="category" 
+      [(ngModel)]="filter.category"
+      >
+            <mat-button-toggle  value="FOH">Front of House</mat-button-toggle>
+            <mat-button-toggle  value="BOH">Back of House</mat-button-toggle>
+            <mat-button-toggle  value="OTR">Other</mat-button-toggle>
+        </mat-button-toggle-group>
+      <mat-button-toggle-group 
+      name="type" 
+      [(ngModel)]="filter.type"
+      >
+            <mat-button-toggle  value="PJ">Permanent Jobs</mat-button-toggle>
+            <mat-button-toggle  value="CS">Cover Shifts</mat-button-toggle>
+      </mat-button-toggle-group>
+        <div class="flex">
+        <mat-form-field 
+        >
+              <input 
+              [(ngModel)]="filter.date" 
+              id="date" name="date" 
+              matInput 
+              [min]="today" 
+              [matDatepicker]="picker" 
+              placeholder="Date" 
+              readonly
+              >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+         </mat-form-field>
+         </div>
+          <div class="flex">
+                    <button mat-raised-button type="submit">Search</button>
+          </div> 
+
+</form>
+         
+  </div>
+</div>

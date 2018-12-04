@@ -1,18 +1,27 @@
 import { Job } from "../../../../models/job.interface";
 import * as fromJobs from '../action/jobs.action'
+import { filter } from "rxjs/operators";
+import { Filter } from "../../../../models/filter.interface";
 
 export interface JobState {
     entities: {
             [id: string]: Job
         },
-    jobsPages:any,        
+    jobs:Job[],    
+    jobsPages:any,
+    filter:Filter,        
     loaded: boolean,
     loading: boolean
 }
 
 export const initialState: JobState = {
     entities: {},
-    jobsPages:{},        
+    jobsPages:{},
+    jobs:[],   
+    filter:{
+        category:["FOH","BOH","OTR"],
+        type:"CS"
+    },   
     loaded: false,
     loading: false
 };
@@ -33,7 +42,7 @@ export function reducer(
         case fromJobs.LOAD_JOBS_SUCCESS:
             {
                 let jobs = action.payload;
-                const jobsPages = createPagination(jobs, 12)
+                const jobsPages = createPagination(applyFilter(jobs,state.filter), 12)
                 console.log("jobs Divided", jobsPages);
                 const entities = jobs.reduce(
                     (entities: {
@@ -46,11 +55,12 @@ export function reducer(
                     }, {
                         ...state.entities,
                     });
-                console.log(entities);
+                   
                 return {
                     ...state,
                     loading: false,
                     loaded: true,
+                    jobs,
                     entities,
                     jobsPages
                 }
@@ -87,6 +97,20 @@ export function reducer(
                     loaded: true
                 }
             }
+       case fromJobs.FILTER_JOBS:
+            {
+                let jobsFiltered = applyFilter(state.jobs,action.payload);
+                let jobsPages = createPagination(jobsFiltered,12);
+                console.log(action.payload);
+                const filter = action.payload;
+                return {
+                    ...state,
+                    jobsPages,
+                    loading: false,
+                    loaded: true,
+                    filter
+                }
+            }
     }
 
     return state;
@@ -96,6 +120,7 @@ export const getJobsLoading = (state: JobState) => state.loading;
 export const getJobsLoaded = (state: JobState) => state.loaded;
 export const getJobsEntities = (state: JobState) => state.entities;
 export const getJobsPages = (state: JobState) => state.jobsPages;
+export const getFilter = (state: JobState) => state.filter;
 
 
 
@@ -120,4 +145,16 @@ const createPagination = (jobs: Job[], itemPerPage) => {
         ...jobsPages,
         "totalPages": Object.keys(jobsPages).length
     }    
+}
+
+const applyFilter=(jobs:Job[],filter:Filter)=>{
+    let isTemp = filter.type==="CS" ? true : false;
+    let jobsFiltered = jobs.filter((job)=>filter.category.includes(job.Category))
+    if(filter.type){
+        jobsFiltered= jobsFiltered.filter((job)=>job.IsTemp===isTemp)
+    }
+    return filter.date ? 
+    jobsFiltered.filter((job)=>(new Date(job.Date)>=filter.date))
+    .sort((a,b)=>(+new Date(a.Date)-(+new Date(b.Date)))) : 
+    jobsFiltered.sort((a,b)=>b.Created_at - a.Created_at);
 }

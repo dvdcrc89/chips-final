@@ -5,6 +5,8 @@ import {jobsarray} from './../../tempo/jobs'
 import {Store} from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as fromStore from '../store';
+import { Filter } from '../../../models/filter.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'jobs_list',
@@ -20,18 +22,28 @@ export class JobsListComponent implements OnInit {
   isLoading$: Observable<boolean>;
   activeJobs$: Observable<Job[]>;
   activePage$: Observable<number>;
+  totalPages$:Observable<number>;
+  howManyJobs$:Observable<number>
   jobsDivided: Job[][];
   page: number = 0;
   totalPage:number;
   isTemp: boolean = true;
-  showMap:boolean =false;
+  showMap:boolean = false;
   opacity: number[];
   hero:any;
-  loading:boolean=true;
+  loading:boolean= true;
   details: Job = null;
+  showFilter:boolean = true;
+  filter$:Observable<Filter | {}>
+  // filter:Filter ={
+  //   category: ["FOH","BOH","OTR"],
+  //   type: 'CS',
+  //   date: new Date()
+  // }
   
   constructor(
-    private store: Store<fromStore.JobsMarketState>
+    private store: Store<fromStore.JobsMarketState>,
+    private router :Router
     ) { }
   
   ngOnInit() {
@@ -52,37 +64,32 @@ export class JobsListComponent implements OnInit {
     this.activeJobs$ = this.store.select(fromStore.getJobsPage);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.activePage$ = this.store.select(fromStore.getActivePage);
-    this.store.dispatch(new fromStore.LoadJobs);  
+    this.totalPages$ = this.store.select(fromStore.getTotalPages);
+    this.howManyJobs$ = this.store.select(fromStore.getHowManyJobs);
+
+    this.filter$ = this.store.select(fromStore.getFilter);
+    this.store.dispatch(new fromStore.LoadJobs);
+  
     this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
-  
     
 
 
   }
+
+
   
-  nextPage(){
-    if(this.page <this.jobsDivided.length-1){
-    this.page+=1
-    this.activejobs= this.jobsDivided[this.page];
+changePage(page){
+ 
+    this.router.navigate(['/jobs/'+page])
     
-    scroll(0,0);
-    }
-  }
-  
-  prevPage(){
-    if(this.page>0){
-      this.page-=1;
-      this.activejobs= this.jobsDivided[this.page];
-      
-    }
-    else  this.activejobs= this.jobsDivided[0];
-    
-    scroll(0,0);
   }
 
  toggleMap(){
    this.showMap=!this.showMap;
-   if(this.showMap) this.details = null;
+   if(this.showMap) {
+     this.details = null;
+     this.showFilter=false;
+   }
  }
 
   selected(id){
@@ -105,9 +112,25 @@ export class JobsListComponent implements OnInit {
   showDetails(job){
     this.details = job;
     this.showMap = false;
+    this.showFilter =false;
   }
   handleClose(){
     this.details = null;
+  }
+  toggleFilter(){
+    this.showFilter=!this.showFilter;
+    if(this.showFilter){
+      this.details=null;
+      this.showMap=false;
+    }
+  }
+
+  applyFilter(filter:Filter){
+    console.log(filter);
+    this.store.dispatch(new fromStore.FilterJobs(filter));  
+    this.toggleFilter();
+
+
   }
  
 }

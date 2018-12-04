@@ -30,3 +30,14 @@ export const getJobsPage = createSelector(getJobsPages,
             return router.state.params.page > 1 && router.state.params.page <=jobsPages.totalPages
                 ? router.state.params.page:1;
         });
+        
+export const getTotalPages = createSelector(getJobsPages,(jobsPages):number =>{
+    console.log("fromStore",jobsPages.totalPages);
+    return jobsPages.totalPages
+});
+
+export const getHowManyJobs = createSelector(getJobsPages,(jobsPages):number =>{
+    return jobsPages[jobsPages.totalPages].length+((jobsPages.totalPages-1)*12);
+});
+
+export const getFilter = createSelector(fromFeature.getJobState,fromJobs.getFilter);
