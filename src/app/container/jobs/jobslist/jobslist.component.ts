@@ -22,6 +22,8 @@ export class JobsListComponent implements OnInit {
   isLoading$: Observable<boolean>;
   activeJobs$: Observable<Job[]>;
   activePage$: Observable<number>;
+  totalPages$:Observable<number>;
+  howManyJobs$:Observable<number>
   jobsDivided: Job[][];
   page: number = 0;
   totalPage:number;
@@ -62,28 +64,24 @@ export class JobsListComponent implements OnInit {
     this.activeJobs$ = this.store.select(fromStore.getJobsPage);
     this.isLoading$ = this.store.select(fromStore.getJobsLoading);
     this.activePage$ = this.store.select(fromStore.getActivePage);
+    this.totalPages$ = this.store.select(fromStore.getTotalPages);
+    this.howManyJobs$ = this.store.select(fromStore.getHowManyJobs);
+
     this.filter$ = this.store.select(fromStore.getFilter);
     this.store.dispatch(new fromStore.LoadJobs);
   
     this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1];
-  
     
 
 
   }
-  
-  nextPage(){
-    this.page+=1;
-    this.router.navigate(['/jobs/'+this.page])
-    scroll(0,0);
-    }
+
 
   
-  prevPage(){
-    this.page-=1;
-    this.router.navigate(['/jobs/'+this.page])
+changePage(page){
+ 
+    this.router.navigate(['/jobs/'+page])
     
-    scroll(0,0);
   }
 
  toggleMap(){

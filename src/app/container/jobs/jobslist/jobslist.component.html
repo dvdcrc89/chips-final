@@ -15,11 +15,15 @@
             (mouseover)="selected(i)"
             (mouseout)="deselected(i)">   
         </job_card>
+
+    
+
     </div>
  
 
     <div>
         <div class="jobs-actionbar">
+            
             <button class="toggle-map-btn" mat-raised-button (click)="toggleFilter()">
                     <span *ngIf="showFilter">Hide Filter</span>
                     <span *ngIf="!showFilter">Show Filter</span>
@@ -45,7 +49,6 @@
             (highlight)=selected($event)>
         </jobs_map>
     </div>
-
 </div>
 <!-- {{activePage$ | async}}
 <button style="position: absolute;bottom: 30px;z-index: 9999;" (click)="prevPage()" >previous</button>
@@ -62,3 +65,11 @@
  
 </div> -->
 </section>
+<div class="pagination">
+    <app-pagination
+    *ngIf="!(isLoading$ |async)"
+     [activePage]="activePage$ | async" 
+     [totalPages]="totalPages$ | async"
+     [howManyJobs]="howManyJobs$ | async"
+     (changePage)="changePage($event)"></app-pagination>
+</div>

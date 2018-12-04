@@ -39,7 +39,11 @@ app-filter{
     margin-top: 20px;
 }
 
+.pagination{
+    display: flex;
+    justify-content: center;
 
+}
 .toggle_map{
  display: flex;
  justify-content: flex-end;

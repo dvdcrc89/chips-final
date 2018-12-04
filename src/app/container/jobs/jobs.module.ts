@@ -30,6 +30,7 @@ import {reducers,effects} from './store'
 import { environment } from '../../../environments/environment';
 import { JobComponent } from './components/job/job.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FilterComponent } from './components/filter/filter.component';
     MapComponent,
     AddJobComponent,
     JobComponent,
-    FilterComponent
+    FilterComponent,
+    PaginationComponent
     
   
   ],

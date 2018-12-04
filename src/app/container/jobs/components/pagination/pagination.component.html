@@ -1,0 +1,19 @@
+<div *ngIf="totalPages>0" class="pagination">
+  
+  <i *ngIf="activePage>1" 
+      class="fas fa-chevron-circle-left"
+      (click)="prevPage()"></i>
+  <span class="activePage">{{activePage}}</span>
+  <span> of </span>
+  <span class="totalPages">{{totalPages}}</span>
+  <i *ngIf="activePage<totalPages" 
+      class="fas fa-chevron-circle-right"
+      (click)="nextPage()"></i>
+
+</div>
+<div class="totalJobs" *ngIf="totalPages>0">
+<span>{{1+((activePage-1)*12)}}-</span>
+<span *ngIf="activePage<totalPages">{{1+((activePage-1)*12)+11}} </span>
+<span *ngIf="!(activePage<totalPages)">{{howManyJobs}} </span>
+<span>of {{howManyJobs}} Jobs</span>
+</div>
