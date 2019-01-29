@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {JobsListComponent} from './jobslist/jobslist.component'
 import { JobcardComponent } from './components/jobcard/jobcard.component';
-import {MapComponent} from './components/map/map.component'
+import { MapComponent} from './components/map/map.component'
 import { AgmCoreModule } from '@agm/core';
 import { AddJobComponent } from './components/add-job/add-job.component'
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
