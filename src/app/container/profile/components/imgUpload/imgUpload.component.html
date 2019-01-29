@@ -1,0 +1,40 @@
+<div class="container">
+        <div class="wrapper">
+          <div class="title">
+              <span>Edit Images</span>
+            </div>
+            <form name="editImagesForm" (ngSubmit)="applyEdit($event)" #editImagesForm="ngForm">
+                <div class="field">
+                <h4 class="text-center">Profile Picture</h4>
+                <div class="flex">
+                        <input
+                        style="display: none"
+                        type="file" (change)="onFileChangedProfile($event)"
+                        accept="image/png, image/jpeg"
+                        #fileInputP>
+                        <button mat-raised-button color="accent" (click)="fileInputP.click()">Upload</button>
+
+                </div>
+                        <hr>
+                        <h4 class="text-center">Cover Picture</h4>
+                        <div class="flex">
+                                <input
+                                style="display: none"
+                                type="file" (change)="onFileChangedCover($event)"
+                                accept="image/png, image/jpeg"
+                                #fileInputC>
+                                <button mat-raised-button color="accent" (click)="fileInputC.click()">Upload</button>
+
+                        </div>
+                        <hr>
+                                   <div class="flex">
+                                        <button mat-raised-button type="submit" color="primary">Save</button>
+                                        <button mat-raised-button type="button" (click)="resetValue()">Reset</button>
+
+                              </div> 
+                </div>
+         
+            </form>
+               
+        </div>
+      </div>

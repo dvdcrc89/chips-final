@@ -22,6 +22,7 @@ import {
 import { EditInfoComponent } from './components/editInfo/editInfo.component';
 import { FormsModule } from '@angular/forms';
 import { EditMessageComponent } from './components/editMessage/editMessage.component';
+import { EditImagesComponent } from './components/imgUpload/imgUpload.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditMessageComponent } from './components/editMessage/editMessage.compo
     ProfileComponent,
     ProfileUIComponent,
     EditInfoComponent,
-    EditMessageComponent
+    EditMessageComponent,
+    EditImagesComponent
       
     
     ],

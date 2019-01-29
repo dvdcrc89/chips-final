@@ -19,6 +19,8 @@ import { Component, OnInit } from "@angular/core";
 
     editInfo:boolean = false;
     editMessage:boolean = false;
+    editImages:boolean = false;
+
     ngOnInit(){
       this.coverPic="../../../../../assets/cover.jpg";
       this.profilePic="../../../../assets/profile.jpg";
@@ -38,13 +40,29 @@ import { Component, OnInit } from "@angular/core";
       this.bio=values.bio;
 
     }
+    doPreviewProfile(url){
+      console.log("prview",url);
+      this.profilePic=url;
+    }
+    doPreviewCover(url){
+      console.log("prview",url);
+      this.coverPic=url;
+    }
     toggleInfo(){
       this.editInfo = !this.editInfo;
       this.editMessage = false;
+      this.editImages=false;
     }
     toggleMessage(){
       this.editMessage = !this.editMessage;
       this.editInfo = false;
+      this.editImages=false;
+
+    }
+    toggleImages(){
+      this.editImages=!this.editImages;
+      this.editInfo = false;
+      this.editMessage = false;
 
     }
 }
