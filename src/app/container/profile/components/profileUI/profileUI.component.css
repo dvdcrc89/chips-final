@@ -14,7 +14,7 @@
 .images{
     display: flex;
     justify-content: center;
-    background: url('../../../../../assets/cover.jpg');
+    /* background: url('../../../../../assets/cover.jpg'); */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,7 +43,7 @@
     padding-bottom: 5%;
 }
 
-.bio span{
+.bio p{
     width: 70%;
 }
 .buttons{

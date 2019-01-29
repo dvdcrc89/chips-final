@@ -1,5 +1,16 @@
 <div class="profile_map_grid">
-        <div><profileUI></profileUI></div>
+        <div>
+         <profileUI 
+         [coverPic]="coverPic"
+         [profilePic]="profilePic"
+         [fullName]="fullName"
+         [intrests]="intrests"
+         [bio]="bio">
+        </profileUI>
+        </div>
+        
+        
+        
         <div class="jobs-actionbar hide">
                         <button class="toggle-map-btn" mat-raised-button >
                            <span >Edit Info</span>

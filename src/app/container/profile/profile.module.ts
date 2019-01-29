@@ -39,7 +39,9 @@ import {
         MatRadioModule,
         MatSelectModule,
         MatButtonToggleModule,
-        MatChipsModule
+        MatChipsModule,
+        CommonModule,
+
     ],
     exports:[
         ProfileComponent,
