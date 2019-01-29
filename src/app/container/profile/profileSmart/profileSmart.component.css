@@ -19,7 +19,15 @@
 .jobs-actionbar button{
     margin-right:20px;
 }
-
+.big-card{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+editInfo{
+    width: 96%;
+    margin-top: 20px;
+}
 @media screen and (max-width: 1025px){
     .hide{
         display: none;

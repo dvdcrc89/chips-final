@@ -10,8 +10,8 @@
         </div>
         
         
-        
-        <div class="jobs-actionbar hide">
+        <div>
+                    <div class="jobs-actionbar hide">
                         <button class="toggle-map-btn" mat-raised-button >
                            <span >Edit Info</span>
                         </button>
@@ -26,6 +26,14 @@
                          </button>
             
                     </div>
-        
+                    <div class="big-card">
+                            <editInfo 
+                            [fullName]="fullName"
+                            [bio]="bio"
+                            [intrests]="intrests"
+                            (mod)="changeInfo($event)"
+                            ></editInfo>  
+                    </div>
+        </div>
         
 </div>

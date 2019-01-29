@@ -19,12 +19,15 @@ import {
   MatButtonToggleModule,
   MatChipsModule
 } from '@angular/material';
+import { EditInfoComponent } from './components/editInfo/editInfo.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
     declarations: [
     ProfileComponent,
-    ProfileUIComponent
+    ProfileUIComponent,
+    EditInfoComponent
       
     
     ],
@@ -41,6 +44,7 @@ import {
         MatButtonToggleModule,
         MatChipsModule,
         CommonModule,
+        FormsModule
 
     ],
     exports:[
