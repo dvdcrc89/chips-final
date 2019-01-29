@@ -59,6 +59,13 @@ mat-form-field{
     width: 100%;
     height: auto;
 }
+.text-center{
+    text-align: center;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
 .mat-chip-list-wrapper{
     justify-content: center !important;
 }

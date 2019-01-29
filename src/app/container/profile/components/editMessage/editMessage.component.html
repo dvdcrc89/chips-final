@@ -5,17 +5,19 @@
             </div>
             <form name="editMessageForm" (ngSubmit)="applyEdit($event)" #editMessageForm="ngForm">
                 <div class="field">
-                 <p> <small>You can add variables inside your message.</small><br>
+                 <p class="text-center"> <small>You can add variables inside your message.</small><br>
                   <small>Es. If you apply to a job advertised by <strong>Loren Smith</strong></small><br>
-                   <small><strong> Hi #[First_Name]</strong> will be translate in <strong>Hi Loren</strong> when you apply for a job.
+                   <small><strong> Hi #[First_Name]</strong> will be translate to <strong>Hi Loren</strong>
                    </small></p>
                    <hr>
+                   <div class="flex-center">
                     <mat-chip-list class="centered">
                         <mat-chip (click)="addVariable('FN')">First Name</mat-chip>
                         <mat-chip (click)="addVariable('LN')">Last Name</mat-chip>
                         <mat-chip (click)="addVariable('PS')">Position</mat-chip>
                         <mat-chip (click)="addVariable('CO')">Company</mat-chip>
                       </mat-chip-list>
+                      </div>
                               <mat-form-field class="">
                                       <textarea [(ngModel)]="message" id="message" name="message" matInput type="text" placeholder="Message"></textarea>
                                   </mat-form-field>
