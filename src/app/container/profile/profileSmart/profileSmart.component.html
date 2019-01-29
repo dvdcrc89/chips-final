@@ -3,7 +3,8 @@
          <profileUI 
          [coverPic]="coverPic"
          [profilePic]="profilePic"
-         [fullName]="fullName"
+         [firstName]="firstName"
+         [lastName]="lastName"
          [intrests]="intrests"
          [bio]="bio">
         </profileUI>
@@ -28,7 +29,8 @@
                     </div>
                     <div class="big-card">
                             <editInfo 
-                            [fullName]="fullName"
+                            [firstName]="firstName"
+                            [lastName]="lastName"
                             [bio]="bio"
                             [intrests]="intrests"
                             (mod)="changeInfo($event)"

@@ -10,7 +10,9 @@ import { NgForm } from "@angular/forms";
 
     export class EditInfoComponent implements OnInit {
     @Input()
-    fullName: string;
+    firstName: string;
+    @Input()
+    lastName: string;
     @Input()
     bio: string;
     @Input()
@@ -29,7 +31,8 @@ import { NgForm } from "@angular/forms";
     ]
     ngOnInit(){
      this.reset={
-        fullName :this.fullName,
+        firstName :this.firstName,
+        lastName :this.lastName,
         bio : this.bio,
         intrests : this.intrests,
      }
@@ -46,7 +49,8 @@ import { NgForm } from "@angular/forms";
     resetValue(){
 
         console.log(this.reset);
-         this.fullName = this.reset.fullName ;
+         this.firstName = this.reset.firstName ;
+         this.lastName = this.reset.lastName ;
          this.bio = this.reset.bio ;
          this.intrests=this.reset.intrests;
       }
