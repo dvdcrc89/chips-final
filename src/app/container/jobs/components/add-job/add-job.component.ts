@@ -50,7 +50,6 @@ export class AddJobComponent implements OnInit {
    let job:any = {
       business:this.placeName,
       address: this.address,
-      pic: this.imageUrl,
       lat:this.lat,
       lng:this.lng,
       position:this.form.value.position,

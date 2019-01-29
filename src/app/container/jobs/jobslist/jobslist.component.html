@@ -22,7 +22,7 @@
  
 
     <div>
-        <div class="jobs-actionbar">
+        <div class="jobs-actionbar hide">
             
             <button class="toggle-map-btn" mat-raised-button (click)="toggleFilter()">
                     <span *ngIf="showFilter">Hide Filter</span>
@@ -50,20 +50,8 @@
         </jobs_map>
     </div>
 </div>
-<!-- {{activePage$ | async}}
-<button style="position: absolute;bottom: 30px;z-index: 9999;" (click)="prevPage()" >previous</button>
 
-        <span>{{page+1}} / {{totalPage}}</span>
-        <button (click)="nextPage()"
-        >next</button>
-<div class="action_bar">
 
-        <img class="showmap" (click)="toggleMap()" src="../../../../../assets/map.svg">
-        <img class="showmap"  src="../../../../../assets/filter.svg">
-        <img class="showmap"  src="../../../../../assets/calendar.svg">
-
- 
-</div> -->
 </section>
 <div class="pagination">
     <app-pagination
@@ -73,4 +61,8 @@
      [totalPages]="totalPages$ | async"
      [howManyJobs]="howManyJobs$ | async"
      (changePage)="changePage($event)"></app-pagination>
+</div>
+<div *ngIf="!showFilter" class="action_bar">
+        <i class="fas fa-map-marker-alt"  (click)="toggleMap()"></i>
+        <i class="fas fa-filter" (click)="toggleFilter()"></i>
 </div>
