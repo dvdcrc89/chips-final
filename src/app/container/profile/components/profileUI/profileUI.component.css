@@ -1,5 +1,5 @@
 .container{
-    width: 800px;
+    width: 100%;
     background: rgb(255, 255, 255);
     border-radius:8px;
     font-family: 'Open Sans', sans-serif;
@@ -58,6 +58,7 @@
 
     background: transparent;
     border: none;
+    cursor: pointer;
 }
 .intrest{
     padding-bottom: 50px;

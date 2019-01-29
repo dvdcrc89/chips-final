@@ -1,0 +1,30 @@
+.profile_map_grid{
+    margin-left: 15px;
+    margin-right: 15px;
+    display: grid;
+    grid-template-columns:3fr 2fr;
+    grid-gap: 20px;
+}
+.jobs-actionbar{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
+}
+
+.jobs-actionbar button{
+    margin-right:20px;
+}
+
+@media screen and (max-width: 1025px){
+    .hide{
+        display: none;
+    }
+    .profile_map_grid{
+        display: block;
+    }
+    }
