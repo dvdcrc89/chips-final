@@ -15,9 +15,10 @@ import { Component, OnInit } from "@angular/core";
     lastName:string;
     intrests:string[];
     bio:string;
+    message:string;
 
     editInfo:boolean = false;
-
+    editMessage:boolean = false;
     ngOnInit(){
       this.coverPic="../../../../../assets/cover.jpg";
       this.profilePic="../../../../assets/profile.jpg";
@@ -28,6 +29,7 @@ import { Component, OnInit } from "@angular/core";
       if(this.profilePic.length<=0){
         this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
       }
+      this.message =" Hi %[First_Name] \n I want to apply for the job x"
     }
     changeInfo(values){
       this.firstName=values.firstName;
@@ -38,5 +40,11 @@ import { Component, OnInit } from "@angular/core";
     }
     toggleInfo(){
       this.editInfo = !this.editInfo;
+      this.editMessage = false;
+    }
+    toggleMessage(){
+      this.editMessage = !this.editMessage;
+      this.editInfo = false;
+
     }
 }

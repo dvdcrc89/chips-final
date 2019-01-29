@@ -21,13 +21,15 @@ import {
 } from '@angular/material';
 import { EditInfoComponent } from './components/editInfo/editInfo.component';
 import { FormsModule } from '@angular/forms';
+import { EditMessageComponent } from './components/editMessage/editMessage.component';
 
 
 @NgModule({
     declarations: [
     ProfileComponent,
     ProfileUIComponent,
-    EditInfoComponent
+    EditInfoComponent,
+    EditMessageComponent
       
     
     ],

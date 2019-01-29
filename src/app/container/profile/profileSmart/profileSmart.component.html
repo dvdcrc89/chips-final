@@ -22,7 +22,7 @@
                         <button class="toggle-map-btn" mat-raised-button >
                             <span >Edit CV</span>
                         </button>
-                        <button class="toggle-map-btn" mat-raised-button >
+                        <button class="toggle-map-btn" mat-raised-button (click)="toggleMessage()" >
                             <span >Edit Message</span>
                          </button>
             
@@ -35,6 +35,12 @@
                             [intrests]="intrests"
                             (mod)="changeInfo($event)"
                             ></editInfo>  
+                    </div>
+                    <div class="big-card" *ngIf="editMessage">
+                            <editMessage 
+                            [message]="message"
+                     
+                            ></editMessage>  
                     </div>
         </div>
         
