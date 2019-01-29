@@ -1,0 +1,72 @@
+.container{
+    width: 800px;
+    background: rgb(255, 255, 255);
+    border-radius:8px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    margin-bottom:10px; 
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    color:#4A4A4A;
+}
+.images{
+    display: flex;
+    justify-content: center;
+    background: url('../../../../../assets/cover.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 250px;
+}
+.profile_pic{
+    margin-top: 14%; 
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid white;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+
+}
+.name{
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+}
+.bio{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5%;
+}
+
+.bio span{
+    width: 70%;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom:10%; 
+}
+.buttons i{
+    font-size: 4rem;
+}
+.buttons button{
+
+    background: transparent;
+    border: none;
+}
+.intrest{
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1025px){
+.container{
+    width: 100%;
+}
+}
