@@ -16,6 +16,8 @@ import { Component, OnInit } from "@angular/core";
     intrests:string[];
     bio:string;
 
+    editInfo:boolean = false;
+
     ngOnInit(){
       this.coverPic="../../../../../assets/cover.jpg";
       this.profilePic="../../../../assets/profile.jpg";
@@ -33,5 +35,8 @@ import { Component, OnInit } from "@angular/core";
       this.intrests=values.intrests;
       this.bio=values.bio;
 
+    }
+    toggleInfo(){
+      this.editInfo = !this.editInfo;
     }
 }

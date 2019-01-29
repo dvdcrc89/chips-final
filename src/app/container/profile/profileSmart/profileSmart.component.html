@@ -13,7 +13,7 @@
         
         <div>
                     <div class="jobs-actionbar hide">
-                        <button class="toggle-map-btn" mat-raised-button >
+                        <button class="toggle-map-btn" mat-raised-button (click)="toggleInfo()" >
                            <span >Edit Info</span>
                         </button>
                         <button class="toggle-map-btn" mat-raised-button >
@@ -27,7 +27,7 @@
                          </button>
             
                     </div>
-                    <div class="big-card">
+                    <div class="big-card" *ngIf="editInfo">
                             <editInfo 
                             [firstName]="firstName"
                             [lastName]="lastName"
