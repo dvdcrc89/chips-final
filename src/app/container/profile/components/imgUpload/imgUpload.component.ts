@@ -13,7 +13,8 @@ import { NgForm } from "@angular/forms";
     coverPic: string;
     @Input()
     profilePic: string;
-    selectedFile: File
+    selectedFileP: File;
+    selectedFileC: File
     url:any;
     @Output()
     apply: EventEmitter<any> = new EventEmitter();
@@ -32,7 +33,7 @@ import { NgForm } from "@angular/forms";
      }
     }
     applyEdit(e){
-        console.log(this.editImagesForm.value);
+      this.apply.emit(e);
     }
 
     resetValue(){
@@ -58,7 +59,7 @@ import { NgForm } from "@angular/forms";
         
             reader.readAsDataURL(event.target.files[0]);
           }
-        this.selectedFile = event.target.files[0]
+        this.selectedFileP = event.target.files[0]
       }
       onFileChangedCover(event) {
         
@@ -68,12 +69,12 @@ import { NgForm } from "@angular/forms";
             reader.onload = (event: ProgressEvent) => {
               this.url = (<FileReader>event.target).result;
               this.prevCover.emit(this.url);  
-
             }
         
             reader.readAsDataURL(event.target.files[0]);
           }
-        this.selectedFile = event.target.files[0]
+        this.selectedFileC = event.target.files[0]
+        
       }
       
     

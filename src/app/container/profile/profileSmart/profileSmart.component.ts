@@ -41,23 +41,30 @@ import { Component, OnInit } from "@angular/core";
 
     }
     doPreviewProfile(url){
-      console.log("prview",url);
       this.profilePic=url;
     }
     doPreviewCover(url){
-      console.log("prview",url);
       this.coverPic=url;
+    }
+    applyInfo(e){
+      this.toggleInfo();
     }
     toggleInfo(){
       this.editInfo = !this.editInfo;
       this.editMessage = false;
       this.editImages=false;
     }
+    applyMessage(e){
+      this.toggleMessage();
+    }
     toggleMessage(){
       this.editMessage = !this.editMessage;
       this.editInfo = false;
       this.editImages=false;
 
+    }
+    applyImages(e){
+      this.toggleImages();
     }
     toggleImages(){
       this.editImages=!this.editImages;

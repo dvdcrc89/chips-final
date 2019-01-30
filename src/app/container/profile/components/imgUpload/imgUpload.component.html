@@ -3,7 +3,7 @@
           <div class="title">
               <span>Edit Images</span>
             </div>
-            <form name="editImagesForm" (ngSubmit)="applyEdit($event)" #editImagesForm="ngForm">
+            <form name="editImagesForm"  #editImagesForm="ngForm">
                 <div class="field">
                 <h4 class="text-center">Profile Picture</h4>
                 <div class="flex">
@@ -12,7 +12,7 @@
                         type="file" (change)="onFileChangedProfile($event)"
                         accept="image/png, image/jpeg"
                         #fileInputP>
-                        <button mat-raised-button color="accent" (click)="fileInputP.click()">Upload</button>
+                        <button mat-raised-button color="accent" (click)="fileInputP.click()">UPLOAD</button>
 
                 </div>
                         <hr>
@@ -23,12 +23,12 @@
                                 type="file" (change)="onFileChangedCover($event)"
                                 accept="image/png, image/jpeg"
                                 #fileInputC>
-                                <button mat-raised-button color="accent" (click)="fileInputC.click()">Upload</button>
+                                <button mat-raised-button color="accent" (click)="fileInputC.click()">UPLOAD</button>
 
                         </div>
                         <hr>
                                    <div class="flex">
-                                        <button mat-raised-button type="submit" color="primary">Save</button>
+                                        <button mat-raised-button type="button" (click)="applyEdit($event)" color="primary">Save</button>
                                         <button mat-raised-button type="button" (click)="resetValue()">Reset</button>
 
                               </div> 

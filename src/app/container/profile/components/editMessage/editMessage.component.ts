@@ -26,7 +26,7 @@ import { NgForm } from "@angular/forms";
      }
     }
     applyEdit(e){
-        console.log(this.editMessageForm.value);
+        this.apply.emit(e);
     }
 
     resetValue(){

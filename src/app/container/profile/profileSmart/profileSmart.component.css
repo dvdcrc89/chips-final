@@ -28,11 +28,33 @@ editInfo, editMessage, editImages{
     width: 96%;
     margin-top: 20px;
 }
+.action_bar{
+    display: none;
+}
+.profile_map_grid{
+    margin-bottom: 80px;
+}
 @media screen and (max-width: 1025px){
     .hide{
         display: none;
     }
     .profile_map_grid{
         display: block;
+    }
+    .action_bar{
+       
+        display: flex;
+        padding: 2px;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0px;
+        height: 40px;
+        width: 100%;
+        border-top: 1px solid rgba(38, 41, 58, 0.4);
+        background: white;
+        font-size: 1.2rem;
+     
+        
     }
     }

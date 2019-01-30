@@ -43,7 +43,7 @@ import { NgForm } from "@angular/forms";
       })
     }
     applyEdit(e){
-        console.log(this.editInfoForm.value);
+        this.apply.emit(e);
     }
 
     resetValue(){
