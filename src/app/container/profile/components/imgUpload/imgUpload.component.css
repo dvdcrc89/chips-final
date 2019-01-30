@@ -63,6 +63,16 @@ mat-form-field{
     display: flex;
     justify-content: space-evenly;
 }
+.prevP{
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+}
+.prevC{
+    border-radius: 10px;
+    width: 180px;
+    height: 120px;
+}
 @media screen and (max-width: 768px){
 
 

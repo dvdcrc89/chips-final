@@ -15,7 +15,8 @@ import { NgForm } from "@angular/forms";
     profilePic: string;
     selectedFileP: File;
     selectedFileC: File
-    url:any;
+    urlP:any;
+    urlC:any;
     @Output()
     apply: EventEmitter<any> = new EventEmitter();
     @Output()
@@ -32,6 +33,7 @@ import { NgForm } from "@angular/forms";
         profilePic: this.profilePic,
      }
     }
+  
     applyEdit(e){
       this.apply.emit(e);
     }
@@ -40,7 +42,11 @@ import { NgForm } from "@angular/forms";
 
         
          this.coverPic = this.reset.coverPic ;
-         this.profilePic = this.reset.profilePic ;
+         this.profilePic = this.reset.profilePic;
+         this.selectedFileC = null;
+         this.selectedFileP = null;
+         this.urlC= null;
+         this.urlP=null;
          this.prev.emit(this.profilePic);  
          this.prevCover.emit(this.coverPic);  
 
@@ -52,8 +58,8 @@ import { NgForm } from "@angular/forms";
             var reader = new FileReader();
         
             reader.onload = (event: ProgressEvent) => {
-              this.url = (<FileReader>event.target).result;
-              this.prev.emit(this.url);  
+              this.urlP = (<FileReader>event.target).result;
+              this.prev.emit(this.urlP);  
 
             }
         
@@ -67,14 +73,14 @@ import { NgForm } from "@angular/forms";
             var reader = new FileReader();
         
             reader.onload = (event: ProgressEvent) => {
-              this.url = (<FileReader>event.target).result;
-              this.prevCover.emit(this.url);  
+              this.urlC = (<FileReader>event.target).result;
+              this.prevCover.emit(this.urlC);  
             }
         
             reader.readAsDataURL(event.target.files[0]);
           }
         this.selectedFileC = event.target.files[0]
-        
+        console.log(this.selectedFileC);
       }
       
     

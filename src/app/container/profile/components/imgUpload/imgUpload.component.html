@@ -7,6 +7,9 @@
                 <div class="field">
                 <h4 class="text-center">Profile Picture</h4>
                 <div class="flex">
+                        <img class="prevP" [src]="urlP" *ngIf="urlP">
+                </div>
+                <div class="flex">
                         <input
                         style="display: none"
                         type="file" (change)="onFileChangedProfile($event)"
@@ -18,6 +21,9 @@
                         <hr>
                         <h4 class="text-center">Cover Picture</h4>
                         <div class="flex">
+                                <img class="prevC" [src]="urlC" *ngIf="urlC">
+                        </div>                       
+                                <div class="flex">
                                 <input
                                 style="display: none"
                                 type="file" (change)="onFileChangedCover($event)"
