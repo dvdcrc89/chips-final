@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ProfileService } from "../services/profile.service";
+import { Profile } from "selenium-webdriver/firefox";
 
 
 @Component({
@@ -20,18 +22,24 @@ import { Component, OnInit } from "@angular/core";
     editInfo:boolean = false;
     editMessage:boolean = false;
     editImages:boolean = false;
-
+    constructor(
+      private profileService: ProfileService
+      ) { }
     ngOnInit(){
+      this.profileService.getMyself().subscribe(data=>{
+        this.firstName=data.firstName;
+        this.lastName=data.lastName;
+        this.bio = data.bio;
+        this.message= data.message ? data.message: "";
+        this.intrests= data.intrests?  data.intrests.split(','):"";
+      });
       this.coverPic="../../../../../assets/cover.jpg";
       this.profilePic="../../../../assets/profile.jpg";
-      this.firstName="Samantha";
-      this.lastName="La Porca"
-      this.intrests=["Waitress","Bartender","Receptionist"];
-      this.bio="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    
+    
       if(this.profilePic.length<=0){
         this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
       }
-      this.message =" Hi %[First_Name] \n I want to apply for the job x"
     }
     changeInfo(values){
       this.firstName=values.firstName;
@@ -46,7 +54,14 @@ import { Component, OnInit } from "@angular/core";
     doPreviewCover(url){
       this.coverPic=url;
     }
-    applyInfo(e){
+    applyInfo(profile){
+
+      let intrests = profile.intrests ? profile.intrests.toString(): "";
+      profile = {
+        ...profile,
+        intrests
+      }
+      this.save(profile);
       this.toggleInfo();
     }
     toggleInfo(){
@@ -55,6 +70,8 @@ import { Component, OnInit } from "@angular/core";
       this.editImages=false;
     }
     applyMessage(e){
+      console.log(e);
+      this.save(e);
       this.toggleMessage();
     }
     toggleMessage(){
@@ -71,5 +88,9 @@ import { Component, OnInit } from "@angular/core";
       this.editInfo = false;
       this.editMessage = false;
 
+    }
+
+    save(payload){
+      this.profileService.editUser(payload).subscribe(data=>console.log(data));
     }
 }
