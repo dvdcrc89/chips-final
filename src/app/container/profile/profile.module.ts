@@ -23,6 +23,7 @@ import { EditInfoComponent } from './components/editInfo/editInfo.component';
 import { FormsModule } from '@angular/forms';
 import { EditMessageComponent } from './components/editMessage/editMessage.component';
 import { EditImagesComponent } from './components/imgUpload/imgUpload.component';
+import { ProfileService } from './services/profile.service';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { EditImagesComponent } from './components/imgUpload/imgUpload.component'
     ],
     exports:[
         ProfileComponent,
-    ]
+    ],
+    providers:[ProfileService]
 
 })
     export class ProfileModule {}
