@@ -43,11 +43,13 @@
 }
 
 .bio p{
-    width: 70%;
+    width: 90%;
+    font-style: italic;
+    text-align: center;
 }
 .buttons{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding-bottom:10%; 
 }
 .buttons i{
@@ -60,7 +62,7 @@
     cursor: pointer;
 }
 .intrest{
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     display: flex;
     justify-content: center;
 }
