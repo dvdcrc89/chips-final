@@ -19,6 +19,8 @@ import { NgForm } from "@angular/forms";
     prev: EventEmitter<any> = new EventEmitter();
     @Output()
     prevCover: EventEmitter<any> = new EventEmitter();
+    @Output()
+    resetV: EventEmitter<any> = new EventEmitter();
     @ViewChild('editImagesForm') editImagesForm: NgForm;
     reset:any;
     selectedFileP: File;
@@ -42,20 +44,18 @@ import { NgForm } from "@angular/forms";
     }
   
     applyEdit(e){
-      this.apply.emit(e);
+      if(this.urlP)
+        this.apply.emit({image:this.urlP,type:"PP"});
+      if(this.urlC)
+        this.apply.emit({image:this.urlC,type:"CP"});
     }
 
     resetValue(){
-
-        
-         this.coverPic = this.reset.coverPic ;
-         this.profilePic = this.reset.profilePic;
          this.selectedFileC = null;
          this.selectedFileP = null;
          this.urlC= null;
          this.urlP=null;
-         this.prev.emit(this.profilePic);  
-         this.prevCover.emit(this.coverPic);  
+          this.resetV.emit(); 
 
 
       }
@@ -95,7 +95,7 @@ import { NgForm } from "@angular/forms";
             reader.readAsDataURL(event.target.files[0]);
             this.errorMsg = null;
             this.selectedFileC = event.target.files[0]
-
+          
           } else{
             this.errorMsg = 'File must be jpg, png, or gif and cannot be exceed 5MB in size'
 
