@@ -49,6 +49,7 @@ import { environment } from '../../../../environments/environment';
       this.lastName=values.lastName;
       this.intrests=values.intrests;
       this.bio=values.bio;
+      this.bioArray=this.bio.split("\n");
 
     }
     doPreviewProfile(url){

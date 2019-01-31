@@ -25,7 +25,7 @@
 }
 .label{
     font-family: 'Open Sans', sans-serif !important;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color:#4A4A4A;
     font-weight: bold;
 
@@ -53,19 +53,21 @@
     width: 90%;
 }
 .bio .prg p{
+    margin:1%;
     font-style: italic;
     text-align: center;
 }
 .buttons{
+    margin-top: 2%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding-bottom:10%; 
 }
 .buttons i{
     font-size: 2rem;
 }
 .buttons img{
-    width: 70px;
+    width: 55px;
 }
 .buttons button{
     border: none;
