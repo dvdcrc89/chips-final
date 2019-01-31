@@ -13,10 +13,6 @@ import { NgForm } from "@angular/forms";
     coverPic: string;
     @Input()
     profilePic: string;
-    selectedFileP: File;
-    selectedFileC: File
-    urlP:any;
-    urlC:any;
     @Output()
     apply: EventEmitter<any> = new EventEmitter();
     @Output()
@@ -25,7 +21,18 @@ import { NgForm } from "@angular/forms";
     prevCover: EventEmitter<any> = new EventEmitter();
     @ViewChild('editImagesForm') editImagesForm: NgForm;
     reset:any;
-
+    selectedFileP: File;
+    selectedFileC: File
+    urlP:any;
+    urlC:any;
+    errorMsg:string;
+    errorMsgP:string;
+    acceptedTypes = [
+      'image/gif',
+      'image/jpeg',
+      'image/jpg',
+      'image/png'
+    ];
     
     ngOnInit(){
      this.reset={
@@ -55,6 +62,8 @@ import { NgForm } from "@angular/forms";
       onFileChangedProfile(event) {
         
         if (event.target.files && event.target.files[0]) {
+          if (this.validate(event.target.files[0])) {
+
             var reader = new FileReader();
         
             reader.onload = (event: ProgressEvent) => {
@@ -62,14 +71,20 @@ import { NgForm } from "@angular/forms";
               this.prev.emit(this.urlP);  
 
             }
-        
+            this.errorMsgP=null;
             reader.readAsDataURL(event.target.files[0]);
+            this.selectedFileP = event.target.files[0]
+
+          } else{
+            this.errorMsgP = 'File must be jpg, png, or gif and cannot be exceed 5MB in size'
+
           }
-        this.selectedFileP = event.target.files[0]
+          }
       }
       onFileChangedCover(event) {
         
         if (event.target.files && event.target.files[0]) {
+          if (this.validate(event.target.files[0])) {
             var reader = new FileReader();
         
             reader.onload = (event: ProgressEvent) => {
@@ -78,10 +93,20 @@ import { NgForm } from "@angular/forms";
             }
         
             reader.readAsDataURL(event.target.files[0]);
-          }
-        this.selectedFileC = event.target.files[0]
+            this.errorMsg = null;
+            this.selectedFileC = event.target.files[0]
+
+          } else{
+            this.errorMsg = 'File must be jpg, png, or gif and cannot be exceed 5MB in size'
+
+          }}
         console.log(this.selectedFileC);
       }
       
+    validate(file){
+      return this.acceptedTypes.includes(file.type) && file.size < 5000000;
+
+
+    }
     
 }

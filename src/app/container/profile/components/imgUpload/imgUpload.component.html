@@ -6,6 +6,9 @@
             <form name="editImagesForm"  #editImagesForm="ngForm">
                 <div class="field">
                 <h4 class="text-center">Profile Picture</h4>
+                <div class="error" *ngIf="errorMsgP">
+                        <span>{{errorMsgP}}</span>  
+                </div>
                 <div class="flex">
                         <img class="prevP" [src]="urlP" *ngIf="urlP">
                 </div>
@@ -20,6 +23,11 @@
                 </div>
                         <hr>
                         <h4 class="text-center">Cover Picture</h4>
+                        <div class="error"  *ngIf="errorMsg">
+                                <span >{{errorMsg}}</span>  
+                        </div>
+                              
+
                         <div class="flex">
                                 <img class="prevC" [src]="urlC" *ngIf="urlC">
                         </div>                       
@@ -30,7 +38,6 @@
                                 accept="image/png, image/jpeg"
                                 #fileInputC>
                                 <button mat-raised-button color="accent" (click)="fileInputC.click()">UPLOAD</button>
-
                         </div>
                         <hr>
                                    <div class="flex">
