@@ -19,7 +19,7 @@ import { environment } from '../../../../environments/environment';
     bio:string;
     message:string;
     username:string;
-
+    bioArray:string[];
     editInfo:boolean = false;
     editMessage:boolean = false;
     editImages:boolean = false;
@@ -32,9 +32,11 @@ import { environment } from '../../../../environments/environment';
         this.firstName=data.firstName;
         this.lastName=data.lastName;
         this.bio = data.bio;
+        this.bioArray=data.bio.split("<br>")
         this.message= data.message ? data.message: "";
         this.intrests= data.intrests?  data.intrests.split(','):"";
         this.setImgs();
+    
       });
     
     
@@ -99,8 +101,18 @@ import { environment } from '../../../../environments/environment';
     setImgs(){
       this.profilePic = environment.s3_imgs+this.username+"_PP";
       this.coverPic = environment.s3_imgs+this.username+"_CP";
+      // console.log(this.isImage(this.profilePic));
+  //     if(this.profilePic.match(/\.(jpeg|jpg|gif|png)$/)!==null){
+  //          this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
+  //   }
+  //   if(this.coverPic.match(/\.(jpeg|jpg|gif|png)$/)!==null){
+  //     this.coverPic="https://picsum.photos/2000/800";
+  // }
       console.log(this.profilePic,this.coverPic);
 
     }
-    
+    // isImage(url){
+    //   return (url.match(/\.(jpg|gif|png)$/)!= null);
+
+    // }
 }

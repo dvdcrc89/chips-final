@@ -30,6 +30,7 @@ import { NgForm } from "@angular/forms";
         'Assistant Manager','Sous Chef','Bartender'
     ]
     ngOnInit(){
+        this.bio = this.bio.replace(/<br>/g,"\n")
      this.reset={
         firstName :this.firstName,
         lastName :this.lastName,
@@ -43,6 +44,7 @@ import { NgForm } from "@angular/forms";
       })
     }
     applyEdit(e){
+        this.editInfoForm.value.bio = this.editInfoForm.value.bio.replace(/\n/g,"<br>");
         this.apply.emit(this.editInfoForm.value);
     }
 
@@ -51,7 +53,7 @@ import { NgForm } from "@angular/forms";
         console.log(this.reset);
          this.firstName = this.reset.firstName ;
          this.lastName = this.reset.lastName ;
-         this.bio = this.reset.bio ;
+         this.bio = this.reset.bio;
          this.intrests=this.reset.intrests;
       }
      
