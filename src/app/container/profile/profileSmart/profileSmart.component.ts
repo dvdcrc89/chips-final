@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ProfileService } from "../services/profile.service";
 import { Profile } from "selenium-webdriver/firefox";
-
+import { environment } from '../../../../environments/environment';
 
 @Component({
     selector: 'profile',
@@ -18,6 +18,7 @@ import { Profile } from "selenium-webdriver/firefox";
     intrests:string[];
     bio:string;
     message:string;
+    username:string;
 
     editInfo:boolean = false;
     editMessage:boolean = false;
@@ -27,19 +28,19 @@ import { Profile } from "selenium-webdriver/firefox";
       ) { }
     ngOnInit(){
       this.profileService.getMyself().subscribe(data=>{
+        this.username = data.username;
         this.firstName=data.firstName;
         this.lastName=data.lastName;
         this.bio = data.bio;
         this.message= data.message ? data.message: "";
         this.intrests= data.intrests?  data.intrests.split(','):"";
+        this.setImgs();
       });
-      this.coverPic="../../../../../assets/cover.jpg";
-      this.profilePic="../../../../assets/profile.jpg";
     
     
-      if(this.profilePic.length<=0){
-        this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
-      }
+      // if(this.profilePic.length<=0){
+      //   this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
+      // }
     }
     changeInfo(values){
       this.firstName=values.firstName;
@@ -81,7 +82,8 @@ import { Profile } from "selenium-webdriver/firefox";
 
     }
     applyImages(e){
-      this.toggleImages();
+      this.profileService.uploadImg(e.image,e.type).subscribe(data=>console.log(data));
+      this.editImages=false;
     }
     toggleImages(){
       this.editImages=!this.editImages;
@@ -93,4 +95,12 @@ import { Profile } from "selenium-webdriver/firefox";
     save(payload){
       this.profileService.editUser(payload).subscribe(data=>console.log(data));
     }
+
+    setImgs(){
+      this.profilePic = environment.s3_imgs+this.username+"_PP";
+      this.coverPic = environment.s3_imgs+this.username+"_CP";
+      console.log(this.profilePic,this.coverPic);
+
+    }
+    
 }

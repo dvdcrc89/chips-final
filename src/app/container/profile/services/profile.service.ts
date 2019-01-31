@@ -38,6 +38,14 @@ export class ProfileService {
       .get<Profile>(this.url+"/profile/get/"+me)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
+  uploadImg(payload:string,type:string): Observable<any>{
+    const base64File =payload.split(',')[1];
+    const username=this.authService.getAuthenticatedUser().getUsername();
+    const data = {'image': base64File,type,username};
+    console.log("payload",data);
+    return this.http
+      .post(this.url+"/profile/upload", data)
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
 
-
+      }
 }
