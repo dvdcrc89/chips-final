@@ -18,7 +18,7 @@
     /* background: url('../../../../../assets/cover.jpg'); */
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 250px;
@@ -36,7 +36,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 1px solid white;
+    border: 3px solid white;
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 
 }
