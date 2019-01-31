@@ -22,9 +22,12 @@ import { Component, OnInit, Input } from "@angular/core";
     @Input()
     bio: string;
     @Input()
+    bioArray: string;
+    @Input()
     intrests: string[];
     
     ngOnInit(){
+
 
     }
 }

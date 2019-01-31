@@ -13,17 +13,26 @@
 }
 .images{
     display: flex;
+    position: relative;
     justify-content: center;
     /* background: url('../../../../../assets/cover.jpg'); */
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 250px;
 }
+.label{
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 1rem;
+    color:#4A4A4A;
+    font-weight: bold;
+
+}
 .profile_pic{
-    margin-top: 14%; 
+    position: absolute;
+    top:50%;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -34,16 +43,16 @@
 .name{
     display: flex;
     justify-content: center;
-    margin-top: 8%;
+    margin-top: 70px;
 }
 .bio{
     display: flex;
     justify-content: center;
-    padding-bottom: 5%;
 }
-
-.bio p{
+.prg{
     width: 90%;
+}
+.bio .prg p{
     font-style: italic;
     text-align: center;
 }
@@ -53,12 +62,15 @@
     padding-bottom:10%; 
 }
 .buttons i{
-    font-size: 4rem;
+    font-size: 2rem;
+}
+.buttons img{
+    width: 70px;
 }
 .buttons button{
-
-    background: transparent;
     border: none;
+    background: transparent;
+    padding:4%;
     cursor: pointer;
 }
 .intrest{
