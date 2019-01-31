@@ -20,14 +20,13 @@ import { NgForm } from "@angular/forms";
 
     
     ngOnInit(){
-     this.message = this.message.replace(/<br>/g,"\n");  
-     if(!this.message) this.message="";   
+     this.message = this.message? this.message.replace(/<br>/g,"\n") :"";  
      this.reset={
         message :this.message,
      }
     }
     applyEdit(e){
-        this.editMessageForm.value.message =this.editMessageForm.value.message.replace(/\n/g,"<br>");
+        this.editMessageForm.value.message = this.editMessageForm.value.message ? this.editMessageForm.value.message.replace(/\n/g,"<br>"):"";
         this.apply.emit(this.editMessageForm.value);
     }
 

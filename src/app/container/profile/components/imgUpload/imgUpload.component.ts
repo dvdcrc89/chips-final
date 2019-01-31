@@ -55,7 +55,7 @@ import { NgForm } from "@angular/forms";
          this.selectedFileP = null;
          this.urlC= null;
          this.urlP=null;
-          this.resetV.emit(); 
+         this.resetV.emit(); 
 
 
       }

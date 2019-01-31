@@ -32,7 +32,8 @@ import { environment } from '../../../../environments/environment';
         this.firstName=data.firstName;
         this.lastName=data.lastName;
         this.bio = data.bio;
-        this.bioArray=data.bio.split("<br>")
+      
+        this.bioArray=this.bio ? data.bio.split("<br>") : [""]
         this.message= data.message ? data.message: "";
         this.intrests= data.intrests?  data.intrests.split(','):"";
         this.setImgs();
@@ -49,6 +50,7 @@ import { environment } from '../../../../environments/environment';
       this.lastName=values.lastName;
       this.intrests=values.intrests;
       this.bio=values.bio;
+      if(this.bio)
       this.bioArray=this.bio.split("\n");
 
     }
