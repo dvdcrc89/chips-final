@@ -1,0 +1,34 @@
+<div class="container">
+        <div class="wrapper">
+          <div class="title">
+              <span>Edit Resume</span>
+            </div>
+            <form name="editCVForm"  #editImagesForm="ngForm">
+                <div class="field">
+                <h4 class="text-center">Resume</h4>
+                <div class="error" *ngIf="errorMsg">
+                        <span>{{errorMsg}}</span>  
+                </div>
+                <div class="flex">
+                </div>
+                <div class="flex">
+                        <input
+                        style="display: none"
+                        type="file" (change)="onFileChanged($event)"
+                        accept="application/pdf"
+                        #fileInput>
+                        <button mat-raised-button color="primary" (click)="fileInput.click()">UPLOAD</button>
+
+                </div>                        
+                        <hr>
+                                   <div class="flex">
+                                        <button mat-raised-button type="button" (click)="applyEdit($event)" color="primary">Save</button>
+                                        <button mat-raised-button type="button" (click)="resetValue()">Reset</button>
+
+                              </div> 
+                </div>
+         
+            </form>
+               
+        </div>
+      </div>

@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { EditMessageComponent } from './components/editMessage/editMessage.component';
 import { EditImagesComponent } from './components/imgUpload/imgUpload.component';
 import { ProfileService } from './services/profile.service';
+import { EditCVComponent } from './components/editCV/editCV.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ProfileService } from './services/profile.service';
     ProfileUIComponent,
     EditInfoComponent,
     EditMessageComponent,
-    EditImagesComponent
+    EditImagesComponent,
+    EditCVComponent
       
     
     ],

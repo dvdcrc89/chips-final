@@ -20,7 +20,7 @@
                         <button class="toggle-map-btn" mat-raised-button (click)="toggleImages()" >
                             <span >Edit Pictures</span>
                         </button>
-                        <button class="toggle-map-btn" mat-raised-button >
+                        <button class="toggle-map-btn" mat-raised-button (click)="toggleCV()">
                             <span >Edit CV</span>
                         </button>
                         <button class="toggle-map-btn" mat-raised-button (click)="toggleMessage()" >
@@ -56,6 +56,12 @@
                             (resetV)="setImgs()"
                             ></editImages>  
                     </div>
+                    <div class="big-card" *ngIf="editCV">
+                        <editCV
+                        [cv]="cv"
+                        (apply)="applyImages($event)"
+                        ></editCV>  
+                </div>
         </div>
   
 </div>
