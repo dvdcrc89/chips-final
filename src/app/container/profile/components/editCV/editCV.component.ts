@@ -56,7 +56,7 @@ import { NgForm } from "@angular/forms";
             this.selectedFile = event.target.files[0]
 
           } else{
-            this.errorMsg = 'File must be jpg, png, or gif and cannot be exceed 5MB in size'
+            this.errorMsg = 'File must be a pdf and cannot be exceed 5MB in size'
 
           }
           }
