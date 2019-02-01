@@ -23,6 +23,7 @@ import { environment } from '../../../../environments/environment';
     editInfo:boolean = false;
     editMessage:boolean = false;
     editImages:boolean = false;
+    editCV:boolean=false;
     constructor(
       private profileService: ProfileService
       ) { }
@@ -74,6 +75,13 @@ import { environment } from '../../../../environments/environment';
       this.editInfo = !this.editInfo;
       this.editMessage = false;
       this.editImages=false;
+      this.editCV=false;
+    }
+    toggleCV(){
+      this.editCV= !this.editCV;
+      this.editInfo = false;
+      this.editMessage = false;
+      this.editImages=false;
     }
     applyMessage(e){
       console.log(e);
@@ -84,6 +92,7 @@ import { environment } from '../../../../environments/environment';
       this.editMessage = !this.editMessage;
       this.editInfo = false;
       this.editImages=false;
+      this.editCV=false;
 
     }
     applyImages(e){
@@ -94,6 +103,7 @@ import { environment } from '../../../../environments/environment';
       this.editImages=!this.editImages;
       this.editInfo = false;
       this.editMessage = false;
+      this.editCV=false;
 
     }
 
@@ -102,8 +112,8 @@ import { environment } from '../../../../environments/environment';
     }
 
     setImgs(){
-      this.profilePic = environment.s3_imgs+this.username+"_PP";
-      this.coverPic = environment.s3_imgs+this.username+"_CP";
+      this.profilePic = environment.s3_imgs+this.username+"_PP"+"?"+Math.random();
+      this.coverPic = environment.s3_imgs+this.username+"_CP"+"?"+Math.random();
       // console.log(this.isImage(this.profilePic));
   //     if(this.profilePic.match(/\.(jpeg|jpg|gif|png)$/)!==null){
   //          this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
