@@ -24,6 +24,7 @@ import { NgForm } from "@angular/forms";
     ];
     
     ngOnInit(){
+      this.url = this.cv;
      this.reset={
         cv :this.cv,
      }
@@ -35,8 +36,7 @@ import { NgForm } from "@angular/forms";
     }
 
     resetValue(){
-         this.cv=this.reset.cv;
-         this.url=null;
+         this.url=this.cv;
 
 
       }

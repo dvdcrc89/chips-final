@@ -25,6 +25,7 @@ import { EditMessageComponent } from './components/editMessage/editMessage.compo
 import { EditImagesComponent } from './components/imgUpload/imgUpload.component';
 import { ProfileService } from './services/profile.service';
 import { EditCVComponent } from './components/editCV/editCV.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EditCVComponent } from './components/editCV/editCV.component';
         MatButtonToggleModule,
         MatChipsModule,
         CommonModule,
-        FormsModule
+        FormsModule,
+        PdfViewerModule
 
     ],
     exports:[

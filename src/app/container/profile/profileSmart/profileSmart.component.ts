@@ -20,6 +20,7 @@ import { environment } from '../../../../environments/environment';
     message:string;
     username:string;
     bioArray:string[];
+    cv:string;
     editInfo:boolean = false;
     editMessage:boolean = false;
     editImages:boolean = false;
@@ -33,7 +34,7 @@ import { environment } from '../../../../environments/environment';
         this.firstName=data.firstName;
         this.lastName=data.lastName;
         this.bio = data.bio;
-      
+        this.cv = environment.s3_imgs+this.username+"_CV"+"?"+Math.random()
         this.bioArray=this.bio ? data.bio.split("<br>") : [""]
         this.message= data.message ? data.message: "";
         this.intrests= data.intrests?  data.intrests.split(','):"";

@@ -10,6 +10,15 @@
                         <span>{{errorMsg}}</span>  
                 </div>
                 <div class="flex">
+                        <pdf-viewer
+                                (click)="fileInput.click()"
+                                [src]="url" 
+                                [render-text]="true"
+                                style="display: block;"
+                                [original-size]="true"
+                                [show-all]="false"
+                                [fit-to-page]="true"
+                    ></pdf-viewer>
                 </div>
                 <div class="flex">
                         <input
