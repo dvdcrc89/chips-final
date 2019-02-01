@@ -17,15 +17,15 @@
 
 </nav>
 
-<div  class="mob-menu mobile-menu animated 1" 
+<div *ngIf="!isFirstTime" class="mob-menu mobile-menu animated 1" 
   [ngClass]="[isMenuOpen ? 'slideInRight' : 'slideOutLeft']"><a class="nav-link" href="/profile">Profile</a>
 </div>
-<div class="mob-menu mobile-menu-1 animated 1 delay-1" 
+<div *ngIf="!isFirstTime" class="mob-menu mobile-menu-1 animated 1 delay-1" 
   [ngClass]="[isMenuOpen ? 'slideInLeft' : 'slideOutRight']"><a class="nav-link" href="/jobs">Jobs market</a>
 </div>
-<div class="mob-menu mobile-menu-2 animated 1 delay-2" 
+<div *ngIf="!isFirstTime" class="mob-menu mobile-menu-2 animated 1 delay-2" 
   [ngClass]="[isMenuOpen ? 'slideInRight' : 'slideOutLeft']"><a class="nav-link">Chat</a>
 </div>
-<div class="mob-menu mobile-menu-3 animated 1 delay-3"  
+<div *ngIf="!isFirstTime" class="mob-menu mobile-menu-3 animated 1 delay-3"  
   [ngClass]="[isMenuOpen ? 'slideInLeft' : 'slideOutRight']"><a class="nav-link">Help</a>
 </div>
