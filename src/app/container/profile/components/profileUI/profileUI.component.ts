@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: 'profileUI',
@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from "@angular/core";
 
 
   export class ProfileUIComponent implements OnInit {
-  @Input()
+    @Input()
     coverPic: string;
     @Input()
     profilePic: string;
@@ -25,9 +25,14 @@ import { Component, OnInit, Input } from "@angular/core";
     bioArray: string;
     @Input()
     intrests: string[];
+    @Output()
+    openCV: EventEmitter<any> = new EventEmitter
     
     ngOnInit(){
 
 
+    }
+    handleOpenCV(){
+      this.openCV.emit();
     }
 }

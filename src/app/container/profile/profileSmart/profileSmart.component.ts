@@ -107,7 +107,9 @@ import { environment } from '../../../../environments/environment';
       this.editCV=false;
 
     }
-
+    openCV(){
+      window.open(this.cv, '_blank');
+    }
     save(payload){
       this.profileService.editUser(payload).subscribe(data=>console.log(data));
     }
