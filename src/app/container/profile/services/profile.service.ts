@@ -12,7 +12,7 @@ import { environment } from '../../../../environments/environment';
 export class ProfileService {
   constructor(private http: HttpClient,private authService: AuthService) {}
   
-  url:string = "https://srfmw4515g.execute-api.eu-west-2.amazonaws.com/dev";
+  url:string = environment.backendUrl;
   endPoints:any;
   getUser(payload:string): Observable<Profile> {
     return this.http
