@@ -1,0 +1,32 @@
+<div class="container">
+        <div class="wrapper">
+          <div class="title">
+              <span>Edit Info</span>
+            </div>
+            <form name="editInfoForm" (ngSubmit)="applyEdit($event)" #editInfoForm="ngForm">
+                <div class="field">
+                        <mat-form-field class="">
+                                <input matInput [(ngModel)]="firstName" id="firstName" name="firstName" type="text" placeholder="First Name" required>
+                              </mat-form-field>
+                              <mat-form-field class="">
+                                    <input matInput [(ngModel)]="lastName" id="lastName" name="lastName" type="text" placeholder="Last Name" required>
+                                  </mat-form-field>
+                              <mat-form-field class="">
+                                      <textarea [(ngModel)]="bio" id="bio" name="bio" matInput type="text" placeholder="Bio"></textarea>
+                                  </mat-form-field>
+                                  <mat-form-field>
+                                        <mat-select id="intrests" name="intrests"  placeholder="I am looking for" [(ngModel)]="intrests" multiple>
+                                          <mat-option *ngFor="let intrest of intrestList" [value]="intrest" selected>{{intrest}}</mat-option>
+                                        </mat-select>
+                                   </mat-form-field>
+                                   <div class="flex">
+                                        <button mat-raised-button type="submit" color="primary">Save</button>
+                                        <button mat-raised-button type="button" (click)="resetValue()">Reset</button>
+
+                              </div> 
+                </div>
+         
+            </form>
+               
+        </div>
+      </div>

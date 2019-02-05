@@ -1,0 +1,31 @@
+
+<div class="container">
+    <div class="images" [ngStyle]="{'background-image':' url(' + coverPic + ')'}">
+            <img class="profile_pic" [src]="profilePic">
+            <!-- <h3>Jessica Pip</h3> -->
+         
+        </div>
+    <div class="name">
+        <h1>{{firstName}} {{lastName}}</h1>
+    </div>
+   
+    <div class="intrest">
+            <mat-chip-list>
+                    <mat-chip *ngFor="let intest of intrests" color="accent" selected >{{intest}}</mat-chip>
+                  </mat-chip-list>
+    </div>
+    
+    <div class="bio"> 
+        <div class="prg">
+            <p *ngFor="let par of bioArray">{{par}}</p>
+        </div>   
+       
+    </div>
+    <div class="buttons">
+            <button><img src="../../../../../assets/messenger.svg">
+            <p class="label">Message {{firstName}}</p></button>
+            <button (click)="handleOpenCV()"><img src="../../../../../assets/resume.svg">
+                <p class="label">{{firstName}} Resume</p></button>
+    </div>
+   
+</div>

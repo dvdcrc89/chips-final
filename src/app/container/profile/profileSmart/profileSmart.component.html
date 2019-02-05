@@ -1,0 +1,74 @@
+<div class="profile_map_grid">
+        <div [ngClass]="{'hide': editMessage || editImages|| editInfo || editCV}">
+         <profileUI 
+         [coverPic]="coverPic"
+         [profilePic]="profilePic"
+         [firstName]="firstName"
+         [lastName]="lastName"
+         [intrests]="intrests"
+         [bio]="bio"
+         [bioArray]="bioArray"
+         (openCV)="openCV()">
+        </profileUI>
+        </div>
+        
+        
+        <div>
+                    <div class="jobs-actionbar hide">
+                        <button class="toggle-map-btn" mat-raised-button (click)="toggleInfo()" >
+                           <span >Edit Info</span>
+                        </button>
+                        <button class="toggle-map-btn" mat-raised-button (click)="toggleImages()" >
+                            <span >Edit Pictures</span>
+                        </button>
+                        <button class="toggle-map-btn" mat-raised-button (click)="toggleCV()">
+                            <span >Edit CV</span>
+                        </button>
+                        <button class="toggle-map-btn" mat-raised-button (click)="toggleMessage()" >
+                            <span >Edit Message</span>
+                         </button>
+            
+                    </div>
+                    <div class="big-card" *ngIf="editInfo">
+                            <editInfo 
+                            [firstName]="firstName"
+                            [lastName]="lastName"
+                            [bio]="bio"
+                            [intrests]="intrests"
+                            (mod)="changeInfo($event)"
+                            (apply)="applyInfo($event)"
+                            ></editInfo>  
+                    </div>
+                    <div class="big-card" *ngIf="editMessage">
+                            <editMessage 
+                            [message]="message"
+                            (apply)="applyMessage($event)"
+
+                     
+                            ></editMessage>  
+                    </div>
+                    <div class="big-card" *ngIf="editImages">
+                            <editImages
+                            [coverPic]="coverPic"
+                            [profilePic]="profilePic"
+                            (prev)="doPreviewProfile($event)"
+                            (prevCover)="doPreviewCover($event)"
+                            (apply)="applyImages($event)"
+                            (resetV)="setImgs()"
+                            ></editImages>  
+                    </div>
+                    <div class="big-card" *ngIf="editCV">
+                        <editCV
+                        [cv]="cv"
+                        (apply)="applyImages($event)"
+                        ></editCV>  
+                </div>
+        </div>
+  
+</div>
+<div  class="action_bar">
+        <i class="fas fa-user-edit"  (click)="toggleInfo()"></i>
+        <i class="fas fa-images"  (click)="toggleImages()"></i>
+        <i class="fas fa-pen-nib" (click)="toggleMessage()"></i>
+        <i class="far fa-file-pdf" (click)="toggleCV()"></i>
+</div>

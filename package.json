@@ -30,6 +30,7 @@
     "amazon-cognito-identity-js": "^3.0.3",
     "animate.css": "^3.7.0",
     "core-js": "^2.5.4",
+    "ng2-pdf-viewer": "^5.2.3",
     "ngx-google-places-autocomplete": "^2.0.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

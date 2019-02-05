@@ -9,6 +9,8 @@ import { AppRoutingModule } from '../app/container/router/app-routing.module';
 import { AuthService } from '../app/container/user/auth.service';
 import { AppComponent } from './app.component';
 import { JobsModule} from './container/jobs/jobs.module'
+import { ProfileModule} from './container/profile/profile.module'
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -46,6 +48,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   imports: [
     BrowserModule,
     JobsModule,
+    ProfileModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,

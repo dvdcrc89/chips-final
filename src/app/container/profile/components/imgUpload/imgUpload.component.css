@@ -1,0 +1,91 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+.container{
+    color:#4A4A4A;
+    display: flex;
+    justify-content: center;
+    background: white;
+    width: 95%;
+    padding: 3%;
+    border-radius: 8px;
+    margin-bottom: 10%;
+    -webkit-box-shadow: -1px 2px 14px 2px rgba(189,189,189,0.36);
+    -moz-box-shadow: -1px 2px 14px 2px rgba(189,189,189,0.36);
+    box-shadow: -1px 2px 14px 2px rgba(189,189,189,0.36);
+    font-family: 'Open Sans', sans-serif !important;
+
+
+}
+.error{
+    font-size: 0.6rem;
+    background:red;
+    margin: 30px;
+    color:white;
+    padding:10px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+mat-form-field{
+    width: 50%;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    font-size:1.3rem;
+    font-weight: bold;
+}
+.field{
+    margin-top: 10px;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+
+}
+mat-form-field{
+    margin-top: 33px;
+    width: 100%;
+    height: auto;
+}
+.text-center{
+    text-align: center;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+.mat-chip-list-wrapper{
+    justify-content: center !important;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+.prevP{
+    border-radius: 10px;
+    width: 120px;
+    height: 120px;
+}
+.prevC{
+    border-radius: 10px;
+    width: 180px;
+    height: 120px;
+}
+@media screen and (max-width: 768px){
+
+
+mat-button-toggle{
+    font-size:0.8rem;
+}
+}
