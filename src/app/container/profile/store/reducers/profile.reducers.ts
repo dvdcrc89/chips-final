@@ -11,7 +11,14 @@ export interface ProfileState {
 
 export const initialState: ProfileState = {
     allUsers: [],
-    myself:{},
+    myself:{
+        firstName: "John",
+        lastName:"Smith",
+        intrests: "KP,Waiter",
+        bio: "ciao",
+        message: "ciao"
+
+    },
     profileToSee:{},  
     loaded: false,
     loading: false
@@ -107,3 +114,5 @@ export const getProfileLoading = (state: ProfileState) => state.loading;
 export const getProfileLoaded = (state: ProfileState) => state.loaded;
 export const getProfileAllUsers = (state: ProfileState) => state.allUsers;
 export const getProfileToSee = (state: ProfileState) => state.profileToSee;
+export const getMySelf = (state: ProfileState) => state.myself;
+
