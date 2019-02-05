@@ -10,6 +10,6 @@ export const reducers: ActionReducerMap<ProfileSectionState> = {
 }
 
 
-export const getMyselfState = createFeatureSelector<ProfileSectionState>('myself');
+export const getMyselfState = createFeatureSelector<ProfileSectionState>('profiles');
 
-export const getProfileState = createSelector((state:ProfileSectionState)=> state.profileState);
+export const getProfileState = createSelector(getMyselfState,(state:ProfileSectionState)=> state.profileState);
