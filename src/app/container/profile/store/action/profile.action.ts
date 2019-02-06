@@ -46,7 +46,7 @@ export class EditInfoSuccess implements Action {
 
 export class UploadFile implements Action {
     readonly type = UPLOAD_FILE;
-    constructor(public payload: File){}
+    constructor(public file:string,public fileType:string){}
 
 }
 export class UploadFileFail implements Action {
