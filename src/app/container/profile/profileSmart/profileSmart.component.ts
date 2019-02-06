@@ -13,7 +13,8 @@ import { Store } from "@ngrx/store";
     
   })
   export class ProfileComponent implements OnInit {
-  
+    isLoading$: Observable<boolean>;
+    isLoaded$: Observable<boolean>;
     coverPic$:Observable<string>;
     profilePic$:Observable<string>;
     firstName$:Observable<string>;
@@ -33,6 +34,8 @@ import { Store } from "@ngrx/store";
       private store: Store<fromStore.ProfileSectionState>
       ) { }
     ngOnInit(){
+      this.isLoading$=this.store.select(fromStore.getProfileLoading);
+      this.isLoaded$=this.store.select(fromStore.getProfileLoaded);
       this.username$ = this.store.select(fromStore.getMyUsername);
       this.firstName$=this.store.select(fromStore.getMyName);
       this.lastName$=this.store.select(fromStore.getMyLastName);

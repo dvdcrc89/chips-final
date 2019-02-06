@@ -1,4 +1,7 @@
-<div class="profile_map_grid">
+<div class="loader" *ngIf="isLoading$ | async">
+        <span>Loading...</span>
+</div>
+<div class="profile_map_grid" *ngIf="!(isLoading$ | async) && isLoaded$ |async">
         <div [ngClass]="{'hide': editMessage || editImages|| editInfo || editCV}">
          <profileUI 
          [coverPic]="coverPic$ |async"
@@ -75,3 +78,4 @@
         <i class="fas fa-pen-nib" (click)="toggleMessage()"></i>
         <i class="far fa-file-pdf" (click)="toggleCV()"></i>
 </div>
+
