@@ -1,6 +1,6 @@
 <div class="loader" *ngIf="isLoading$ | async">
-        <span>Loading...</span>
-</div>
+                <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
+                ></div>
 <div class="profile_map_grid" *ngIf="!(isLoading$ | async) && isLoaded$ |async">
         <div [ngClass]="{'hide': editMessage || editImages|| editInfo || editCV}">
          <profileUI 
