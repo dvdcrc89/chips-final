@@ -1,13 +1,13 @@
 <div class="profile_map_grid">
         <div [ngClass]="{'hide': editMessage || editImages|| editInfo || editCV}">
          <profileUI 
-         [coverPic]="coverPic"
-         [profilePic]="profilePic"
-         [firstName]="firstName"
-         [lastName]="lastName"
-         [intrests]="intrests"
-         [bio]="bio"
-         [bioArray]="bioArray"
+         [coverPic]="coverPic$ |async"
+         [profilePic]="profilePic$ |async"
+         [firstName]="firstName$ | async"
+         [lastName]="lastName$ |async"
+         [intrests]="intrests$ | async"
+         [bio]="bio$ | async"
+         [bioArray]="bioArray$ |async"
          (openCV)="openCV()">
         </profileUI>
         </div>
@@ -31,36 +31,39 @@
                     </div>
                     <div class="big-card" *ngIf="editInfo">
                             <editInfo 
-                            [firstName]="firstName"
-                            [lastName]="lastName"
-                            [bio]="bio"
-                            [intrests]="intrests"
-                            (mod)="changeInfo($event)"
+                            [firstName]="firstName$ |async"
+                            [lastName]="lastName$ |async"
+                            [bio]="bio$ |async"
+                            [intrests]="intrests$ |async"
+                            (reset)="reset($event)"
                             (apply)="applyInfo($event)"
                             ></editInfo>  
                     </div>
                     <div class="big-card" *ngIf="editMessage">
                             <editMessage 
-                            [message]="message"
+                            [message]="message$ |async"
                             (apply)="applyMessage($event)"
-
+                            (reset)="reset($event)"
+   
                      
                             ></editMessage>  
                     </div>
                     <div class="big-card" *ngIf="editImages">
                             <editImages
-                            [coverPic]="coverPic"
-                            [profilePic]="profilePic"
+                            [coverPic]="coverPic$ |async"
+                            [profilePic]="profilePic$ |async"
                             (prev)="doPreviewProfile($event)"
                             (prevCover)="doPreviewCover($event)"
                             (apply)="applyImages($event)"
-                            (resetV)="setImgs()"
+                            (reset)="reset($event)"
                             ></editImages>  
                     </div>
                     <div class="big-card" *ngIf="editCV">
                         <editCV
-                        [cv]="cv"
+                        [cv]="cv$ |async"
                         (apply)="applyImages($event)"
+                        (reset)="reset($event)"
+
                         ></editCV>  
                 </div>
         </div>

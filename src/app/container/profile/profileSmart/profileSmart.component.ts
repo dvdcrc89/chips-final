@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ProfileService } from "../services/profile.service";
 import { Profile } from "selenium-webdriver/firefox";
 import { environment } from '../../../../environments/environment';
+import * as fromStore from '../store';
+import { Observable, of } from "rxjs";
+import { Store } from "@ngrx/store";
 
 @Component({
     selector: 'profile',
@@ -11,56 +14,46 @@ import { environment } from '../../../../environments/environment';
   })
   export class ProfileComponent implements OnInit {
   
-    coverPic:string;
-    profilePic:string;
-    firstName:string;
-    lastName:string;
-    intrests:string[];
-    bio:string;
-    message:string;
-    username:string;
-    bioArray:string[];
-    cv:string;
+    coverPic$:Observable<string>;
+    profilePic$:Observable<string>;
+    firstName$:Observable<string>;
+    lastName$:Observable<string>;
+    intrests$:Observable<string[]>;
+    bio$:Observable<string>;
+    message$:Observable<string>;
+    username$:Observable<string>;
+    bioArray$:Observable<string[]>;
+    cv$:Observable<string>;
     editInfo:boolean = false;
     editMessage:boolean = false;
     editImages:boolean = false;
     editCV:boolean=false;
     constructor(
-      private profileService: ProfileService
+      private profileService: ProfileService,
+      private store: Store<fromStore.ProfileSectionState>
       ) { }
     ngOnInit(){
-      this.profileService.getMyself().subscribe(data=>{
-        this.username = data.username;
-        this.firstName=data.firstName;
-        this.lastName=data.lastName;
-        this.bio = data.bio;
-        this.cv = environment.s3_imgs+this.username+"_CV"+"?"+Math.random()
-        this.bioArray=this.bio ? data.bio.split("<br>") : [""]
-        this.message= data.message ? data.message: "";
-        this.intrests= data.intrests?  data.intrests.split(','):"";
-        this.setImgs();
-    
-      });
-    
-    
-      // if(this.profilePic.length<=0){
-      //   this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
-      // }
+      this.username$ = this.store.select(fromStore.getMyUsername);
+      this.firstName$=this.store.select(fromStore.getMyName);
+      this.lastName$=this.store.select(fromStore.getMyLastName);
+      this.bio$ = this.store.select(fromStore.getMyBio);
+      this.profilePic$ = this.store.select(fromStore.getMyPP);
+      this.coverPic$ = this.store.select(fromStore.getMyCP);
+      this.cv$ = this.store.select(fromStore.getMyCV);
+      this.bioArray$=this.store.select(fromStore.getMyBioArray);
+      this.message$= this.store.select(fromStore.getMyMessage);
+      this.intrests$= this.store.select(fromStore.getMyIntrests);
+      this.store.dispatch(new fromStore.LoadMyself);
     }
-    changeInfo(values){
-      this.firstName=values.firstName;
-      this.lastName=values.lastName;
-      this.intrests=values.intrests;
-      this.bio=values.bio;
-      if(this.bio)
-      this.bioArray=this.bio.split("\n");
-
+    reset(){
+      this.profilePic$ = this.store.select(fromStore.getMyPP);
+      this.coverPic$ = this.store.select(fromStore.getMyCP);
     }
     doPreviewProfile(url){
-      this.profilePic=url;
+      this.profilePic$= of(url);
     }
     doPreviewCover(url){
-      this.coverPic=url;
+      this.coverPic$=of(url);
     }
     applyInfo(profile){
 
@@ -97,7 +90,9 @@ import { environment } from '../../../../environments/environment';
 
     }
     applyImages(e){
-      this.profileService.uploadImg(e.image,e.type).subscribe(data=>console.log(data));
+      this.store.dispatch(new fromStore.UploadFile(e.image,e.type));  
+
+      // this.profileService.uploadImg(e.image,e.type).subscribe(data=>console.log(data));
       this.editImages=false;
     }
     toggleImages(){
@@ -108,27 +103,27 @@ import { environment } from '../../../../environments/environment';
 
     }
     openCV(){
-      window.open(this.cv, '_blank');
+      // window.open(this.cv, '_blank');
     }
     save(payload){
-      this.profileService.editUser(payload).subscribe(data=>console.log(data));
+      this.store.dispatch(new fromStore.EditInfo(payload));  
     }
 
-    setImgs(){
-      this.profilePic = environment.s3_imgs+this.username+"_PP"+"?"+Math.random();
-      this.coverPic = environment.s3_imgs+this.username+"_CP"+"?"+Math.random();
-      // console.log(this.isImage(this.profilePic));
-  //     if(this.profilePic.match(/\.(jpeg|jpg|gif|png)$/)!==null){
-  //          this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
+  //   setImgs(){
+  //     this.profilePic = environment.s3_imgs+this.username+"_PP"+"?"+Math.random();
+  //     this.coverPic = environment.s3_imgs+this.username+"_CP"+"?"+Math.random();
+  //     // console.log(this.isImage(this.profilePic));
+  // //     if(this.profilePic.match(/\.(jpeg|jpg|gif|png)$/)!==null){
+  // //          this.profilePic="https://ui-avatars.com/api/?name="+this.firstName+'+'+this.lastName+'&background=0D8ABC&color=fff&size=512';
+  // //   }
+  // //   if(this.coverPic.match(/\.(jpeg|jpg|gif|png)$/)!==null){
+  // //     this.coverPic="https://picsum.photos/2000/800";
+  // // }
+  //     console.log(this.profilePic,this.coverPic);
+
   //   }
-  //   if(this.coverPic.match(/\.(jpeg|jpg|gif|png)$/)!==null){
-  //     this.coverPic="https://picsum.photos/2000/800";
-  // }
-      console.log(this.profilePic,this.coverPic);
+  //   // isImage(url){
+  //   //   return (url.match(/\.(jpg|gif|png)$/)!= null);
 
-    }
-    // isImage(url){
-    //   return (url.match(/\.(jpg|gif|png)$/)!= null);
-
-    // }
+  //   // }
 }
