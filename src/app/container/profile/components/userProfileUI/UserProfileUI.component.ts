@@ -15,22 +15,14 @@ import { Profile } from "src/app/models/profile.interface";
     @Input()
     profile: Profile
 
-    coverPic: string;
-    profilePic: string;
-    firstName: string;
-    lastName: string;
-    bio: string;
-    cv: string;
-    bioArray: string[];
-    intrests: string[];
-    @Output()
-    openCV: EventEmitter<any> = new EventEmitter
+  
+   
     
     ngOnInit(){
     
     }
    
     handleOpenCV(){
-      this.openCV.emit();
+      window.open(this.profile.cv, '_blank')
     }
 }
