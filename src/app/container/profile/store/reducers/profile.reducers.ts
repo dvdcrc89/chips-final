@@ -104,6 +104,33 @@ export function reducer(
                     loaded: true
                 }
             }
+            case fromProfile.LOAD_ALL_USERS:
+            {
+                return {
+                    ...state,
+                    loading: true
+                }
+            }
+        case fromProfile.LOAD_ALL_USERS_SUCCESS:
+            {
+                let allUsers = action.payload;
+                   
+                return {
+                    ...state,
+                    loading: false,
+                    loaded: true,
+                    allUsers
+                }
+            }
+        case fromProfile.LOAD_ALL_USERS_FAIL:
+            {
+                return {
+                    ...state,
+                    loading: false,
+                    loaded: false
+                }
+            }
+
        
     }
 

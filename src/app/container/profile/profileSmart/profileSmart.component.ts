@@ -47,6 +47,8 @@ import { Store } from "@ngrx/store";
       this.message$= this.store.select(fromStore.getMyMessage);
       this.intrests$= this.store.select(fromStore.getMyIntrests);
       this.store.dispatch(new fromStore.LoadMyself);
+      
+
     }
     reset(){
       this.profilePic$ = this.store.select(fromStore.getMyPP);
@@ -106,7 +108,8 @@ import { Store } from "@ngrx/store";
 
     }
     openCV(){
-      // window.open(this.cv, '_blank');
+      this.cv$.subscribe(cv=>window.open(cv, '_blank'));
+      
     }
     save(payload){
       this.store.dispatch(new fromStore.EditInfo(payload));  

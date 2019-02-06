@@ -40,4 +40,13 @@ export class ProfileEffects{
                 catchError(error => of(new profileAction.UploadFileFail(error)))          
          )}
      ))
+     @Effect()
+     loadAllUsers$ = this.actions$.ofType(profileAction.LOAD_ALL_USERS)
+      .pipe(
+          switchMap(()=>{
+             return this.profileService.getAllUsers().pipe(
+                 map(allusers => new profileAction.LoadAllUsersSuccess(allusers)),
+                 catchError(error => of(new profileAction.LoadAllUsersFail(error)))          
+          )}
+      ))
 }

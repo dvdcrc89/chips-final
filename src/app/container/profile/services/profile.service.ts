@@ -19,6 +19,11 @@ export class ProfileService {
       .get<Profile>(this.url+"/profile/get/"+payload)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
+  getAllUsers(): Observable<Profile[]> {
+    return this.http
+      .get<Profile[]>(this.url+"/profile/getall/")
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
+  }
 
   editUser(payload: Profile): Observable<Profile> {
     const username=this.authService.getAuthenticatedUser().getUsername();
