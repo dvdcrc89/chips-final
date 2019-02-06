@@ -7,4 +7,5 @@ export interface Profile{
     profilePic?:string,
     intrests?:any,
     coverPic?:string,
+    cv?:string
 }

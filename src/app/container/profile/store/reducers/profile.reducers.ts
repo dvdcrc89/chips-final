@@ -4,7 +4,6 @@ import * as fromProfile from '../action/profile.action'
 export interface ProfileState {
     allUsers:Profile[],
     myself:Profile,    
-    profileToSee:Profile,   
     loaded: boolean,
     loading: boolean
 }
@@ -19,7 +18,6 @@ export const initialState: ProfileState = {
         message: "ciao"
 
     },
-    profileToSee:{},  
     loaded: false,
     loading: false
 };
@@ -130,7 +128,6 @@ export function reducer(
                     loaded: false
                 }
             }
-
        
     }
 
@@ -140,6 +137,5 @@ export function reducer(
 export const getProfileLoading = (state: ProfileState) => state.loading;
 export const getProfileLoaded = (state: ProfileState) => state.loaded;
 export const getProfileAllUsers = (state: ProfileState) => state.allUsers;
-export const getProfileToSee = (state: ProfileState) => state.profileToSee;
 export const getMySelf = (state: ProfileState) => state.myself;
 

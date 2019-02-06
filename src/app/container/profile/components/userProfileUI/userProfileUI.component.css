@@ -1,0 +1,90 @@
+.container{
+    max-width:700px ;
+    background: rgb(255, 255, 255);
+    border-radius:8px;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+    margin-bottom:10px; 
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    color:#4A4A4A;
+}
+.images{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    /* background: url('../../../../../assets/cover.jpg'); */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-position: center;
+
+    height: 250px;
+}
+.label{
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 0.9rem;
+    color:#4A4A4A;
+    font-weight: bold;
+
+}
+.profile_pic{
+    position: absolute;
+    top:50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+
+}
+.name{
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+.bio{
+    display: flex;
+    justify-content: center;
+}
+.prg{
+    width: 90%;
+}
+.bio .prg p{
+    margin:1%;
+    font-style: italic;
+    text-align: center;
+}
+.buttons{
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom:10%; 
+}
+.buttons i{
+    font-size: 2rem;
+}
+.buttons img{
+    width: 55px;
+}
+.buttons button{
+    border: none;
+    background: transparent;
+    padding:2%;
+    cursor: pointer;
+}
+.intrest{
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1025px){
+.container{
+    width: 100%;
+}
+}

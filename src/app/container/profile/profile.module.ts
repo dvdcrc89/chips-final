@@ -29,6 +29,8 @@ import { EditImagesComponent } from './components/imgUpload/imgUpload.component'
 import { ProfileService } from './services/profile.service';
 import { EditCVComponent } from './components/editCV/editCV.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { UserProfileComponent } from './userProfile/userProfile.component';
+import { UserProfileUIComponent } from './components/userProfileUI/UserProfileUI.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     EditInfoComponent,
     EditMessageComponent,
     EditImagesComponent,
-    EditCVComponent
+    EditCVComponent,
+    UserProfileComponent,
+    UserProfileUIComponent
       
     
     ],

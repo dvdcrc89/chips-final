@@ -3,6 +3,7 @@ import * as fromRoot from '../../../../store'
 import * as fromFeature from '../reducers';
 import * as fromProfile from '../reducers/profile.reducers'
 import { environment } from "src/environments/environment";
+import { Profile } from "src/app/models/profile.interface";
 
 
 
@@ -47,27 +48,31 @@ export const getMyCV = createSelector(getMySelf,(myself):string=>{
     return environment.s3_imgs+username+"_CV"+"?"+Math.random();;
 });
 
-export const getProfileToSee = createSelector(fromFeature.getProfileState,fromProfile.getProfileToSee);
-
-export const getProfileToSeeName = createSelector(getProfileToSee,(profile):string=>{
-    return profile.firstName;
-});
-export const getProfileToSeeLastName = createSelector(getProfileToSee,(profile):string=>{
-    return profile.lastName;
-});
-export const getProfileToSeeBio = createSelector(getProfileToSee,(profile):string=>{
-    return profile.bio;
-});
-export const getProfileToSeeBioArray = createSelector(getProfileToSee,(profile):string[]=>{
-    let bioArray= profile.bio ? profile.bio.split("<br>") : [""]
-    return bioArray;
-});
-export const getProfileToSeeIntrests = createSelector(getProfileToSee,(profile):string=>{
-    return profile.intrests;
-});
-export const getProfileToSeeUsername = createSelector(getProfileToSee,(profile):string=>{
-    return profile.username;
-});
-
+export const getUserProfile = createSelector(getAllUser,
+    fromRoot.getRouterState,
+    (users,router):any=>{
+        console.log("QUIIIIIIIIIIIIIIIIIIIII");
+        let usersFilter = users.filter(user=>user.username===router.state.params.username);
+        let user;
+        console.log(users,usersFilter);
+        if(usersFilter.length>0){
+            user = usersFilter[0];
+            let profilePic = environment.s3_imgs+user.username+"_PP"+"?"+Math.random();
+            let coverPic = environment.s3_imgs+user.username+"_CP"+"?"+Math.random()
+            let cv = environment.s3_imgs+user.username+"_CV"+"?"+Math.random()
+            let intrests = user.intrests? user.intrests.split(","):"";
+            let bioArray = user.bio? user.bio.split("<br>") :[""]
+            user = {
+                ...user,
+                profilePic,
+                coverPic,
+                cv,
+                intrests,
+                bioArray
+            }
+        } 
+        return usersFilter ? user : false;
+    
+    });
 export const getProfileLoaded = createSelector(fromFeature.getProfileState,fromProfile.getProfileLoaded);
 export const getProfileLoading = createSelector(fromFeature.getProfileState,fromProfile.getProfileLoading);

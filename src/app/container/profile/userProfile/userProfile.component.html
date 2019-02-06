@@ -1,0 +1,15 @@
+ <div class="loader" *ngIf="isLoading$ | async">
+                <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
+                </div>
+<div class="" *ngIf="!(isLoading$ | async) && isLoaded$ |async">
+        <div >
+         <userProfileUI 
+ 
+        [profile]="profile$ |async"
+     
+         (openCV)="openCV()">
+        </userProfileUI>
+        </div>
+        
+        
+</div> 

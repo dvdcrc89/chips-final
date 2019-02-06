@@ -41,7 +41,7 @@ export class ProfileEffects{
          )}
      ))
      @Effect()
-     loadAllUsers$ = this.actions$.ofType(profileAction.LOAD_ALL_USERS)
+     loadAllUsers$ = this.actions$.ofType(profileAction.LOAD_ALL_USERS )
       .pipe(
           switchMap(()=>{
              return this.profileService.getAllUsers().pipe(
@@ -49,4 +49,5 @@ export class ProfileEffects{
                  catchError(error => of(new profileAction.LoadAllUsersFail(error)))          
           )}
       ))
+      
 }
