@@ -17,7 +17,7 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatButtonToggleModule,
-  MatChipsModule
+  MatChipsModule,
 } from '@angular/material';
 import {StoreModule} from '@ngrx/store'
 import {EffectsModule} from '@ngrx/effects';
