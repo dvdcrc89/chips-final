@@ -21,7 +21,7 @@ import {
 } from '@angular/material';
 import {StoreModule} from '@ngrx/store'
 import {EffectsModule} from '@ngrx/effects';
-import {reducers} from './store'
+import {reducers,effects} from './store'
 import { EditInfoComponent } from './components/editInfo/editInfo.component';
 import { FormsModule } from '@angular/forms';
 import { EditMessageComponent } from './components/editMessage/editMessage.component';
@@ -58,6 +58,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         FormsModule,
         PdfViewerModule,
         StoreModule.forFeature('profiles',reducers),
+        EffectsModule.forFeature(effects)
 
 
     ],
