@@ -8,7 +8,17 @@ import { Profile } from "src/app/models/profile.interface";
 
 
 export const getAllUser = createSelector(fromFeature.getProfileState,fromProfile.getProfileAllUsers);
+export const getAllUsersProfile= createSelector(getAllUser,(users):Profile[]=>{
+    let usersProfile = users.map((user)=>{
+        return {
+            ...user,
+            profilePic: environment.s3_imgs+user.username+"_PP",
 
+        }
+    })
+    return usersProfile
+    
+});
 export const getMySelf = createSelector(fromFeature.getProfileState,fromProfile.getMySelf);
 export const getMyUsername = createSelector(getMySelf,(myself):string=>{
     return  myself.username;
@@ -60,7 +70,7 @@ export const getUserProfile = createSelector(getAllUser,
             let profilePic = environment.s3_imgs+user.username+"_PP"+"?"+Math.random();
             let coverPic = environment.s3_imgs+user.username+"_CP"+"?"+Math.random()
             let cv = environment.s3_imgs+user.username+"_CV"+"?"+Math.random()
-            let intrests = user.intrests? user.intrests.split(","):"";
+            let intrests = user.intrests? user.intrests.split(","):[];
             let bioArray = user.bio? user.bio.split("<br>") :[""]
             user = {
                 ...user,

@@ -1,7 +1,10 @@
 
 
 
-<nav-bar *ngIf="isAuthenticated" [username]="username" [profilePic]="profilePic"></nav-bar>
+<nav-bar *ngIf="isAuthenticated" 
+[username]="username" 
+[profilePic]="profilePic" 
+[profiles]="profiles$ | async"></nav-bar>
 <div [ngClass]="{wrapper:isAuthenticated}">
    
 <router-outlet></router-outlet>
