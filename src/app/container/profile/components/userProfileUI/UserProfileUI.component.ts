@@ -15,9 +15,6 @@ import { Profile } from "src/app/models/profile.interface";
     @Input()
     profile: Profile
 
-  
-   
-    
     ngOnInit(){
     
     }

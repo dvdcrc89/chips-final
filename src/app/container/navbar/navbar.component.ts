@@ -9,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NavBarComponent implements OnInit {
   @Input()
   username:string;
+  @Input()
+  profilePic:string;
   isMenuOpen:boolean=false;
   isLoading:boolean;
   isFirstTime:boolean= true;

@@ -18,7 +18,7 @@
     /* background: url('../../../../../assets/cover.jpg'); */
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: contain;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-position: center;
