@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../app/container/user/auth.service';
 import {} from '@types/googlemaps';
 import { Location } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class AppComponent {
   title = 'app';
   isAuthenticated = false;
   username:string;
+  profilePic:string;
   authenticatedPage=['/jobs','/addjob','jobs/1'];
   constructor(private location: Location,
               private authService: AuthService,
@@ -43,6 +45,8 @@ export class AppComponent {
     );
     this.authService.initAuth();
     this.username= this.authService.getAuthenticatedUser().getUsername();
+    this.profilePic= environment.s3_imgs+this.authService.getAuthenticatedUser().getUsername()+"_PP"+"?"+Math.random();
+
   }
  
   onLogout() {

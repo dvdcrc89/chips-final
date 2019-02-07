@@ -13,10 +13,11 @@ import { NgForm } from "@angular/forms";
     cv: string;
     @Output()
     apply: EventEmitter<any> = new EventEmitter();
+    @Output()
+    reset: EventEmitter<any> = new EventEmitter();
 
     url:any;
     @ViewChild('editCVForm') editCVForm: NgForm;
-    reset:any;
     selectedFile: File;
     errorMsg:string;
     acceptedTypes = [
@@ -25,9 +26,7 @@ import { NgForm } from "@angular/forms";
     
     ngOnInit(){
       this.url = this.cv;
-     this.reset={
-        cv :this.cv,
-     }
+  
     }
   
     applyEdit(e){
@@ -37,7 +36,7 @@ import { NgForm } from "@angular/forms";
 
     resetValue(){
          this.url=this.cv;
-
+        this.reset.emit();
 
       }
       onFileChanged(event) {

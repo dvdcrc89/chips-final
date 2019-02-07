@@ -1,5 +1,5 @@
 .container{
-    width: 100%;
+    max-width:700px ;
     background: rgb(255, 255, 255);
     border-radius:8px;
     font-family: 'Open Sans', sans-serif;
@@ -21,6 +21,8 @@
     background-size: contain;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    background-position: center;
+
     height: 250px;
 }
 .label{

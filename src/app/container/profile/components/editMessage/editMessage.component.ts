@@ -30,12 +30,7 @@ import { NgForm } from "@angular/forms";
         this.apply.emit(this.editMessageForm.value);
     }
 
-    resetValue(){
-
-        console.log(this.reset);
-         this.message = this.reset.message ;
-    
-      }
+  
       addVariable(payload:string){
           switch (payload) {
               case "FN": this.message+= " #[First_Name]";

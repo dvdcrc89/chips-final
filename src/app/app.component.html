@@ -1,8 +1,9 @@
 
 
 
-<nav-bar *ngIf="isAuthenticated" [username]="username"></nav-bar>
+<nav-bar *ngIf="isAuthenticated" [username]="username" [profilePic]="profilePic"></nav-bar>
 <div [ngClass]="{wrapper:isAuthenticated}">
    
 <router-outlet></router-outlet>
+<button (click)="onLogout()">x</button>
 </div>

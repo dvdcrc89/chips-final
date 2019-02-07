@@ -22,7 +22,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
     @Input()
     bio: string;
     @Input()
-    bioArray: string;
+    bioArray: string[];
     @Input()
     intrests: string[];
     @Output()

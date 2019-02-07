@@ -1,0 +1,34 @@
+<div class="container" *ngIf="profile">
+    <div class="images" [ngStyle]="{'background-image':' url(' + profile.coverPic + ')'}">
+            <img class="profile_pic" [src]="profile.profilePic">
+            <!-- <h3>Jessica Pip</h3> -->
+         
+        </div>
+    <div class="name">
+        <h1>{{profile.firstName}} {{profile.lastName}}</h1>
+    </div>
+   
+    <div class="intrest">
+            <mat-chip-list>
+                    <mat-chip *ngFor="let intest of profile.intrests" color="accent" selected >{{intest}}</mat-chip>
+                  </mat-chip-list>
+    </div>
+    
+    <div class="bio"> 
+        <div class="prg">
+            <p *ngFor="let par of profile.bioArray">{{par}}</p>
+        </div>   
+       
+    </div>
+    <div class="buttons">
+            <button><img src="../../../../../assets/messenger.svg">
+            <p class="label">Message {{profile.firstName}}</p></button>
+            <button (click)="handleOpenCV()"><img src="../../../../../assets/resume.svg">
+                <p class="label">{{profile.firstName}} Resume</p></button>
+    </div>
+   
+</div>
+
+<div *ngIf="!profile">
+    <span>The user requested does not exist</span>
+</div>

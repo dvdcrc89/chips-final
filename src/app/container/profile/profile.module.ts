@@ -17,8 +17,11 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatButtonToggleModule,
-  MatChipsModule
+  MatChipsModule,
 } from '@angular/material';
+import {StoreModule} from '@ngrx/store'
+import {EffectsModule} from '@ngrx/effects';
+import {reducers,effects} from './store'
 import { EditInfoComponent } from './components/editInfo/editInfo.component';
 import { FormsModule } from '@angular/forms';
 import { EditMessageComponent } from './components/editMessage/editMessage.component';
@@ -26,6 +29,8 @@ import { EditImagesComponent } from './components/imgUpload/imgUpload.component'
 import { ProfileService } from './services/profile.service';
 import { EditCVComponent } from './components/editCV/editCV.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { UserProfileComponent } from './userProfile/userProfile.component';
+import { UserProfileUIComponent } from './components/userProfileUI/UserProfileUI.component';
 
 
 @NgModule({
@@ -35,7 +40,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     EditInfoComponent,
     EditMessageComponent,
     EditImagesComponent,
-    EditCVComponent
+    EditCVComponent,
+    UserProfileComponent,
+    UserProfileUIComponent
       
     
     ],
@@ -53,7 +60,10 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
         MatChipsModule,
         CommonModule,
         FormsModule,
-        PdfViewerModule
+        PdfViewerModule,
+        StoreModule.forFeature('profiles',reducers),
+        EffectsModule.forFeature(effects)
+
 
     ],
     exports:[

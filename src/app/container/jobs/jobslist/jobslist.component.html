@@ -1,10 +1,12 @@
 <section>
-
+        <div class="loader" *ngIf="isLoading$ | async">
+                <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
+                </div>
 
  <!-- <button mat-raised-button (click)="filter()">filter</button> -->
-<div class="jobs_map_grid">
+<div class="jobs_map_grid" *ngIf="!(isLoading$ | async)">
     <div class="wrapper job_cards_grid2" [ngClass]="{'hide': showFilter || details|| showMap}" >
-      <span *ngIf="isLoading$ |async">Loading...</span>
+         
         <job_card 
             *ngFor="let job of (activeJobs$ | async); let i=index"        
             [job]="job"

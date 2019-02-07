@@ -21,43 +21,22 @@ import { NgForm } from "@angular/forms";
     apply: EventEmitter<any> = new EventEmitter();
     @Output()
     mod: EventEmitter<any> = new EventEmitter(); 
+    @Output()
+    reset: EventEmitter<any> = new EventEmitter();
     @ViewChild('editInfoForm') editInfoForm: NgForm;
     formChangesSubscription:any;
-    reset:any;
 
     intrestList:string[]= [
         'Chef','Waiter','Waitress','Barista','KP','Managment','Receptionist','Sommelier','Head Chef',
         'Assistant Manager','Sous Chef','Bartender'
     ]
     ngOnInit(){
-        this.bio = this.bio.replace(/<br>/g,"\n")
-     this.reset={
-        firstName :this.firstName,
-        lastName :this.lastName,
-        bio : this.bio,
-        intrests : this.intrests,
-     }
-     this.formChangesSubscription = this.editInfoForm.form.valueChanges.subscribe(values => {
-         this.modEmit(values);
-        
-        
-      })
+        this.bio=this.bio.replace(/<br>/g,"\n")
     }
     applyEdit(e){
         this.editInfoForm.value.bio = this.editInfoForm.value.bio.replace(/\n/g,"<br>");
         this.apply.emit(this.editInfoForm.value);
     }
-
-    resetValue(){
-
-        console.log(this.reset);
-         this.firstName = this.reset.firstName ;
-         this.lastName = this.reset.lastName ;
-         this.bio = this.reset.bio;
-         this.intrests=this.reset.intrests;
-      }
      
-      modEmit(values){
-        this.mod.emit(values);
-      }
+    
     }
