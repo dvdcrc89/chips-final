@@ -2,10 +2,11 @@
   <div class="nav-slice-sx">
       <img class="logo-svg" src="../../../../assets/logo_text.svg">
   <div class="input-icon">
-    <input type="text"/>
+    <input type="text" [(ngModel)]="search" (keyup)="filter(search,profiles)"/>
     <i class="fas fa-search"></i>
   </div>
   </div>
+ 
   <div class="nav-slice-dx">
     <a class="nav-link" href="/jobs">Jobs market</a>
     <a class="nav-link" href="/profile">Profile</a>
@@ -28,4 +29,20 @@
 </div>
 <div *ngIf="!isFirstTime" class="mob-menu mobile-menu-3 animated 1 delay-3"  
   [ngClass]="[isMenuOpen ? 'slideInLeft' : 'slideOutRight']"><a class="nav-link">Help</a>
+</div>
+
+<div class="search animated slideInLeft" *ngIf="search?.length>1">
+  <div class="no_user" *ngIf="queryResult?.length==0">
+    <span>No results</span>
+  </div>
+  <div class="search_container">
+  <div class="user_container  " *ngFor="let user of queryResult?.slice(0,12)">
+    <div class="user animated slideInLeft" (click)="showProfile(user.username)">
+      <img [src]="user.profilePic">
+      <div class="name" ><span>
+        {{user.firstName}} {{user.lastName}}</span>
+        </div>
+      </div>
+      </div>
+  </div>
 </div>

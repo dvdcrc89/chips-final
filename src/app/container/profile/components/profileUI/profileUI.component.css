@@ -18,10 +18,11 @@
     /* background: url('../../../../../assets/cover.jpg'); */
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 250px;
+    background-position: right;
 }
 .label{
     font-family: 'Open Sans', sans-serif !important;
