@@ -9,6 +9,7 @@ export interface Job {
     Address?:string,
     Lat?:number,
     Long?:number,
+    Lng?:number,
     Description?:string,
     Position:string,
     Category?:string,
