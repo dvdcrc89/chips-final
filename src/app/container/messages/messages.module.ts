@@ -28,6 +28,7 @@ import { ConversationContainerComponent } from './components/conversation-contai
 import { ChatContainerComponent } from './components/chat-container/chat-container.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { MessageTextAreaComponent } from './components/message-textarea/message-textarea.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ChatComponent } from './components/chat/chat.component';
    ConversationContainerComponent,
    ChatContainerComponent,
    ChatHeaderComponent,
-   ChatComponent
+   ChatComponent,
+   MessageTextAreaComponent
     
   
   ],
@@ -67,7 +69,8 @@ import { ChatComponent } from './components/chat/chat.component';
     ConversationContainerComponent,
     ChatContainerComponent,
     ChatHeaderComponent,
-    ChatComponent
+    ChatComponent,
+    MessageTextAreaComponent
     
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
