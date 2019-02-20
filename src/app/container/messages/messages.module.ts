@@ -23,11 +23,13 @@ import {
 import { environment } from '../../../environments/environment';
 import { SmartMessageComponent } from './smart-message/smart-message.component';
 import { ConversationLabelComponent } from './components/conversation-label/conversation-label.component';
+import { ConversationContainerComponent } from './components/conversation-container/conversation-container.component';
 
 @NgModule({
   declarations: [
    SmartMessageComponent,
-   ConversationLabelComponent
+   ConversationLabelComponent,
+   ConversationContainerComponent
     
   
   ],
@@ -54,6 +56,7 @@ import { ConversationLabelComponent } from './components/conversation-label/conv
   exports: [
     SmartMessageComponent,
     ConversationLabelComponent,
+    ConversationContainerComponent
     
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],

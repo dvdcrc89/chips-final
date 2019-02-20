@@ -1,0 +1,12 @@
+.container{
+    border: 3px solid pink;
+    width: 430px;
+    height:490px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.conversation{
+ display:flex;
+ justify-content: center;
+    margin-top: 14px;
+}

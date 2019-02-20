@@ -1,9 +1,8 @@
 .user{
-    margin-left: 100px;
     position: relative;
     cursor: pointer;
    display: inline-flex;
-   width: 500px;
+   width: 388px;
     align-items: center;
     background: white;
     border-radius: 8px;
