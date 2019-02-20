@@ -13,6 +13,7 @@ import {
   MatIconModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatBadgeModule,
   MAT_DATE_LOCALE,
   MatSlideToggleModule,
   MatRadioModule,
@@ -50,6 +51,7 @@ import { ConversationContainerComponent } from './components/conversation-contai
     MatRadioModule,
     MatSelectModule,
     MatButtonToggleModule,
+    MatBadgeModule
 
     
   ],

@@ -41,14 +41,8 @@
 }
   .newmsgs{
       position: absolute;
-      top:-17%;
+      top:5%;
       left:95%;
-    border-radius: 50%;
-    background:red;
-    color :white;
-    font-weight: bolder;
-    font-size: 1rem;
-    padding: 1% 2% 1% 2%;
 }
 .new{
     font-size:1rem;
