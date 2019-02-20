@@ -10,6 +10,7 @@ import { AuthService } from '../app/container/user/auth.service';
 import { AppComponent } from './app.component';
 import { JobsModule} from './container/jobs/jobs.module'
 import { ProfileModule} from './container/profile/profile.module'
+import { MessagesModule} from './container/messages/messages.module'
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
@@ -52,6 +53,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     BrowserModule,
     JobsModule,
     ProfileModule,
+    MessagesModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,

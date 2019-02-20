@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { Profile } from 'src/app/models/profile.interface';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'conversation-label',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConversationLabelComponent implements OnInit {
 
+    @Input()
+    profile:Profile;
+    @Input()
+    newMessages:number;
+    @Input()
+    job:any;
+    @Input()
+    troncMessage:string;
+
+
+
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
