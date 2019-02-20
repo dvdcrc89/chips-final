@@ -27,6 +27,7 @@ import { ConversationLabelComponent } from './components/conversation-label/conv
 import { ConversationContainerComponent } from './components/conversation-container/conversation-container.component';
 import { ChatContainerComponent } from './components/chat-container/chat-container.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
    ConversationLabelComponent,
    ConversationContainerComponent,
    ChatContainerComponent,
-   ChatHeaderComponent
+   ChatHeaderComponent,
+   ChatComponent
     
   
   ],
@@ -64,7 +66,8 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
     ConversationLabelComponent,
     ConversationContainerComponent,
     ChatContainerComponent,
-    ChatHeaderComponent
+    ChatHeaderComponent,
+    ChatComponent
     
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
