@@ -27,7 +27,6 @@ import {StoreRouterConnectingModule, RouterStateSerializer} from '@ngrx/router-s
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { NotFoundComponent } from './container/not-found/not-found.component';
-import { SmartMessageComponent } from './container/smart-message/smart-message.component';
 
 const environment = {
   development: true,
@@ -46,7 +45,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     ValidationComponent,
     NavBarComponent,
     NotFoundComponent,
-    SmartMessageComponent
+    
     
     ],
   imports: [
