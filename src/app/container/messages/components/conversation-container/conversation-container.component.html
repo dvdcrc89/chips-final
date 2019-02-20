@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="conversation" *ngFor="let conversation of conversations">
+<div class="container animated fadeIn">
+    <div class="conversation animated fadeInLeft delay-1s" *ngFor="let conversation of conversations">
         <conversation-label
         [profile]="conversation.profile"
         [newMessages] = 3

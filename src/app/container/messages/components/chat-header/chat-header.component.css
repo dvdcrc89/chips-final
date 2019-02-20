@@ -1,0 +1,56 @@
+.user{
+    position: relative;
+    display: flex;
+    width: 100%;
+   height: 41px;
+    align-items: center;
+    background: white;
+   border-bottom:1px solid lightgray;
+    /* box-shadow: 0 6px 3px 0 rgba(74,74,74,.06); */
+    justify-content: center;
+  
+}
+.header img{
+    /* position: absolute;
+    top:0%;
+    left:100%; */
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+
+  }
+  .details{
+    padding-left:30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+   
+    color:#4A4A4A;
+  }
+  .name{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+.job-detail{
+  
+}
+.job-detail button{
+
+    background:#B400AE;
+    color:white;
+    text-transform: uppercase;
+    font-size:0.7rem;
+    font-weight: bolder;
+    border-radius:5px;
+}
+.header{
+    position: relative;
+    cursor: pointer;
+   display: inline-flex;
+   width: 70%;
+    align-items: center;
+
+    /* box-shadow: 0 6px 3px 0 rgba(74,74,74,.06); */
+    justify-content: space-between;
+}
