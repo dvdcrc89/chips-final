@@ -8,6 +8,8 @@ import { AuthGuard } from '../user/auth-guard.service';
 import { AddJobComponent } from '../jobs/components/add-job/add-job.component';
 import { ProfileComponent } from '../profile/profileSmart/profileSmart.component';
 import { UserProfileComponent } from '../profile/userProfile/userProfile.component';
+import { NotFoundComponent } from '../not-found/not-found.component'
+
 
 const routes: Routes = [
   { path: '', component: SigninComponent },
@@ -18,7 +20,9 @@ const routes: Routes = [
   { path: 'addjob',canActivate: [AuthGuard], component: AddJobComponent },
   { path: 'profile',canActivate: [AuthGuard], component: ProfileComponent },
   { path: 'profile/:username',canActivate: [AuthGuard], component: UserProfileComponent },
+  { path: 'notfound', component:NotFoundComponent},
 
+  { path: '**', redirectTo: 'notfound' }
 
 
 ];

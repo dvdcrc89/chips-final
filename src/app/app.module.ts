@@ -26,6 +26,7 @@ import {StoreRouterConnectingModule, RouterStateSerializer} from '@ngrx/router-s
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { NotFoundComponent } from './container/not-found/not-found.component';
 
 const environment = {
   development: true,
@@ -42,7 +43,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     SignupComponent,
     SigninComponent,
     ValidationComponent,
-    NavBarComponent
+    NavBarComponent,
+    NotFoundComponent
     
     ],
   imports: [
@@ -59,7 +61,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
     
   ],
   providers: [AuthService,JobService,HttpClientModule,
