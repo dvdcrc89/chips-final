@@ -8,7 +8,7 @@ import { environment } from '../../../../../environments/environment';
   styleUrls: ['./message-textarea.component.css']
 })
 export class MessageTextAreaComponent implements OnInit {
-
+message:string;
    
 
 
@@ -18,5 +18,8 @@ export class MessageTextAreaComponent implements OnInit {
   ngOnInit() {
 
   }
-
+ send(){
+   console.log(this.message);
+   this.message = "";
+ }
 }

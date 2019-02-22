@@ -2,7 +2,7 @@
     width: 430px;
     height:490px;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .conversation{
  display:flex;

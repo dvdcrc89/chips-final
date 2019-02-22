@@ -9,7 +9,49 @@ import { environment } from '../../../../../environments/environment';
 })
 export class ChatComponent implements OnInit {
 
-
+messages = [{
+  text:["ciao bello"],
+  isMe:true
+},{
+  text:["ciao come va?","Volevo loren ipsum loren ipsum loren ipsum.","In fact, loren ipsume lore uplum loren ulns?","fuck you","Gino Pino"],
+  isMe:false
+},{
+  text:["ciao bello"],
+  isMe:true
+},{
+  text:["ciao come va?","how are you?","zzo vuoi?","fuck you"],
+  isMe:false
+},{
+  text:["ciao bello"],
+  isMe:true
+},{
+  text:["ciao come va?","how are you?","zzo vuoi?","fuck you"],
+  isMe:false
+},{
+  text:["ciao bello"],
+  isMe:true
+},{
+  text:["ciao come va?","how are you?","zzo vuoi?","fuck you"],
+  isMe:false
+},{
+  text:["ciao bello"],
+  isMe:true
+},{
+  text:["ciao come va?","how are you?","zzo vuoi?","fuck you"],
+  isMe:true
+},{
+  text:["ciao bello"],
+  isMe:true
+},{
+  text:["ciao come va?","how are you?","zzo vuoi?","fuck you"],
+  isMe:false
+},{
+  text:["ciao bello"],
+  isMe:false
+},{
+  text:["ciao come va?","how are you?","zzo vuoi?","fuck you"],
+  isMe:true
+},]
   
 
   constructor() { }

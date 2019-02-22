@@ -1,13 +1,10 @@
 <div class="container">
         <div class="wrapper">
-         <mat-form-field class="full-width" appearance="fill">
-               <mat-label>Message</mat-label>
-             <textarea  matInput type="text" >
-                   
-             </textarea>
-         </mat-form-field>
-         <div class="send">
-                 <button mat-raised-button >SEND</button>
+       
+             <textarea  type="text" [(ngModel)]="message"></textarea>
+             <button class="send" (click)="send()" ></button>
+         <div >
+                
         </div>
         </div>
 

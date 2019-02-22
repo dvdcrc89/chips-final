@@ -1,3 +1,7 @@
 <div class="container">
-
+    <div class="messages" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+   <message *ngFor="let message of messages"
+   [message]="message.text"
+   [isMe]="message.isMe"></message>
+   </div>
 </div>

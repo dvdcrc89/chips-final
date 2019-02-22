@@ -3,15 +3,17 @@ import { Profile } from 'src/app/models/profile.interface';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
-  selector: 'conversation-container',
-  templateUrl: './conversation-container.component.html',
-  styleUrls: ['./conversation-container.component.css']
+  selector: 'message',
+  templateUrl: './message.component.html',
+  styleUrls: ['./message.component.css']
 })
-export class ConversationContainerComponent implements OnInit {
+export class MessageComponent implements OnInit {
 
-
-  @Input()
-  conversations;
+@Input()
+message:Array<string>;
+@Input()
+isMe:boolean;
+  
 
   constructor() { }
 
