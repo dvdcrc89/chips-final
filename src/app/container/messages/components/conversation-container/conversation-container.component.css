@@ -1,0 +1,11 @@
+.container{
+    width: 430px;
+    height:490px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.conversation{
+ display:flex;
+ justify-content: center;
+    margin-top: 14px;
+}

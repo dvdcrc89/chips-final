@@ -1,0 +1,5 @@
+<div class="container">
+ <div class="text animated fadeInRight delay-1s" [ngClass]="{'is_me':isMe,'is_not_me':!isMe}">
+     <div *ngFor="let p of message"><span>{{p}}</span><br></div>
+ </div>
+</div>

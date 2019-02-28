@@ -35,11 +35,9 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    console.log(this.authService.getAuthenticatedUser())
     this.authService.authStatusChanged.subscribe(
       (authenticated) => {
         this.isAuthenticated = authenticated;
-        console.log(this.router.url)
 
         // if (authenticated && !this.authenticatedPage.includes(this.location.path())) {
        

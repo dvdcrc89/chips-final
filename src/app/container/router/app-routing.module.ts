@@ -9,6 +9,7 @@ import { AddJobComponent } from '../jobs/components/add-job/add-job.component';
 import { ProfileComponent } from '../profile/profileSmart/profileSmart.component';
 import { UserProfileComponent } from '../profile/userProfile/userProfile.component';
 import { NotFoundComponent } from '../not-found/not-found.component'
+import { SmartMessageComponent } from '../messages/smart-message/smart-message.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'profile',canActivate: [AuthGuard], component: ProfileComponent },
   { path: 'profile/:username',canActivate: [AuthGuard], component: UserProfileComponent },
   { path: 'notfound', component:NotFoundComponent},
+  { path: 'messages',canActivate: [AuthGuard], component: SmartMessageComponent },
+
 
   { path: '**', redirectTo: 'notfound' }
 
