@@ -1,0 +1,49 @@
+.user{
+    position: relative;
+    cursor: pointer;
+   display: inline-flex;
+   width: 388px;
+    align-items: center;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
+    justify-content: flex-start;
+  
+}
+  .user img{
+    /* position: absolute;
+    top:0%;
+    left:100%; */
+    width: 80px;
+    height: 80px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+  }
+  .user .details{
+    padding-left:30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+   
+    color:#4A4A4A;
+  }
+  .name{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+.job{
+    font-size:1rem;
+    color: #B400AE;
+}
+.message{
+    font-size:0.7rem
+}
+  .newmsgs{
+      position: absolute;
+      top:5%;
+      left:95%;
+}
+.new{
+    font-size:1rem;
+}
