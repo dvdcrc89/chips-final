@@ -24,7 +24,7 @@ export const initialState: ProfileState = {
 
 export function reducer(
     state = initialState,
-    action: fromProfile.JobsAction
+    action: fromProfile.ProfileAction
 ): ProfileState {
 
     switch (action.type) {

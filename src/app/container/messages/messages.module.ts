@@ -20,7 +20,9 @@ import {
   MatSelectModule,
   MatButtonToggleModule
 } from '@angular/material';
-
+import {StoreModule} from '@ngrx/store'
+import {EffectsModule} from '@ngrx/effects';
+import {reducers,effects} from './store'
 import { environment } from '../../../environments/environment';
 import { SmartMessageComponent } from './smart-message/smart-message.component';
 import { ConversationLabelComponent } from './components/conversation-label/conversation-label.component';
@@ -61,7 +63,9 @@ import { MessageComponent } from './components/message/message.component';
     MatRadioModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatBadgeModule
+    MatBadgeModule,
+    StoreModule.forFeature('messages',reducers),
+    EffectsModule.forFeature(effects)
 
     
   ],
@@ -73,7 +77,8 @@ import { MessageComponent } from './components/message/message.component';
     ChatHeaderComponent,
     ChatComponent,
     MessageTextAreaComponent,
-    MessageComponent
+    MessageComponent,
+
 
     
   ],
