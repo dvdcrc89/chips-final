@@ -4,12 +4,14 @@ import * as messageAction from '../action/message.action';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import * as fromService from '../../services/message.service'
 import { of } from 'rxjs';
+import { AuthService } from 'src/app/container/user/auth.service';
 
 @Injectable()
 export class MessageEffects{
     constructor(
         private actions$: Actions,
-        private messageService: fromService.MessageService
+        private messageService: fromService.MessageService,
+        private authService: AuthService
         ) {}
     
     @Effect()
@@ -17,7 +19,7 @@ export class MessageEffects{
      .pipe(
          switchMap(()=>{
             return this.messageService.getAllMessages().pipe(
-                map(messages => new messageAction.LoadAllConversationSuccess(messages)),
+                map(messages => new messageAction.LoadAllConversationSuccess(messages,this.authService.getAuthenticatedUser().getUsername())),
                 catchError(error => of(new messageAction.LoadAllConversationFail(error)))          
          )}
      ))

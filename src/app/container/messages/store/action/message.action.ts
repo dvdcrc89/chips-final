@@ -21,7 +21,7 @@ export class LoadAllConversationFail implements Action {
 
 export class LoadAllConversationSuccess implements Action {
     readonly type = LOAD_ALL_CONVERSATIONS_SUCCESS;
-    constructor(public payload: any[]){}
+    constructor(public payload: any[],public username:string){}
 }
 //
 export class SendMessage implements Action {
