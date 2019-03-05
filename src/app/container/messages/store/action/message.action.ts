@@ -36,7 +36,6 @@ export class SendMessageFail implements Action {
 
 export class SendMessageSuccess implements Action {
     readonly type = SEND_MESSAGE_SUCCESS;
-    constructor(public payload: any){}
 }
 //
 export class ReadMessage implements Action {
@@ -51,7 +50,6 @@ export class ReadMessageFail implements Action {
 
 export class ReadMessageSuccess implements Action {
     readonly type = READ_MESSAGE_SUCCESS;
-    constructor(public payload: any){}
 }
 
 
