@@ -2,9 +2,9 @@
     <div class="conversation animated fadeInLeft delay-1s" *ngFor="let conversation of conversations">
         <conversation-label
         [profile]="conversation.profile"
-        [newMessages] = 3
+        [newMessages] = "conversation.unread"
         [job]="conversation.job"
-        [troncMessage]="conversation.message"
+        [troncMessage]="conversation.lastMessageTrunc"
         ></conversation-label>
     </div>
 </div>

@@ -5,10 +5,10 @@ export interface MessageSectionState{
     messageState: fromMessage.MessageState
    }
 
-export const reducers: ActionReducerMap<any> = {
-    MessageSectionState: fromMessage.reducer
+export const reducers: ActionReducerMap<MessageSectionState> = {
+    messageState: fromMessage.reducer
 }
 
-export const getMessageFullState = createFeatureSelector<MessageSectionState>('message');
+export const getMessageFullState = createFeatureSelector<MessageSectionState>('messages');
 
 export const getMessageState = createSelector(getMessageFullState,(state:MessageSectionState)=> state.messageState);

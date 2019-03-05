@@ -1,6 +1,6 @@
 <div class="container-flex">
     <conversation-container
-    [conversations]="conversations"
+    [conversations]="conversations$ |async"
     ></conversation-container>
     
     <chat-container></chat-container>

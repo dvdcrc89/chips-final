@@ -52,6 +52,7 @@ conversations$ :Observable<Array<any>>
   ) { }
 
   ngOnInit() {
+    this.conversations$ = this.store.select(fromStore.getList);
     this.store.dispatch(new fromStore.LoadAllConversation());
 
   }
