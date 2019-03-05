@@ -32,6 +32,7 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
 import { ChatComponent } from './components/chat/chat.component';
 import { MessageTextAreaComponent } from './components/message-textarea/message-textarea.component';
 import { MessageComponent } from './components/message/message.component';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import { MessageComponent } from './components/message/message.component';
 
     
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'},MessageService],
 
 })
 export class MessagesModule {}

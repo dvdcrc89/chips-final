@@ -9,10 +9,12 @@ import { environment } from '../../../../environments/environment';
 export class MessageService {
   constructor(private http: HttpClient,private authService: AuthService) {}
   
+  
   url:string = environment.backendUrl;
   endPoints:any;
   getAllMessages(): Observable<any[]> {
     const username=this.authService.getAuthenticatedUser().getUsername();
+    console.log(this.url+"/messages/get/"+username+"/");
     return this.http
       .get<any[]>(this.url+"/messages/get/"+username)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
