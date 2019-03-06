@@ -9,6 +9,7 @@ export const getAllConversation = createSelector(fromFeature.getMessageState,fro
 
 export const getActiveConversation = createSelector(fromFeature.getMessageState,fromMessage.getActiveConversation);
 export const getUsername = createSelector(fromFeature.getMessageState,fromMessage.getUsername);
+export const getReceiver = createSelector(fromFeature.getMessageState,fromMessage.getReceiver);
 
 export const getActiveConversationParsed = createSelector(getActiveConversation,getUsername,(conversation,username):Array<any>=>{
     console.log(conversation,username)

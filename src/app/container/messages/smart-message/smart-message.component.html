@@ -1,9 +1,13 @@
-<div class="container-flex">
+<div [ngClass]="{'container-flex':(receiver$ |async),'container-full':!(receiver$ |async)}">
     <conversation-container
     [conversations]="conversations$ |async"
+    (open)="openChat($event)"
     ></conversation-container>
     
-    <chat-container [activeChat]="active$ |async"></chat-container>
-<button (click)="select()">select</button>
+    <chat-container 
+    *ngIf="receiver$ |async"
+    [activeChat]="active$ |async"
+    (sendMessage)="sendMessage($event)"></chat-container>
+    <button (click)="select()">select</button>
 </div>
 

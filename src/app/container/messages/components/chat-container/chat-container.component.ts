@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { Profile } from 'src/app/models/profile.interface';
 import { environment } from '../../../../../environments/environment';
 
@@ -14,7 +14,8 @@ export class ChatContainerComponent implements OnInit {
   job = { position: "Chef", business: "Pump House"};
   @Input()
   activeChat:Array<any>
-  
+  @Output()
+  sendMessage: EventEmitter<string> = new EventEmitter()
    
 
 
@@ -23,6 +24,10 @@ export class ChatContainerComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+  send(message){
+    console.log(message);
+    this.sendMessage.emit(message);
   }
 
 }

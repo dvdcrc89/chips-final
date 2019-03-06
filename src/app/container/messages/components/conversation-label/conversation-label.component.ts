@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
 import { Profile } from 'src/app/models/profile.interface';
 import { environment } from '../../../../../environments/environment';
 
@@ -17,7 +17,8 @@ export class ConversationLabelComponent implements OnInit {
     job:any;
     @Input()
     troncMessage:string;
-
+    @Output()
+    open: EventEmitter<string> = new EventEmitter()
 
 
 
@@ -26,5 +27,7 @@ export class ConversationLabelComponent implements OnInit {
   ngOnInit() {
 
   }
-
+ openChat(){
+    this.open.emit(this.profile.username)
+ }
 }

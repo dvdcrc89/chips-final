@@ -7,6 +7,7 @@ export interface MessageState {
     loaded: boolean,
     loading: boolean,
     username: string,
+    receiver: string;
 
 }
 
@@ -17,6 +18,7 @@ export const initialState: MessageState = {
     loaded: false,
     loading: false,
     username: "",
+    receiver:""
 
 };
 
@@ -76,12 +78,14 @@ export function reducer(
                     createConvList(allConversationsMessage).sort((a,b)=>b.lastMessageTime - a.lastMessageTime);
                 
                 // let activeConversation = allConversationsMessage[Object.keys(allConversationsMessage)[0]]
+                // let receiver = activeConversation[0].profile.username
                 return {
                     ...state,
                     loading: false,
                     loaded: true,
                     conversationsList,
                     allConversationsMessage,
+                   
                 }
             }
         case fromMessage.LOAD_ALL_CONVERSATIONS_FAIL:
@@ -148,10 +152,12 @@ export function reducer(
                 let activeConversation;
                 let conversationsList = state.conversationsList;
                 console.log("id",conversation_id,state.allConversationsMessage);
-                if(state.allConversationsMessage.hasOwnProperty(conversation_id)){
-                    activeConversation = state.allConversationsMessage[conversation_id]
+                let allConversationsMessage = state.allConversationsMessage;
+                if(allConversationsMessage.hasOwnProperty(conversation_id)){
+                    activeConversation = allConversationsMessage[conversation_id]
                 } else{
                     activeConversation = {[conversation_id]:[]}
+                    allConversationsMessage = {...allConversationsMessage,...activeConversation};
                     let newList = [{
                             conversation_id,
                             lastMessageTime: 0,
@@ -163,7 +169,7 @@ export function reducer(
                                 username:action.payload.him
                             }
                     }]
-                    conversationsList = state.conversationsList.concat(newList)
+                    conversationsList = newList.concat(state.conversationsList)
                     console.log("conversationList",conversationsList)
 
                 }
@@ -172,7 +178,9 @@ export function reducer(
                     loading: false,
                     loaded: true,
                     conversationsList,
-                    activeConversation
+                    activeConversation,
+                    allConversationsMessage,
+                    receiver: action.payload.him
 
                 }
             }
@@ -206,6 +214,7 @@ export const getAllConversationsMessages = (state: MessageState) => state.allCon
 export const getConversationsList = (state: MessageState) => state.conversationsList;
 export const getActiveConversation = (state: MessageState) => state.activeConversation;
 export const getUsername = (state: MessageState) => state.username;
+export const getReceiver = (state: MessageState) => state.receiver;
 
 
 

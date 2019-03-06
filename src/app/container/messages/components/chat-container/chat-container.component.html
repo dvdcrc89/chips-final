@@ -4,5 +4,6 @@
         [job]= "job"
         ></chat-header>
         <chat [messages]="activeChat"></chat>
-        <message-textarea></message-textarea>
+        <message-textarea
+        (sendMessage)="send($event)"></message-textarea>
 </div>

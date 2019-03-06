@@ -28,6 +28,7 @@ export class MessageEffects{
     send$ = this.actions$.ofType(messageAction.SEND_MESSAGE)
      .pipe(
          switchMap((action: messageAction.SendMessage)=>{
+             
             return this.messageService.sendMessage(action.payload).pipe(
                 map(res => new messageAction.SendMessageSuccess()),
                 catchError(error => of(new messageAction.SendMessageFail(error)))          

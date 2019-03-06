@@ -13,43 +13,9 @@ conversations$ :Observable<Array<any>>
 active$ : Observable<any>
 loading$:Observable<boolean>
 loaded$:Observable<boolean>
-//  conversations=[{ 
-//    profile : { firstName: "Gina",lastName: "La Polla", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "Pump House"}, message:"Hi You, how are you.."
-//  },{ 
-//   profile : { firstName: "Sandra",lastName: "Smith", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Waitress", business: "Pump House"}, message:"Hi You, how are you.."
-// },{ 
-//   profile : { firstName: "Pina",lastName: "La Pina", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "SandremX"}, message:"Hi You, how are you.."
-// },{ 
-//   profile : { firstName: "Gina",lastName: "La Polla", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "Pump House"}, message:"Hi You, how are you.."
-// },{ 
-//  profile : { firstName: "Sandra",lastName: "Smith", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Waitress", business: "Pump House"}, message:"Hi You, how are you.."
-// },{ 
-//  profile : { firstName: "Pina",lastName: "La Pina", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "SandremX"}, message:"Hi You, how are you.."
-// },{ 
-//   profile : { firstName: "Gina",lastName: "La Polla", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "Pump House"}, message:"Hi You, how are you.."
-// },{ 
-//  profile : { firstName: "Sandra",lastName: "Smith", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Waitress", business: "Pump House"}, message:"Hi You, how are you.."
-// },{ 
-//  profile : { firstName: "Pina",lastName: "La Pina", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "SandremX"}, message:"Hi You, how are you.."
-// },{ 
-//   profile : { firstName: "Gina",lastName: "La Polla", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "Pump House"}, message:"Hi You, how are you.."
-// },{ 
-//  profile : { firstName: "Sandra",lastName: "Smith", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Waitress", business: "Pump House"}, message:"Hi You, how are you.."
-// },{ 
-//  profile : { firstName: "Pina",lastName: "La Pina", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"},
-// job:{ position: "Chef", business: "SandremX"}, message:"Hi You, how are you.."
-// }]
+receiver$:Observable<string>
+
+
   constructor(
     private store: Store<fromStore.MessageSectionState>
   ) { }
@@ -59,6 +25,7 @@ loaded$:Observable<boolean>
     this.active$ = this.store.select(fromStore.getActiveConversationParsed)
     this.loaded$ = this.store.select(fromStore.getMessageLoaded);
     this.loading$ = this.store.select(fromStore.getMessageLoaded);
+    this.receiver$ = this.store.select(fromStore.getReceiver);
     this.store.dispatch(new fromStore.LoadMyself());
     this.store.dispatch(new fromStore.LoadAllConversation());
 
@@ -66,10 +33,31 @@ loaded$:Observable<boolean>
 
     console.log(this.active$);
   }
-  
+  openChat(user){
+    this.store.dispatch(new fromStore.SetActiveConversation({
+      him:user
+    }));
+    this.active$ = this.store.select(fromStore.getActiveConversationParsed)
+
+  }
  select(){
   this.store.dispatch(new fromStore.SetActiveConversation({
-    him:"davidesala"
+    him:"pino"
   }));
+  this.active$ = this.store.select(fromStore.getActiveConversationParsed)
+
+ }
+ sendMessage(message){
+
+   this.receiver$.subscribe(
+     username =>{
+     this.store.dispatch(new fromStore.SendMessage({
+      receiver:username,
+      text: message
+    }))
+    this.active$ = this.store.select(fromStore.getActiveConversationParsed)
+
+  }
+   )
  }
 }
