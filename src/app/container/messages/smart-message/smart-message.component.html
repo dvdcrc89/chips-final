@@ -3,6 +3,7 @@
     [conversations]="conversations$ |async"
     ></conversation-container>
     
-    <chat-container></chat-container>
+    <chat-container [activeChat]="active$ |async"></chat-container>
+<button (click)="select()">select</button>
 </div>
 

@@ -42,5 +42,16 @@ export class MessageEffects{
                 catchError(error => of(new messageAction.ReadMessageFail(error)))          
          )}
      ))
+
+     @Effect()
+     username$ = this.actions$.ofType(messageAction.LOAD_MYSELF)
+     .pipe(
+         switchMap((action: messageAction.LoadMyself)=>{
+            return of(this.authService.getAuthenticatedUser().getUsername()).pipe(
+                map(res => new messageAction.LoadMyselfSuccess(res)),
+                catchError(error => of(new messageAction.ReadMessageFail(error)))          
+         )}
+     ))
+     
       
 }

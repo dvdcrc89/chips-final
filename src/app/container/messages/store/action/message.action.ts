@@ -10,6 +10,17 @@ export const SEND_MESSAGE_SUCCESS = '[Message] Send Message Success';
 export const READ_MESSAGE = '[Conversation] Read Message';
 export const READ_MESSAGE_FAIL = '[Conversation] Read Message Fail';
 export const READ_MESSAGE_SUCCESS = '[Conversation] Read Message Success';
+export const SET_ACTIVE_CONVERSATION = '[Conversation Set Active Conversation';
+export const LOAD_MYSELF = '[String] Load Myself';
+export const LOAD_MYSELF_SUCCESS = '[String] Load Myself Success';
+
+
+
+export class SetActiveConversation implements Action {
+    readonly type = SET_ACTIVE_CONVERSATION;
+    constructor(public payload: any){}
+
+}
 
 export class LoadAllConversation implements Action {
     readonly type = LOAD_ALL_CONVERSATIONS;
@@ -52,7 +63,15 @@ export class ReadMessageSuccess implements Action {
     readonly type = READ_MESSAGE_SUCCESS;
 }
 
+export class LoadMyself implements Action {
+    readonly type = LOAD_MYSELF;
+}
 
+export class LoadMyselfSuccess implements Action {
+    readonly type = LOAD_MYSELF_SUCCESS;
+    constructor(public payload: string){}
+
+}
 
 
 //action types
@@ -67,3 +86,6 @@ LoadAllConversation
 | ReadMessage 
 | ReadMessageFail 
 | ReadMessageSuccess
+| SetActiveConversation
+| LoadMyself
+| LoadMyselfSuccess

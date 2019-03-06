@@ -5,15 +5,19 @@ export interface MessageState {
     activeConversation:any,
     allConversationsMessage: any[]    
     loaded: boolean,
-    loading: boolean
+    loading: boolean,
+    username: string,
+
 }
 
 export const initialState: MessageState = {
     conversationsList:[],
-    activeConversation:{},
+    activeConversation:[],
     allConversationsMessage: [],
     loaded: false,
-    loading: false
+    loading: false,
+    username: "",
+
 };
 
 export function reducer(
@@ -37,7 +41,9 @@ export function reducer(
                     }, {});
                   }
                 const createConvList = (list)=>{ 
-                    let conversationList =[]
+                    let conversationList =[];
+                    if(state.conversationsList.length>0)
+                        conversationList.push(state.conversationsList[0]);
                     for (var key in list) {
                         if (list.hasOwnProperty(key)) {
                             let sortMessages=list[key].sort((a,b)=>b.Created_at-a.Created_at);
@@ -55,7 +61,8 @@ export function reducer(
                                 profile:{
                                     profilePic:"https://s3.eu-west-2.amazonaws.com/chips-files-storage/"+whoIsHim+"_PP",
                                     firstName:"Sandro",
-                                    lastName:"Sandro"
+                                    lastName:"Sandro",
+                                    username:whoIsHim
                                 }
 
                             })
@@ -67,13 +74,14 @@ export function reducer(
                 let allConversationsMessage = groupBy(action.payload,"Conversation_id");
                 let conversationsList = 
                     createConvList(allConversationsMessage).sort((a,b)=>b.lastMessageTime - a.lastMessageTime);
-
+                
+                // let activeConversation = allConversationsMessage[Object.keys(allConversationsMessage)[0]]
                 return {
                     ...state,
                     loading: false,
                     loaded: true,
                     conversationsList,
-                    allConversationsMessage
+                    allConversationsMessage,
                 }
             }
         case fromMessage.LOAD_ALL_CONVERSATIONS_FAIL:
@@ -132,6 +140,60 @@ export function reducer(
                     loaded: true
                 }
             }
+        case fromMessage.SET_ACTIVE_CONVERSATION:
+            {
+                let prefix = action.payload.jobs_id ? action.payload.jobs_id : "DM";
+                let users = [state.username,action.payload.him].sort();
+                let conversation_id =prefix+"_"+users[0]+"_"+users[1]; 
+                let activeConversation;
+                let conversationsList = state.conversationsList;
+                console.log("id",conversation_id,state.allConversationsMessage);
+                if(state.allConversationsMessage.hasOwnProperty(conversation_id)){
+                    activeConversation = state.allConversationsMessage[conversation_id]
+                } else{
+                    activeConversation = {[conversation_id]:[]}
+                    let newList = [{
+                            conversation_id,
+                            lastMessageTime: 0,
+                            jobs_id:prefix,
+                            profile:{
+                                profilePic:"https://s3.eu-west-2.amazonaws.com/chips-files-storage/"+action.payload.him+"_PP",
+                                firstName:"Sandro",
+                                lastName:"Sandro",
+                                username:action.payload.him
+                            }
+                    }]
+                    conversationsList = state.conversationsList.concat(newList)
+                    console.log("conversationList",conversationsList)
+
+                }
+                return {
+                    ...state,
+                    loading: false,
+                    loaded: true,
+                    conversationsList,
+                    activeConversation
+
+                }
+            }
+            case fromMessage.LOAD_MYSELF:
+            {
+                return {
+                    ...state,
+                    loading: true
+                }
+            }
+            case fromMessage.LOAD_MYSELF_SUCCESS:
+            {
+                let username = action.payload;
+                   
+                return {
+                    ...state,
+                    loading: false,
+                    loaded: true,
+                    username
+                }
+            }
     
     }
 
@@ -142,4 +204,8 @@ export const getMessageLoading = (state: MessageState) => state.loading;
 export const getMessageLoaded = (state: MessageState) => state.loaded;
 export const getAllConversationsMessages = (state: MessageState) => state.allConversationsMessage;
 export const getConversationsList = (state: MessageState) => state.conversationsList;
+export const getActiveConversation = (state: MessageState) => state.activeConversation;
+export const getUsername = (state: MessageState) => state.username;
+
+
 

@@ -7,9 +7,14 @@ import { environment } from '../../../../../environments/environment';
   templateUrl: './chat-container.component.html',
   styleUrls: ['./chat-container.component.css']
 })
+
+
 export class ChatContainerComponent implements OnInit {
   profile = { firstName: "Gina",lastName: "La Polla", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"};
   job = { position: "Chef", business: "Pump House"};
+  @Input()
+  activeChat:Array<any>
+  
    
 
 
