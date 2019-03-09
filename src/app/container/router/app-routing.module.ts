@@ -23,6 +23,8 @@ const routes: Routes = [
   { path: 'profile/:username',canActivate: [AuthGuard], component: UserProfileComponent },
   { path: 'notfound', component:NotFoundComponent},
   { path: 'messages',canActivate: [AuthGuard], component: SmartMessageComponent },
+  { path: 'messages/:username',canActivate: [AuthGuard], component: SmartMessageComponent },
+  { path: 'messages/:username/:job_id',canActivate: [AuthGuard], component: SmartMessageComponent },
 
 
   { path: '**', redirectTo: 'notfound' }
