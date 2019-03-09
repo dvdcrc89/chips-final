@@ -34,6 +34,7 @@ import { MessageTextAreaComponent } from './components/message-textarea/message-
 import { MessageComponent } from './components/message/message.component';
 import { MessageService } from './services/message.service';
 import { JobPipePipe } from 'src/app/pipes/job-pipe.pipe';
+import { UsernameToNamePipe } from 'src/app/pipes/usernameToName-pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { JobPipePipe } from 'src/app/pipes/job-pipe.pipe';
    ChatComponent,
    MessageTextAreaComponent,
    MessageComponent,
-   JobPipePipe
+   JobPipePipe,
+   UsernameToNamePipe
     
   
   ],
@@ -81,7 +83,8 @@ import { JobPipePipe } from 'src/app/pipes/job-pipe.pipe';
     ChatComponent,
     MessageTextAreaComponent,
     MessageComponent,
-    JobPipePipe
+    JobPipePipe,
+    UsernameToNamePipe
 
     
   ],
