@@ -7,7 +7,7 @@ export interface MessageState {
     loaded: boolean,
     loading: boolean,
     username: string,
-    receiver: string;
+    receiver: any;
 
 }
 
@@ -18,7 +18,7 @@ export const initialState: MessageState = {
     loaded: false,
     loading: false,
     username: "",
-    receiver:""
+    receiver:{}
 
 };
 
@@ -51,7 +51,7 @@ export function reducer(
                             let sortMessages=list[key].sort((a,b)=>b.Created_at-a.Created_at);
                             let lastMessage = sortMessages[0];
                             let unread = sortMessages.filter(message=>!message.Read).length;
-                            let jobsId = lastMessage.Jobs_id ? lastMessage.Jobs_id :"DM" ;
+                            let jobsId = lastMessage.Job_id ? lastMessage.Job_id :"DM" ;
                             let whoIsHim =
                                 lastMessage.Sender !== action.username ? lastMessage.Sender:lastMessage.Receiver;
                             conversationList.push ({
@@ -146,7 +146,7 @@ export function reducer(
             }
         case fromMessage.SET_ACTIVE_CONVERSATION:
             {
-                let prefix = action.payload.jobs_id ? action.payload.jobs_id : "DM";
+                let prefix = action.payload.job_id ? action.payload.job_id : "DM";
                 let users = [state.username,action.payload.him].sort();
                 let conversation_id =prefix+"_"+users[0]+"_"+users[1]; 
                 let activeConversation;
@@ -161,7 +161,7 @@ export function reducer(
                     let newList = [{
                             conversation_id,
                             lastMessageTime: 0,
-                            jobs_id:prefix,
+                            job_id:prefix,
                             profile:{
                                 profilePic:"https://s3.eu-west-2.amazonaws.com/chips-files-storage/"+action.payload.him+"_PP",
                                 firstName:"Sandro",
@@ -171,7 +171,13 @@ export function reducer(
                     }]
                     conversationsList = newList.concat(state.conversationsList)
                     console.log("conversationList",conversationsList)
-
+                    
+                }
+                let receiver :any = {
+                    him: action.payload.him
+                }
+                if(prefix!=="DM"){
+                    receiver = {...receiver,job_id:prefix}
                 }
                 return {
                     ...state,
@@ -180,7 +186,7 @@ export function reducer(
                     conversationsList,
                     activeConversation,
                     allConversationsMessage,
-                    receiver: action.payload.him
+                    receiver
 
                 }
             }

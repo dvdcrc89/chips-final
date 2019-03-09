@@ -88,7 +88,7 @@ export class MessageEffects{
                                 let payload:any = {
                                   him:params.username
                                  };
-                                if(params.job_id) payload = {...payload, jobs_id:params.job_id} 
+                                if(params.job_id) payload = {...payload, job_id:params.job_id} 
                             return  new messageAction.SetActiveConversation(payload)
                                 
                             

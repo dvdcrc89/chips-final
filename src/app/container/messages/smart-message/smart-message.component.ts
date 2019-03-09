@@ -13,7 +13,7 @@ conversations$ :Observable<Array<any>>
 active$ : Observable<any>
 loading$:Observable<boolean>
 loaded$:Observable<boolean>
-receiver$:Observable<string>
+receiver$:Observable<any>
 
 
   constructor(
@@ -50,9 +50,10 @@ receiver$:Observable<string>
  sendMessage(message){
 
    this.receiver$.subscribe(
-     username =>{
+     (res):any =>{
      this.store.dispatch(new fromStore.SendMessage({
-      receiver:username,
+      receiver:res.him,
+      job_id:res.job_id,
       text: message
     }))
     this.active$ = this.store.select(fromStore.getActiveConversationParsed)
