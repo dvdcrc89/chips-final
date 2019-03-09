@@ -18,7 +18,7 @@ export class ConversationLabelComponent implements OnInit {
     @Input()
     troncMessage:string;
     @Output()
-    open: EventEmitter<string> = new EventEmitter()
+    open: EventEmitter<any> = new EventEmitter()
 
 
 
@@ -28,6 +28,8 @@ export class ConversationLabelComponent implements OnInit {
 
   }
  openChat(){
-    this.open.emit(this.profile.username)
+   let payload:any ={username:this.profile.username}
+   if (this.job) payload = {...payload,job:this.job}
+    this.open.emit(payload)
  }
 }

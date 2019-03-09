@@ -51,7 +51,7 @@ export function reducer(
                             let sortMessages=list[key].sort((a,b)=>b.Created_at-a.Created_at);
                             let lastMessage = sortMessages[0];
                             let unread = sortMessages.filter(message=>!message.Read).length;
-                            let jobsId = lastMessage.Job_id ? lastMessage.Job_id :"DM" ;
+                            let jobsId = lastMessage.Job_id ? lastMessage.Job_id :null ;
                             let whoIsHim =
                                 lastMessage.Sender !== action.username ? lastMessage.Sender:lastMessage.Receiver;
                             conversationList.push ({

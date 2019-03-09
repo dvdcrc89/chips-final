@@ -2,7 +2,7 @@
     <img [src]="profile.profilePic">
     <div class="details" >
         <span class="name">{{profile.firstName}} {{profile.lastName}}</span>
-        <span *ngIf="job" class="job">#job: {{job.position}} at {{job.business}}</span>
+        <span *ngIf="job" class="job">#job: {{job}}</span>
         <span *ngIf="troncMessage" class="message">{{troncMessage}}..</span>
      </div>
      <div class="newmsgs animated fadeInUp delay-2s">

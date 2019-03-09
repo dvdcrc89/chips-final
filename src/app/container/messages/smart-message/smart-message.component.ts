@@ -34,9 +34,9 @@ receiver$:Observable<any>
     console.log(this.active$);
   }
   openChat(user){
-    this.store.dispatch(new fromStore.SetActiveConversation({
-      him:user
-    }));
+    let payload:any ={him:user.username}
+    if (user.job) payload = {...payload,job_id:user.job}
+    this.store.dispatch(new fromStore.SetActiveConversation(payload));
     this.active$ = this.store.select(fromStore.getActiveConversationParsed)
 
   }
