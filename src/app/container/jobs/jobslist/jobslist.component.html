@@ -39,7 +39,8 @@
         <div class="big-card" *ngIf="details">
                 <job 
                 [job]="details"
-                (close)="handleClose()"        
+                (close)="handleClose()" 
+                (apply)="handleApply($event)"       
                 ></job>
         </div>
         <div class="big-card" *ngIf="showFilter">

@@ -104,8 +104,8 @@ changePage(page){
     this.opacity=[1,1,1,1,1,1,1,1,1,1,1,1]
   }
 
-  handleApply(job){
-  
+  handleApply(job:Job){
+    this.router.navigate(['/messages/'+job.Creator+"/"+job.Job_id])
   }
   handleShare(job){
     console.log("Share",job);
