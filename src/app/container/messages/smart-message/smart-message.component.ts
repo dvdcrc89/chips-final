@@ -40,13 +40,6 @@ receiver$:Observable<any>
     this.active$ = this.store.select(fromStore.getActiveConversationParsed)
 
   }
- select(){
-  this.store.dispatch(new fromStore.SetActiveConversation({
-    him:"pino"
-  }));
-  this.active$ = this.store.select(fromStore.getActiveConversationParsed)
-
- }
  sendMessage(message){
 
    this.receiver$.subscribe(

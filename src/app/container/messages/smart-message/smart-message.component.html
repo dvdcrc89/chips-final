@@ -5,10 +5,9 @@
     ></conversation-container>
     
     <chat-container 
-    *ngIf="receiver$ |async"
+    *ngIf="(receiver$ |async).him"
     [activeChat]="active$ |async"
     (sendMessage)="sendMessage($event)"></chat-container>
-    <button (click)="select()">select</button>
 </div>
 
 {{(receiver$ |async) |json}}

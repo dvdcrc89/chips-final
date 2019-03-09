@@ -1,6 +1,7 @@
 import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
 import { Profile } from 'src/app/models/profile.interface';
 import { environment } from '../../../../../environments/environment';
+import {JobPipePipe} from '../../../../pipes/job-pipe.pipe'
 
 @Component({
   selector: 'conversation-label',
