@@ -3,7 +3,7 @@
     <div class="details" >
         <span class="name">{{profile.firstName}} {{profile.lastName}}</span>
         <span *ngIf="job" class="job">#job: {{job.position}} at {{job.business}}</span>
-        <span class="message">{{troncMessage}}</span>
+        <span *ngIf="troncMessage" class="message">{{troncMessage}}..</span>
      </div>
      <div class="newmsgs animated fadeInUp delay-2s">
             <span  matBadge="{{newMessages}}" matBadgeOverlap="false" matBadgeColor="warn" ></span>
