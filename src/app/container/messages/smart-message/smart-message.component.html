@@ -7,7 +7,8 @@
     <chat-container 
     *ngIf="(receiver$ |async).him"
     [activeChat]="active$ |async"
-    (sendMessage)="sendMessage($event)"></chat-container>
+    (sendMessage)="sendMessage($event)"
+    [him]="(receiver$ |async).him"></chat-container>
 </div>
 
 {{(receiver$ |async) |json}}

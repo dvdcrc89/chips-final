@@ -62,8 +62,6 @@ export function reducer(
                                 jobsId,
                                 profile:{
                                     profilePic:"https://s3.eu-west-2.amazonaws.com/chips-files-storage/"+whoIsHim+"_PP",
-                                    firstName:"Sandro",
-                                    lastName:"Sandro",
                                     username:whoIsHim
                                 }
 
@@ -164,8 +162,6 @@ export function reducer(
                             jobsId:prefix,
                             profile:{
                                 profilePic:"https://s3.eu-west-2.amazonaws.com/chips-files-storage/"+action.payload.him+"_PP",
-                                firstName:"Sandro",
-                                lastName:"Sandro",
                                 username:action.payload.him
                             }
                     }]

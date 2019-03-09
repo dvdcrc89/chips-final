@@ -10,15 +10,14 @@ import { environment } from '../../../../../environments/environment';
 export class ChatHeaderComponent implements OnInit {
 
     @Input()
-    profile:Profile;
-    @Input()
-    job:any;
+    him:string;
+  
 
 
   constructor() { }
 
   ngOnInit() {
-
+    console.log(this.him)
   }
 
 }

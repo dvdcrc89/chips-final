@@ -1,8 +1,8 @@
 <div class="user">
     <div class="header">
-    <img [src]="profile.profilePic">
+    <!-- <img [src]="profile.profilePic"> -->
     <div class="details" >
-        <span class="name">{{profile.firstName}} {{profile.lastName}}</span>
+        <span class="name">{{him | usernameToName}} {{him}}</span>
      </div>
      <div class="job-detail">
             <button mat-raised-button *ngIf="job">VIEW JOB</button>

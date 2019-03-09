@@ -1,7 +1,7 @@
 <div class="user" (click)="openChat()">
     <img [src]="profile.profilePic">
     <div class="details" >
-        <span class="name">{{profile.firstName}} {{profile.lastName}}</span>
+        <span class="name">{{profile.username | usernameToName}}</span>
         <span *ngIf="job" class="job">{{job |jobPipe}} </span>
         <span *ngIf="!job" class="job">Direct Message</span>
         <span *ngIf="troncMessage" class="message">{{troncMessage}}..</span>

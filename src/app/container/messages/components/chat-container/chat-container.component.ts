@@ -1,6 +1,7 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 import { Profile } from 'src/app/models/profile.interface';
 import { environment } from '../../../../../environments/environment';
+import { of, Observable } from 'rxjs';
 
 @Component({
   selector: 'chat-container',
@@ -10,8 +11,8 @@ import { environment } from '../../../../../environments/environment';
 
 
 export class ChatContainerComponent implements OnInit {
-  profile = { firstName: "Gina",lastName: "La Polla", profilePic :"https://s3.eu-west-2.amazonaws.com/chips-files-storage/pino_PP"};
-  job = { position: "Chef", business: "Pump House"};
+  @Input()
+  him:any;
   @Input()
   activeChat:Array<any>
   @Output()
@@ -23,7 +24,6 @@ export class ChatContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
   }
   send(message){
     console.log(message);
