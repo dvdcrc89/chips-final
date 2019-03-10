@@ -156,10 +156,11 @@ export function reducer(
                 } else{
                     activeConversation = {[conversation_id]:[]}
                     allConversationsMessage = {...allConversationsMessage,...activeConversation};
+                    let jobsId = prefix=="DM" ? null : prefix;
                     let newList = [{
                             conversation_id,
                             lastMessageTime: 0,
-                            jobsId:prefix,
+                            jobsId,
                             profile:{
                                 profilePic:"https://s3.eu-west-2.amazonaws.com/chips-files-storage/"+action.payload.him+"_PP",
                                 username:action.payload.him
