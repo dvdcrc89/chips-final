@@ -1,8 +1,8 @@
 .user{
     position: relative;
     cursor: pointer;
-   display: inline-flex;
-   width: 388px;
+    display: inline-flex;
+    width: 388px;
     align-items: center;
     background: white;
     border-radius: 8px;
@@ -46,4 +46,20 @@
 }
 .new{
     font-size:1rem;
+}
+@media screen and (max-width: 1025px){
+
+    .user{
+        position: relative;
+        cursor: pointer;
+        display: inline-flex;
+        width: 300px;
+        align-items: center;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 6px 3px 0 rgba(74,74,74,.06);
+        justify-content: flex-start;
+      
+    }
+
 }

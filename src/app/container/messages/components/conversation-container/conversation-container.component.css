@@ -9,3 +9,15 @@
  justify-content: center;
     margin-top: 14px;
 }
+
+
+@media screen and (max-width: 1025px){
+    .container{
+        width: 98%;
+        height:490px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+
+}

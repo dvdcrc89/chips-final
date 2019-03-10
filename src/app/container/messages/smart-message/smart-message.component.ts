@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../store';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-smart-message',
@@ -14,13 +14,14 @@ active$ : Observable<any>
 loading$:Observable<boolean>
 loaded$:Observable<boolean>
 receiver$:Observable<any>
-
+showList:boolean;
 
   constructor(
     private store: Store<fromStore.MessageSectionState>
   ) { }
 
   ngOnInit() {
+    this.showList=true;
     this.conversations$ = this.store.select(fromStore.getList);
     this.active$ = this.store.select(fromStore.getActiveConversationParsed)
     this.loaded$ = this.store.select(fromStore.getMessageLoaded);
@@ -38,6 +39,7 @@ receiver$:Observable<any>
     if (user.job) payload = {...payload,job_id:user.job}
     this.store.dispatch(new fromStore.SetActiveConversation(payload));
     this.active$ = this.store.select(fromStore.getActiveConversationParsed)
+    this.receiver$ = this.store.select(fromStore.getReceiver);
 
   }
  sendMessage(message){
@@ -53,5 +55,8 @@ receiver$:Observable<any>
 
   }
    )
+ }
+ triggerList(){
+  this.receiver$ = of({him:false})
  }
 }

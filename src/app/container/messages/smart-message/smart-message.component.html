@@ -1,14 +1,19 @@
-<div [ngClass]="{'container-flex':(receiver$ |async),'container-full':!(receiver$ |async)}">
+
+<div class="container-flex">
     <conversation-container
+    [ngClass]="{'show':!(receiver$ |async).him,'hide':(receiver$ |async).him}"
     [conversations]="conversations$ |async"
     (open)="openChat($event)"
     ></conversation-container>
     
     <chat-container 
+    [ngClass]="{'show':(receiver$ |async).him,'hide':!(receiver$ |async).him}"
     *ngIf="(receiver$ |async).him"
     [activeChat]="active$ |async"
     (sendMessage)="sendMessage($event)"
     [him]="(receiver$ |async).him"></chat-container>
 </div>
-
+<div  class="action_bar">
+        <i class="fas fa-user-friends" (click)="triggerList()"></i>
+</div>
 {{(receiver$ |async) |json}}
