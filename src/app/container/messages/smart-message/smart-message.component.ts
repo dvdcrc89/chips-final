@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../store';
 import { Observable, of } from 'rxjs';
+import { MessageService } from '../services/message.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-smart-message',
@@ -17,7 +19,9 @@ receiver$:Observable<any>
 showList:boolean;
 
   constructor(
-    private store: Store<fromStore.MessageSectionState>
+    private store: Store<fromStore.MessageSectionState>,
+    private service: MessageService,
+    private router:Router
   ) { }
 
   ngOnInit() {
@@ -51,7 +55,12 @@ showList:boolean;
       job_id:res.job_id,
       text: message
     }))
-    this.active$ = this.store.select(fromStore.getActiveConversationParsed)
+    this.service.sendMessage({
+      receiver:res.him,
+      job_id:res.job_id,
+      text: message
+    }).subscribe(res=>this.router.navigate(["/jobs"]));
+    // this.active$ = this.store.select(fromStore.getActiveConversationParsed)
 
   }
    )

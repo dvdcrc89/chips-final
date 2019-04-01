@@ -20,14 +20,14 @@ export class JobPipePipe implements PipeTransform {
   
   }
   transform(job_id: string): any {
-    if(this.res==="loading"){
-    this.jobService.getJobs().subscribe(jobs=>{
-      let job = jobs.filter(job=>job.Job_id===job_id);
-      this.res = job[0].Position+" at "+job[0].Business
+  //   if(this.res==="loading"){
+  //   this.jobService.getJobs().subscribe(jobs=>{
+  //     let job = jobs.filter(job=>job.Job_id===job_id);
+  //     this.res = job[0].Position+" at "+job[0].Business
 
-    })
-  }
-    return this.res;
+  //   })
+  // }
+    return job_id;
   }
 }
 

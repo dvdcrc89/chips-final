@@ -36,11 +36,11 @@ export class MessageService {
     const sender = this.authService.getAuthenticatedUser().getUsername();
     const message = {...payload,sender}
     console.log(JSON.stringify(message));
-    // let headers = new HttpHeaders();
-    // headers = headers.set('Content-Type', 'application/json');
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
     // headers = headers.set('Access-Control-Allow-Origin','*');
     return this.http
       .post<any>(this.url+"/messages/send", JSON.stringify(message))
       .pipe(catchError((error: any) => Observable.throw(error.json())));;
-  }
+  } 
 }

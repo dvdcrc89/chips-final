@@ -19,12 +19,13 @@ export class UsernameToNamePipe implements PipeTransform {
   }
   transform(username: string): any {
     
-    if(this.res==="loading"  ){
-    this.profileService.getUser(username).subscribe(user=>{
-      this.res = user.firstName + " "+ user.lastName
-    })
-  }
-    return this.res;
+  //   if(this.res==="loading"  ){
+  //   this.profileService.getUser(username).subscribe(user=>{
+  //     this.res = user.firstName + " "+ user.lastName
+  //   })
+  // }
+  //   return this.res;
+  return username;
   }
 }
 
