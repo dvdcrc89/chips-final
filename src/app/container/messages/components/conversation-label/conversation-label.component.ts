@@ -1,6 +1,7 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, Output,EventEmitter } from '@angular/core';
 import { Profile } from 'src/app/models/profile.interface';
 import { environment } from '../../../../../environments/environment';
+import {JobPipePipe} from '../../../../pipes/job-pipe.pipe'
 
 @Component({
   selector: 'conversation-label',
@@ -17,7 +18,8 @@ export class ConversationLabelComponent implements OnInit {
     job:any;
     @Input()
     troncMessage:string;
-
+    @Output()
+    open: EventEmitter<any> = new EventEmitter()
 
 
 
@@ -26,5 +28,9 @@ export class ConversationLabelComponent implements OnInit {
   ngOnInit() {
 
   }
-
+ openChat(){
+   let payload:any ={username:this.profile.username}
+   if (this.job) payload = {...payload,job:this.job}
+    this.open.emit(payload)
+ }
 }

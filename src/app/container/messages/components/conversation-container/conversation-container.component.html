@@ -2,9 +2,10 @@
     <div class="conversation animated fadeInLeft delay-1s" *ngFor="let conversation of conversations">
         <conversation-label
         [profile]="conversation.profile"
-        [newMessages] = 3
-        [job]="conversation.job"
-        [troncMessage]="conversation.message"
+        [newMessages] = "conversation.unread"
+        [job]="conversation.jobsId"
+        [troncMessage]="conversation.lastMessageTrunc"
+        (open)="openChat($event)"
         ></conversation-label>
     </div>
 </div>

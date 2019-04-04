@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, EventEmitter,Output, } from '@angular/core';
 import { Profile } from 'src/app/models/profile.interface';
 import { environment } from '../../../../../environments/environment';
 
@@ -9,9 +9,8 @@ import { environment } from '../../../../../environments/environment';
 })
 export class MessageTextAreaComponent implements OnInit {
 message:string;
-   
-
-
+@Output()
+sendMessage: EventEmitter<string> = new EventEmitter()
 
   constructor() { }
 
@@ -20,6 +19,7 @@ message:string;
   }
  send(){
    console.log(this.message);
-   this.message = "";
+   this.sendMessage.emit(this.message);
+   this.message="";
  }
 }

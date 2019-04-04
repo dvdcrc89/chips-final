@@ -23,4 +23,7 @@ ngOnInit(){
 handleClose(){
   this.close.emit()
 }
+applyJob(){
+  this.apply.emit(this.job)
+}
 }

@@ -76,7 +76,7 @@ export class LoadAllUsersFail implements Action {
 
 //action types
 
-export type JobsAction = 
+export type ProfileAction = 
  LoadMyself 
 | LoadMyselfFail 
 | LoadMyselfSuccess 

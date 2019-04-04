@@ -20,7 +20,9 @@ import {
   MatSelectModule,
   MatButtonToggleModule
 } from '@angular/material';
-
+import {StoreModule} from '@ngrx/store'
+import {EffectsModule} from '@ngrx/effects';
+import {reducers,effects} from './store'
 import { environment } from '../../../environments/environment';
 import { SmartMessageComponent } from './smart-message/smart-message.component';
 import { ConversationLabelComponent } from './components/conversation-label/conversation-label.component';
@@ -30,6 +32,9 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
 import { ChatComponent } from './components/chat/chat.component';
 import { MessageTextAreaComponent } from './components/message-textarea/message-textarea.component';
 import { MessageComponent } from './components/message/message.component';
+import { MessageService } from './services/message.service';
+import { JobPipePipe } from 'src/app/pipes/job-pipe.pipe';
+import { UsernameToNamePipe } from 'src/app/pipes/usernameToName-pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,9 @@ import { MessageComponent } from './components/message/message.component';
    ChatHeaderComponent,
    ChatComponent,
    MessageTextAreaComponent,
-   MessageComponent
+   MessageComponent,
+   JobPipePipe,
+   UsernameToNamePipe
     
   
   ],
@@ -61,7 +68,9 @@ import { MessageComponent } from './components/message/message.component';
     MatRadioModule,
     MatSelectModule,
     MatButtonToggleModule,
-    MatBadgeModule
+    MatBadgeModule,
+    StoreModule.forFeature('messages',reducers),
+    EffectsModule.forFeature(effects)
 
     
   ],
@@ -73,11 +82,13 @@ import { MessageComponent } from './components/message/message.component';
     ChatHeaderComponent,
     ChatComponent,
     MessageTextAreaComponent,
-    MessageComponent
+    MessageComponent,
+    JobPipePipe,
+    UsernameToNamePipe
 
     
   ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'},MessageService],
 
 })
 export class MessagesModule {}

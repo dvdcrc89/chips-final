@@ -10,7 +10,7 @@ import { environment } from '../../../../../environments/environment';
 export class MessageComponent implements OnInit {
 
 @Input()
-message:Array<string>;
+message:string;
 @Input()
 isMe:boolean;
   
