@@ -4,14 +4,12 @@ import * as profileAction from '../action/profile.action';
 import { map, switchMap, catchError } from 'rxjs/operators';
 import * as fromService from '../../services/profile.service'
 import { of } from 'rxjs';
-import { ProfileFirebaseService } from '../../services/firebase/profile.firebase.service';
 
 @Injectable()
 export class ProfileEffects{
     constructor(
         private actions$: Actions,
         private profileService: fromService.ProfileService,
-        private firebaseProfile: ProfileFirebaseService
         ) {}
     
     @Effect()
@@ -19,7 +17,7 @@ export class ProfileEffects{
      .pipe(
          ofType(profileAction.LOAD_MYSELF),
          switchMap(()=>{
-            return this.firebaseProfile.getMyself().pipe(
+            return this.profileService.getMyself().pipe(
                 map(profile => new profileAction.LoadMyselfSuccess(profile)),
                 catchError(error => of(new profileAction.LoadMyselfFail(error)))          
          )}

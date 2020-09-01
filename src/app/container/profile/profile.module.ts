@@ -2,26 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profileSmart/profileSmart.component';
 import { ProfileUIComponent } from './components/profileUI/profileUI.component';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {
-  MatFormFieldModule,
-  MatMenuModule,
-  MatCheckboxModule,
-  MatIconModule,
-  MatDatepickerModule,
-  MatNativeDateModule,
-  MAT_DATE_LOCALE,
-  MatSlideToggleModule,
-  MatRadioModule,
-  MatSelectModule,
-  MatButtonToggleModule,
-  MatChipsModule,
-} from '@angular/material';
-import {StoreModule} from '@ngrx/store'
-import {EffectsModule} from '@ngrx/effects';
-import {reducers,effects} from './store'
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { StoreModule } from '@ngrx/store'
+import { EffectsModule} from '@ngrx/effects';
+import { reducers,effects} from './store'
 import { EditInfoComponent } from './components/editInfo/editInfo.component';
 import { FormsModule } from '@angular/forms';
 import { EditMessageComponent } from './components/editMessage/editMessage.component';
