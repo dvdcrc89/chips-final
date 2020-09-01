@@ -3,21 +3,14 @@ import * as fromProfile from '../action/profile.action'
 
 export interface ProfileState {
     allUsers:Profile[],
-    myself:Profile,    
+    myself: Profile,    
     loaded: boolean,
     loading: boolean
 }
 
 export const initialState: ProfileState = {
     allUsers: [],
-    myself:{
-        firstName: "John",
-        lastName:"Smith",
-        intrests: "KP,Waiter",
-        bio: "ciao",
-        message: "ciao"
-
-    },
+    myself: null,
     loaded: false,
     loading: false
 };

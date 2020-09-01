@@ -20,16 +20,11 @@ export const getAllUsersProfile= createSelector(getAllUser,(users):Profile[]=>{
     
 });
 export const getMySelf = createSelector(fromFeature.getProfileState,fromProfile.getMySelf);
-export const getMyUsername = createSelector(getMySelf,(myself):string=>{
-    return  myself.username;
 
-});
 export const getMyName = createSelector(getMySelf,(myself):string=>{
-    return myself.firstName;
+    return myself.name;
 });
-export const getMyLastName = createSelector(getMySelf,(myself):string=>{
-    return myself.lastName;
-});
+
 export const getMyBio = createSelector(getMySelf,(myself):string=>{
     return myself.bio;
 });
@@ -46,15 +41,14 @@ export const getMyMessage = createSelector(getMySelf,(myself):string=>{
 });
 
 export const getMyPP = createSelector(getMySelf,(myself):string=>{
-    let username = myself.username;
-    return environment.s3_imgs+username+"_PP"+"?"+Math.random();;
+    return myself.pic;
 });
 export const getMyCP = createSelector(getMySelf,(myself):string=>{
-    let username = myself.username;
+    let username = myself.name;
     return environment.s3_imgs+username+"_CP"+"?"+Math.random();;
 });
 export const getMyCV = createSelector(getMySelf,(myself):string=>{
-    let username = myself.username;
+    let username = myself.name;
     return environment.s3_imgs+username+"_CV"+"?"+Math.random();;
 });
 
@@ -62,7 +56,7 @@ export const getUserProfile = createSelector(getAllUser,
     fromRoot.getRouterState,
     (users,router):any=>{
         console.log("QUIIIIIIIIIIIIIIIIIIIII");
-        let usersFilter = users.filter(user=>user.username===router.state.params.username);
+        let usersFilter = users.filter(user=>user.name===router.state.params.username);
         let user;
         console.log(users,usersFilter);
         if(usersFilter.length>0){

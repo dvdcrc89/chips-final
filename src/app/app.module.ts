@@ -29,6 +29,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { NotFoundComponent } from './container/not-found/not-found.component';
 
+//Modules
+import { UsrLoginModule } from './container/login/usr-login.module';
+
 const environment = {
   development: true,
   production: false,
@@ -64,7 +67,8 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot(),
+    UsrLoginModule
     
   ],
   providers: [AuthService,JobService,HttpClientModule,

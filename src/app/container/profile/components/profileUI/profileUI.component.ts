@@ -16,9 +16,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
     @Input()
     profilePic: string;
     @Input()
-    firstName: string;
-    @Input()
-    lastName: string;
+    name: string;
     @Input()
     bio: string;
     @Input()

@@ -5,7 +5,7 @@
          
         </div>
     <div class="name">
-        <h1>{{profile.firstName}} {{profile.lastName}}</h1>
+        <h1>{{profile.name}}</h1>
     </div>
    
     <div class="intrest">
@@ -22,9 +22,9 @@
     </div>
     <div class="buttons">
             <button (click)="message()"><img src="../../../../../assets/messenger.svg">
-            <p class="label">Message {{profile.firstName}}</p></button>
+            <p class="label">Message {{profile.name}}</p></button>
             <button (click)="handleOpenCV()"><img src="../../../../../assets/resume.svg">
-                <p class="label">{{profile.firstName}} Resume</p></button>
+                <p class="label">{{profile.name}} Resume</p></button>
     </div>
    
 </div>

@@ -20,7 +20,7 @@ import { Router } from "@angular/router";
     
     }
     message(){
-      this.router.navigate(['/messages/'+this.profile.username])
+      this.router.navigate(['/messages/'+this.profile.name])
     }
     handleOpenCV(){
       window.open(this.profile.cv, '_blank')

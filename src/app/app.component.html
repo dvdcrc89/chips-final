@@ -1,12 +1,13 @@
 
 
-
-<nav-bar *ngIf="isAuthenticated" 
-[username]="username" 
-[profilePic]="profilePic" 
-[profiles]="profiles$ | async"></nav-bar>
-<div [ngClass]="{wrapper:isAuthenticated}">
-   
-<router-outlet></router-outlet>
-<button (click)="onLogout()">x</button>
+<div *ngIf="loaded">
+    <nav-bar *ngIf="isAuthenticated" 
+    [username]="username" 
+    [profilePic]="profilePic" 
+    [profiles]="profiles$ | async"></nav-bar>
+    <div [ngClass]="{wrapper:isAuthenticated}">
+       
+    <router-outlet></router-outlet>
+    <button (click)="onLogout()">x</button>
+    </div>
 </div>
