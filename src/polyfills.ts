@@ -81,3 +81,6 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
  /* fix Cognito angular 6 bug */
  (window as any).global = window;
+ (window as any).process = {
+   env: { DEBUG: undefined },
+ };

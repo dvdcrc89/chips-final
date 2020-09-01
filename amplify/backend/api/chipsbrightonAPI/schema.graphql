@@ -1,0 +1,39 @@
+type JobsDate {
+  date: String!,
+  startAt: String!,
+  endAt: String!
+}
+
+type User @model {
+  id: ID!
+  name: String!
+  email: String!,
+  profilePic: String
+  coverPic: String,
+  bio: String,
+  interest: [String]
+  jobsApplied: [Jobs]
+}
+
+type Jobs @model {
+  id: ID!
+  restaurant: Restaurant!
+  category: String!
+  date: [JobsDate!]
+  payPerHour: String!
+  description: String!
+  applicant: [User]
+}
+
+type Restaurant @model {
+  id: ID!
+  name: String!
+  address: String!
+  city: String!
+  lat: Float!,
+  lng: Float!,
+  profilePic: String,
+  coverPic: String,
+  description: String
+  
+}

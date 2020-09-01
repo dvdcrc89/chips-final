@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host",
-    "build": "ng build",
+    "build": "ng build --prod --aot --buildOptimizer=true --commonChunk=true --optimization=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,12 +24,14 @@
     "@angular/platform-browser": "^10.0.14",
     "@angular/platform-browser-dynamic": "^10.0.14",
     "@angular/router": "^10.0.14",
+    "@aws-amplify/ui-angular": "^0.3.0",
     "@ngrx/effects": "^10.0.0",
     "@ngrx/router-store": "^10.0.0",
     "@ngrx/store": "^10.0.0",
     "@ngrx/store-devtools": "^10.0.0",
     "amazon-cognito-identity-js": "^4.3.4",
     "animate.css": "^4.1.0",
+    "aws-amplify": "^3.0.25",
     "core-js": "^3.6.5",
     "firebase": "^7.19.1",
     "ng2-pdf-viewer": "^6.3.2",

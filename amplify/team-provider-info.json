@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-chipsbrighton-dev-154608-authRole",
+      "UnauthRoleArn": "arn:aws:iam::625294996657:role/amplify-chipsbrighton-dev-154608-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::625294996657:role/amplify-chipsbrighton-dev-154608-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-chipsbrighton-dev-154608-deployment",
+      "UnauthRoleName": "amplify-chipsbrighton-dev-154608-unauthRole",
+      "StackName": "amplify-chipsbrighton-dev-154608",
+      "StackId": "arn:aws:cloudformation:us-west-2:625294996657:stack/amplify-chipsbrighton-dev-154608/e11edae0-ec61-11ea-a074-02078304c203",
+      "AmplifyAppId": "d31g8t6cl07s4b"
+    }
+  }
+}
