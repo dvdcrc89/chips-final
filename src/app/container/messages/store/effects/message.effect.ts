@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Effect, Actions, ofType} from '@ngrx/effects';
 import * as messageAction from '../action/message.action';
 import { map, switchMap, catchError, withLatestFrom } from 'rxjs/operators';
 import * as fromService from '../../services/message.service'
@@ -18,8 +18,9 @@ export class MessageEffects{
         ) {}
     
     @Effect()
-    loadAllConversation$ = this.actions$.ofType(messageAction.LOAD_ALL_CONVERSATIONS)
+    loadAllConversation$ = this.actions$
      .pipe(
+        ofType(messageAction.LOAD_ALL_CONVERSATIONS),
          switchMap(()=>{
             return this.messageService.getAllMessages().pipe(
                 map(messages => new messageAction.LoadAllConversationSuccess(messages,this.authService.getAuthenticatedUser().getUsername())),
@@ -28,8 +29,9 @@ export class MessageEffects{
      ))
 
      @Effect()
-    send$ = this.actions$.ofType(messageAction.SEND_MESSAGE)
+    send$ = this.actions$
      .pipe(
+        ofType(messageAction.SEND_MESSAGE),
          switchMap((action: messageAction.SendMessage)=>{
              
             return this.messageService.sendMessage(action.payload).pipe(
@@ -38,8 +40,9 @@ export class MessageEffects{
          )}
      ))
      @Effect()
-     read$ = this.actions$.ofType(messageAction.READ_MESSAGE)
+     read$ = this.actions$
      .pipe(
+        ofType(messageAction.READ_MESSAGE),
          switchMap((action: messageAction.ReadMessage)=>{
             return this.messageService.read(action.payload).pipe(
                 map(res => new messageAction.ReadMessageSuccess()),
@@ -48,8 +51,9 @@ export class MessageEffects{
      ))
 
      @Effect()
-     username$ = this.actions$.ofType(messageAction.LOAD_MYSELF)
+     username$ = this.actions$
      .pipe(
+        ofType(messageAction.LOAD_MYSELF),
          switchMap((action: messageAction.LoadMyself)=>{
             return of(this.authService.getAuthenticatedUser().getUsername()).pipe(
                 map(res => new messageAction.LoadMyselfSuccess(res)),
@@ -78,10 +82,11 @@ export class MessageEffects{
     //             ))
                             
                 @Effect()
-                setActive$ = this.actions$.ofType(messageAction.LOAD_ALL_CONVERSATIONS_SUCCESS)
+                setActive$ = this.actions$
                 .pipe(
+                    ofType(messageAction.LOAD_ALL_CONVERSATIONS_SUCCESS),
                     withLatestFrom(
-                        this.storeRouter.select('routerReducer', 'state', 'params'),
+                        // this.storeRouter.select('routerReducer', 'state', 'params'),
                         (routerReducer, params :any) => {
                             console.log("routerReducer",routerReducer,"paramns",params);
                             if(params.username){
